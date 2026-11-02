@@ -1,3 +1,5 @@
+[🇨🇳 中文说明](README.md) | [🇬🇧 English Documentation](README_EN.md)
+
 # 德国移民数据智能分析平台 (Germany Migration Intelligence Dashboard)
 
 [![Live Web Dashboard](https://img.shields.io/badge/Live_Dashboard-GitHub_Pages-22c55e?style=for-the-badge&logo=github)](https://zubin-li.github.io/germany-migration-dashboard/)
@@ -138,3 +140,11 @@ germany-migration-dashboard/
 ### 开放数据许可与署名
 根据德国联邦政府开放数据法规，原始数据遵循 **Datenlizenz Deutschland – Namensnennung – Version 2.0 (dl-de/by-2-0)**。  
 官方署名：`© Statistisches Bundesamt (Destatis), Wiesbaden, 2026`。详见 [docs/citations.md](docs/citations.md)。
+
+---
+
+## 👥 项目贡献者 (Contributors)
+
+* **Zubin Li** ([@zubin-li](https://github.com/zubin-li)) — 项目发起人、总体数据架构设计与分析模型
+* **Antigravity** ([@antigravity](https://github.com/antigravity)) — 自主 AI Agent 全栈协同架构、前端工程实现与自动化质量审计流水线
+

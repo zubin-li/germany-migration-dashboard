@@ -74,3 +74,11 @@
 3. **互斥人群加和性 (Mutually Exclusive Demographic Exhaustion)**：
    $$\text{Saldo}_{\text{Gesamt}} \approx \text{Saldo}_{\text{Deutsche}} + \text{Saldo}_{\text{EU-Ausländer}} + \text{Saldo}_{\text{Drittstaaten}}$$
    *(2026年1—8月初步月度：$-91,773 + (-42,862) + 151,473 = +16,838$，与官方总计 $+16,841$ 仅差 3 人，系未标明及无国籍修约差)*
+
+---
+
+## 五、项目贡献者 (Contributors)
+
+* **Zubin Li** ([@zubin-li](https://github.com/zubin-li)) — 项目发起人与总体架构设计
+* **Antigravity** ([@antigravity](https://github.com/antigravity)) — 自主 AI Agent 全栈协同架构与自动化工程交付
+

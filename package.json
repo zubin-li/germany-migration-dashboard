@@ -1,17 +1,35 @@
 {
   "name": "germany-migration-dashboard",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Germany Migration Intelligence Dashboard - Longitudinal Destatis official synthesis, executive consulting deck, visual anti-collision guardrails & AI agent playbook",
+  "main": "app.js",
   "scripts": {
     "test": "node tests/ui_dom_audit.js && node tests/chart_audit.js && node tests/visual_layout_audit.js && (/opt/homebrew/bin/python3 etl/validate_data.py || python3 etl/validate_data.py)",
     "audit:ui": "node tests/ui_dom_audit.js",
     "audit:visual": "node tests/visual_layout_audit.js",
     "audit:charts": "node tests/chart_audit.js",
-    "audit:data": "/opt/homebrew/bin/python3 etl/validate_data.py || python3 etl/validate_data.py"
+    "audit:data": "/opt/homebrew/bin/python3 etl/validate_data.py || python3 etl/validate_data.py",
+    "package": "bash package_offline.sh"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "germany-migration",
+    "destatis",
+    "demographics",
+    "echarts",
+    "dashboard",
+    "open-data"
+  ],
+  "author": "Zubin Li (@zubin-li)",
+  "contributors": [
+    {
+      "name": "Zubin Li",
+      "url": "https://github.com/zubin-li"
+    },
+    {
+      "name": "Antigravity",
+      "url": "https://github.com/antigravity"
+    }
+  ],
+  "license": "MIT",
   "type": "commonjs"
 }

@@ -626,10 +626,17 @@ function renderKPIs() {
   const y2025 = AppState.annualTotals.find(r => r.year === 2025) || AppState.annualTotals[AppState.annualTotals.length - 2];
   const y2026 = AppState.annualTotals.find(r => r.year === "2026 (1-8M)" || r.year_num === 2026);
 
+  const isZh = AppState.lang === "zh-CN";
+  const badgeInEl = document.getElementById("kpi-badge-in");
+  const badgeOutEl = document.getElementById("kpi-badge-out");
+  const badgeNetEl = document.getElementById("kpi-badge-net");
+
   // If a single specific nationality is selected (e.g. CN, IN, VN, PL, etc.)
   if (AppState.selectedNationalities.length === 1 && AppState.selectedNationalities[0] !== "all") {
     const code = AppState.selectedNationalities[0];
-    const country2025 = AppState.nationalities.find(r => r.code === code && r.year === 2025);
+    const countryRows = AppState.nationalities.filter(r => r.code === code);
+    const country2025 = countryRows.find(r => r.year === 2025);
+    const cName = countryRows[0] ? (isZh ? countryRows[0].name_zh : countryRows[0].name_en) : code;
     if (country2025) {
       document.getElementById("kpi-inflow-val").textContent = formatNumber(country2025.zuzuege);
       document.getElementById("kpi-outflow-val").textContent = formatNumber(country2025.fortzuege);
@@ -637,6 +644,10 @@ function renderKPIs() {
       netEl.textContent = (country2025.saldo > 0 ? "+" : "") + formatNumber(country2025.saldo);
       netEl.className = `kpi-value ${country2025.saldo >= 0 ? "positive" : "negative"}`;
     }
+    const countryBadge = `${cName} (2025)`;
+    if (badgeInEl) badgeInEl.textContent = countryBadge;
+    if (badgeOutEl) badgeOutEl.textContent = countryBadge;
+    if (badgeNetEl) badgeNetEl.textContent = countryBadge;
   } else if (AppState.selectedCategory === "de") {
     // German citizens focus
     const deIn = y2025.de_zuzuege || 191890;
@@ -646,6 +657,10 @@ function renderKPIs() {
     const netEl = document.getElementById("kpi-net-val");
     netEl.textContent = (y2025.de_saldo > 0 ? "+" : "") + formatNumber(y2025.de_saldo);
     netEl.className = `kpi-value ${y2025.de_saldo >= 0 ? "positive" : "negative"}`;
+    const deLabel = isZh ? "德国本土公民" : "German Citizens";
+    if (badgeInEl) badgeInEl.textContent = deLabel;
+    if (badgeOutEl) badgeOutEl.textContent = deLabel;
+    if (badgeNetEl) badgeNetEl.textContent = deLabel;
   } else {
     // Macro totals
     document.getElementById("kpi-inflow-val").textContent = formatNumber(y2025.zuzuege);
@@ -653,6 +668,10 @@ function renderKPIs() {
     const netEl = document.getElementById("kpi-net-val");
     netEl.textContent = (y2025.saldo > 0 ? "+" : "") + formatNumber(y2025.saldo);
     netEl.className = `kpi-value ${y2025.saldo >= 0 ? "positive" : "negative"}`;
+    const defBadge = t("status_preliminary");
+    if (badgeInEl) badgeInEl.textContent = defBadge;
+    if (badgeOutEl) badgeOutEl.textContent = defBadge;
+    if (badgeNetEl) badgeNetEl.textContent = defBadge;
   }
 
   const ytdEl = document.getElementById("kpi-ytd-val");
@@ -723,12 +742,28 @@ function renderOverviewChart() {
   const th = getChartTheme();
   const isZh = AppState.lang === "zh-CN";
 
+  const selectedCountryCode = AppState.selectedNationalities.length === 1 && AppState.selectedNationalities[0] !== "all" 
+    ? AppState.selectedNationalities[0] 
+    : null;
+
   let labels = [];
   let values = [];
   let inflows = [];
   let outflows = [];
+  let chartTitle = "";
 
-  if (AppState.dataMode === "annual") {
+  if (selectedCountryCode) {
+    const rawRows = AppState.nationalities.filter(r => r.code === selectedCountryCode);
+    const countryRows = filterByTime(rawRows, "year");
+    const cName = rawRows[0] ? (isZh ? rawRows[0].name_zh : rawRows[0].name_en) : selectedCountryCode;
+    labels = countryRows.map(r => String(r.year));
+    values = countryRows.map(r => r.saldo);
+    inflows = countryRows.map(r => r.zuzuege);
+    outflows = countryRows.map(r => r.fortzuege);
+    chartTitle = isZh 
+      ? `按${cName}籍历年净移民变化走势 (2000-2025 · 表 12711-0007)` 
+      : `Net Migration Trends for ${cName} (2000-2025 · Destatis 12711-0007)`;
+  } else if (AppState.dataMode === "annual") {
     const data = filterByTime(AppState.annualTotals);
     labels = data.map(r => String(r.year_num || r.year));
     
@@ -749,6 +784,14 @@ function renderOverviewChart() {
       inflows = data.map(r => r.zuzuege);
       outflows = data.map(r => r.fortzuege);
     }
+    chartTitle = t("mod1_chart_title");
+    if (AppState.selectedCategory === "de") {
+      chartTitle += isZh ? " [德国本土公民 Deutsche]" : " [German Citizens]";
+    } else if (AppState.selectedCategory === "eu") {
+      chartTitle += isZh ? " [其他欧盟公民 EU-Ausländer]" : " [Other EU Citizens]";
+    } else if (AppState.selectedCategory === "noneu") {
+      chartTitle += isZh ? " [非欧盟第三国 Drittstaaten]" : " [Non-EU Citizens]";
+    }
   } else {
     const data = AppState.monthlyData;
     labels = data.map(r => r.month);
@@ -763,15 +806,7 @@ function renderOverviewChart() {
     }
     inflows = data.map(r => r.zuzuege);
     outflows = data.map(r => r.fortzuege);
-  }
-
-  let chartTitle = AppState.dataMode === "annual" ? t("mod1_chart_title") : `${t("mod1_chart_title")} (Monatlich)`;
-  if (AppState.selectedCategory === "de") {
-    chartTitle += isZh ? " [德国本土公民 Deutsche]" : " [German Citizens]";
-  } else if (AppState.selectedCategory === "eu") {
-    chartTitle += isZh ? " [其他欧盟公民 EU-Ausländer]" : " [Other EU Citizens]";
-  } else if (AppState.selectedCategory === "noneu") {
-    chartTitle += isZh ? " [非欧盟第三国 Drittstaaten]" : " [Non-EU Citizens]";
+    chartTitle = `${t("mod1_chart_title")} (Monatlich)`;
   }
 
   let seriesItem = {
@@ -876,18 +911,62 @@ function renderHistoricalTrendsChart() {
   const th = getChartTheme();
   const isZh = AppState.lang === "zh-CN";
 
-  const data = filterByTime(AppState.annualTotals).filter(r => typeof r.year === "number" || r.year_num);
-  const labels = data.map(r => String(r.year_num || r.year));
-  let inflows = data.map(r => r.zuzuege);
-  let outflows = data.map(r => r.fortzuege);
-  let nets = data.map(r => r.saldo);
+  const selectedCountryCode = AppState.selectedNationalities.length === 1 && AppState.selectedNationalities[0] !== "all" 
+    ? AppState.selectedNationalities[0] 
+    : null;
 
-  if (AppState.selectedCategory === "de") {
-    nets = data.map(r => r.de_saldo);
-  } else if (AppState.selectedCategory === "eu") {
-    nets = data.map(r => r.eu_saldo);
-  } else if (AppState.selectedCategory === "noneu") {
-    nets = data.map(r => r.noneu_saldo);
+  let labels = [];
+  let inflows = [];
+  let outflows = [];
+  let nets = [];
+  let chartTitle = isZh ? "总体移入、迁出与净差额历年走势 (2000-2026)" : "Cross-Border Migration Trends (2000-2026)";
+  let markPointsData = [
+    { name: "2015 难民潮", coord: ["2015", 2135502], value: "2015 峰值" },
+    { name: "2022 乌克兰危机", coord: ["2022", 2733538], value: "2022 历史最高" }
+  ];
+
+  if (selectedCountryCode) {
+    const rawRows = AppState.nationalities.filter(r => r.code === selectedCountryCode);
+    const countryRows = filterByTime(rawRows, "year");
+    const cName = rawRows[0] ? (isZh ? rawRows[0].name_zh : rawRows[0].name_en) : selectedCountryCode;
+    labels = countryRows.map(r => String(r.year));
+    inflows = countryRows.map(r => r.zuzuege);
+    outflows = countryRows.map(r => r.fortzuege);
+    nets = countryRows.map(r => r.saldo);
+    chartTitle = isZh 
+      ? `${cName}籍历年迁入、迁出与净迁徙演变 (2000-2025 · 表 12711-0007)` 
+      : `Historical Migration Flows for ${cName} (2000-2025 · Destatis 12711-0007)`;
+
+    if (inflows.length > 0) {
+      let maxIn = -1;
+      let maxInYr = "";
+      countryRows.forEach(r => {
+        if (r.zuzuege > maxIn) {
+          maxIn = r.zuzuege;
+          maxInYr = String(r.year);
+        }
+      });
+      markPointsData = [
+        { name: `${cName}迁入峰值`, coord: [maxInYr, maxIn], value: `${maxInYr} 峰值: ${formatNumber(maxIn)}` }
+      ];
+    }
+  } else {
+    const data = filterByTime(AppState.annualTotals).filter(r => typeof r.year === "number" || r.year_num);
+    labels = data.map(r => String(r.year_num || r.year));
+    inflows = data.map(r => r.zuzuege);
+    outflows = data.map(r => r.fortzuege);
+    nets = data.map(r => r.saldo);
+
+    if (AppState.selectedCategory === "de") {
+      nets = data.map(r => r.de_saldo);
+      chartTitle += isZh ? " [德国本土公民]" : " [German Citizens]";
+    } else if (AppState.selectedCategory === "eu") {
+      nets = data.map(r => r.eu_saldo);
+      chartTitle += isZh ? " [其他欧盟公民]" : " [Other EU Citizens]";
+    } else if (AppState.selectedCategory === "noneu") {
+      nets = data.map(r => r.noneu_saldo);
+      chartTitle += isZh ? " [非欧盟第三国]" : " [Non-EU Citizens]";
+    }
   }
 
   const series = [];
@@ -909,10 +988,7 @@ function renderHistoricalTrendsChart() {
         ])
       },
       markPoint: {
-        data: [
-          { name: "2015 难民潮", coord: ["2015", 2135502], value: "2015 峰值" },
-          { name: "2022 乌克兰危机", coord: ["2022", 2733538], value: "2022 历史最高" }
-        ]
+        data: markPointsData
       }
     });
   }
@@ -1094,19 +1170,31 @@ function renderNationalityRankingTable() {
     nat2025.sort((a, b) => b.zuzuege - a.zuzuege);
   }
 
-  const selectedCode = AppState.selectedNationalities.length === 1 ? AppState.selectedNationalities[0] : null;
+  const selectedCode = AppState.selectedNationalities.length === 1 && AppState.selectedNationalities[0] !== "all" 
+    ? AppState.selectedNationalities[0] 
+    : null;
 
-  nat2025.slice(0, 15).forEach(row => {
+  let displayList = nat2025.slice(0, 15);
+  if (selectedCode) {
+    const matchSelected = nat2025.find(r => r.code === selectedCode);
+    if (matchSelected && !displayList.some(r => r.code === selectedCode)) {
+      displayList.push(matchSelected);
+    }
+  }
+
+  displayList.forEach(row => {
     const tr = document.createElement("tr");
-    if (selectedCode && row.code === selectedCode) {
-      tr.style.backgroundColor = "rgba(2, 132, 199, 0.12)";
+    const isSelected = selectedCode && row.code === selectedCode;
+    if (isSelected) {
+      tr.style.backgroundColor = "rgba(2, 132, 199, 0.16)";
       tr.style.fontWeight = "bold";
+      tr.style.borderLeft = "4px solid var(--primary)";
     }
     const name = AppState.lang === "zh-CN" ? row.name_zh : row.name_en;
     const isPos = row.saldo >= 0;
     const catText = row.category === 'EU' ? (AppState.lang === "zh-CN" ? "欧盟公民" : "EU") : (AppState.lang === "zh-CN" ? "非欧盟" : "Non-EU");
     tr.innerHTML = `
-      <td><strong>${name}</strong> <span style="font-size:0.75rem; color:var(--text-muted);">(${row.code})</span></td>
+      <td><strong>${name}</strong> <span style="font-size:0.75rem; color:var(--text-muted);">(${row.code})</span>${isSelected ? ' <span class="badge badge-info" style="font-size:0.65rem; padding:1px 4px;">当前选中</span>' : ''}</td>
       <td><span class="badge ${row.category === 'EU' ? 'badge-neutral' : 'badge-warning'}">${catText}</span></td>
       <td style="${activeMetric === 'inflow' ? 'font-weight:800; color:var(--primary);' : ''}">${formatNumber(row.zuzuege)}</td>
       <td style="${activeMetric === 'net_neg' ? 'font-weight:800; color:var(--warning);' : ''}">${formatNumber(row.fortzuege)}</td>
