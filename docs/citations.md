@@ -38,12 +38,12 @@
 如需在学术论文、研究报告、咨询简报或媒体文章中引用本平台生成的数据或结论，推荐使用以下格式：
 
 ### 1. APA 格式 (7th Edition)
-> Statistisches Bundesamt (Destatis). (2026). *Wanderungen zwischen Deutschland und dem Ausland (Tabellen 12711-0005, 12711-0011, 12711-0007, 12511-0001)*. GENESIS-Online Datenbank. Synthesized by Germany Migration Intelligence Dashboard (v2.6.0). Retrieved November 2, 2026, from https://zubin-li.github.io/germany-migration-dashboard/
+> Statistisches Bundesamt (Destatis), Li, Z., & Antigravity. (2026). *Wanderungen zwischen Deutschland und dem Ausland (Tabellen 12711-0005, 12711-0011, 12711-0007, 12511-0001)*. GENESIS-Online Datenbank. Synthesized by Germany Migration Intelligence Dashboard (v2.6.0). Retrieved November 2, 2026, from https://zubin-li.github.io/germany-migration-dashboard/
 
 ### 2. BibTeX 格式
 ```bibtex
 @misc{germany_migration_dashboard_2026,
-  author       = {Statistisches Bundesamt (Destatis) and Li, Zubin},
+  author       = {Statistisches Bundesamt (Destatis) and Li, Zubin and Antigravity},
   title        = {{Germany Migration Intelligence Dashboard: Longitudinal Destatis Official Synthesis & Strategic Labor Analytics (2000-2026)}},
   year         = {2026},
   howpublished = {\url{https://zubin-li.github.io/germany-migration-dashboard/}},

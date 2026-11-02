@@ -129,12 +129,12 @@ germany-migration-dashboard/
 * **Destatis Table 12511-0001 & 12511-0002**: Einbürgerungen von Ausländern in Deutschland
 
 ### APA 7th Edition
-> Statistisches Bundesamt (Destatis). (2026). *Wanderungen zwischen Deutschland und dem Ausland (Tabellen 12711-0005, 12711-0011, 12511-0001)*. GENESIS-Online. Synthesized by Germany Migration Intelligence Dashboard (v2.6.0). Retrieved from https://zubin-li.github.io/germany-migration-dashboard/
+> Statistisches Bundesamt (Destatis), Li, Z., & Antigravity. (2026). *Wanderungen zwischen Deutschland und dem Ausland (Tabellen 12711-0005, 12711-0011, 12511-0001)*. GENESIS-Online. Synthesized by Germany Migration Intelligence Dashboard (v2.6.0). Retrieved from https://zubin-li.github.io/germany-migration-dashboard/
 
 ### BibTeX
 ```bibtex
 @misc{germany_migration_dashboard_2026,
-  author       = {Statistisches Bundesamt (Destatis) and Li, Zubin},
+  author       = {Statistisches Bundesamt (Destatis) and Li, Zubin and Antigravity},
   title        = {{Germany Migration Intelligence Dashboard: Longitudinal Destatis Official Synthesis & Strategic Labor Analytics (2000-2026)}},
   year         = {2026},
   howpublished = {\url{https://zubin-li.github.io/germany-migration-dashboard/}},
