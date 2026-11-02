@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>德国移民数据智能分析平台 | Germany Migration Intelligence Dashboard</title>
+  <title>德国人口跨国迁徙与移居数据智能分析平台 | Germany Migration & Relocation Intelligence Dashboard</title>
   <link rel="stylesheet" href="styles.css">
   
   <!-- Vendor Charting & Map Engine (100% Local Offline) -->
@@ -22,8 +22,8 @@
       <div class="brand-area">
         <span class="brand-badge" data-i18n="badge_destatis_intel">DESTATIS INTEL</span>
         <div class="title-group">
-          <h1 data-i18n="app_title">德国移民数据智能分析平台</h1>
-          <p data-i18n="app_subtitle">基于德国联邦统计局（Destatis）官方数据库的可持续更新智能分析系统</p>
+          <h1 data-i18n="app_title">德国人口跨国迁徙与移居数据智能分析平台</h1>
+          <p data-i18n="app_subtitle">长周期官方数据深度解析 · 跨国常住移居（Wanderung）与入籍统计（Einbürgerung）</p>
         </div>
       </div>
 
@@ -44,7 +44,7 @@
 
     <!-- Navigation Tabs -->
     <nav class="nav-bar">
-      <a href="#section-overview" class="nav-link active" data-i18n="nav_overview">移民总览</a>
+      <a href="#section-overview" class="nav-link active" data-i18n="nav_overview">跨国移居总览</a>
       <a href="#section-trends" class="nav-link" data-i18n="nav_trends">历史趋势</a>
       <a href="#section-nationalities" class="nav-link" data-i18n="nav_nationalities">国籍深度分析</a>
       <a href="#section-eu_comparison" class="nav-link" data-i18n="nav_eu_comparison">德国/欧盟/非欧盟</a>
@@ -76,6 +76,17 @@
         <span data-i18n="system_refresh_time">系统刷新时间</span>: 
         <strong id="meta-last-refresh">2026-11-01 08:15:32 (Europe/Berlin)</strong>
       </div>
+    </div>
+
+    <!-- Statutory Definition & Concept Clarity Notice Alert -->
+    <div class="alert-box info" style="border-left: 4px solid var(--primary); background: var(--bg-card); margin-bottom: 1.25rem;">
+      <div class="alert-title" style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.35rem;">
+        <span style="font-size:1.15rem;">💡</span> 
+        <strong style="color:var(--primary); font-size:0.95rem;" data-i18n="concept_clarity_title">官方统计核心释义：跨国移居生活 (Wanderung) ≠ 加入德国国籍 (Einbürgerung)</strong>
+      </div>
+      <p style="margin:0; font-size:0.85rem; line-height:1.55; color:var(--text-secondary);" data-i18n="concept_clarity_desc">
+        本平台各模块呈现的“移入 (Zuzüge)”、“迁出 (Fortzüge)”与“净移居 (Saldo)”，系依据德国《联邦户籍法》在市政厅办理常住入住登记（Anmeldung）的跨国人口流动与常住生活变动（包含工作签证、欧盟蓝卡、大学留学、家庭团聚及人道居留者），绝非直接获得德国国籍。若需查阅在德多年后正式宣誓换领德国护照的数据，请查阅模块七【德国入籍统计】。
+      </p>
     </div>
 
     <!-- System Refresh Caveat Alert -->
@@ -113,8 +124,8 @@
             </div>
           </div>
 
-          <div class="kpi-card" title="点击查看 2025 净移民">
-            <div class="kpi-title" data-i18n="kpi_latest_net">最新完整年度净移民 (2025)</div>
+          <div class="kpi-card" title="点击查看 2025 净移居">
+            <div class="kpi-title" data-i18n="kpi_latest_net">最新完整年度净移居 (2025 · Saldo)</div>
             <div class="kpi-value positive" id="kpi-net-val">+235,000</div>
             <div class="kpi-footer">
               <span data-i18n="kpi_net_sub">官方净差额</span>
@@ -123,7 +134,7 @@
           </div>
 
           <div class="kpi-card" style="border-left: 3px solid var(--accent);" title="2026年1-8月前瞻统计">
-            <div class="kpi-title" data-i18n="kpi_ytd_net_2026">2026年1—8月累计净移民</div>
+            <div class="kpi-title" data-i18n="kpi_ytd_net_2026">2026年1—8月累计净移居 (初步)</div>
             <div class="kpi-value positive" id="kpi-ytd-val">+16,841</div>
             <div class="kpi-footer">
               <span>Destatis 12711-0011</span>
@@ -246,7 +257,7 @@
             <option value="all" data-i18n="filter_all_flows">移入、迁出与净值</option>
             <option value="inflow" data-i18n="filter_inflow_only">仅移入 (Zuzüge)</option>
             <option value="outflow" data-i18n="filter_outflow_only">仅迁出 (Fortzüge)</option>
-            <option value="net" data-i18n="filter_net_only">仅净移民 (Saldo)</option>
+            <option value="net" data-i18n="filter_net_only">仅净移居 (Saldo)</option>
           </select>
         </div>
 
@@ -270,13 +281,13 @@
     <!-- MODULE 1: Overview -->
     <section class="module-section" id="section-overview">
       <div class="module-header">
-        <h2 class="module-title" data-i18n="mod1_title">模块一：德国移民总览</h2>
-        <p class="module-subtitle" data-i18n="mod1_subtitle">德国历年净移民变化趋势及中枢结构（支持拖拽时间轴缩放）</p>
+        <h2 class="module-title" data-i18n="mod1_title">模块一：德国跨国移居总览</h2>
+        <p class="module-subtitle" data-i18n="mod1_subtitle">德国历年跨国常住净移居演变（依据市政厅常住户籍登记 · 非换国籍）</p>
       </div>
 
       <div class="chart-card">
         <div class="chart-header">
-          <div class="chart-title" data-i18n="mod1_chart_title">德国历年净移民变化趋势 (Wanderungssaldo 2000-2026)</div>
+          <div class="chart-title" data-i18n="mod1_chart_title">德国历年跨国净移居变化走势 (Wanderungssaldo 2000-2026)</div>
           <div class="chart-controls">
             <button class="btn-toggle active" id="btn-view-annual" data-i18n="mod1_view_annual">年度视图 (2000-2026)</button>
             <button class="btn-toggle" id="btn-view-monthly" data-i18n="mod1_view_monthly">月度视图 (2020-2026)</button>
@@ -289,7 +300,7 @@
     <!-- MODULE 2: Historical Trends & Milestones -->
     <section class="module-section" id="section-trends">
       <div class="module-header">
-        <h2 class="module-title" data-i18n="mod2_title">模块二：德国历史移民趋势与重大历史节点</h2>
+        <h2 class="module-title" data-i18n="mod2_title">模块二：德国跨国迁徙与移居历史趋势</h2>
         <p class="module-subtitle" data-i18n="mod2_subtitle">2000年至2026年长期迁入、迁出与净迁徙演变 (双折线 + 差额柱图)</p>
       </div>
 
@@ -312,7 +323,7 @@
             </div>
             <div class="timeline-item">
               <span class="timeline-dot"></span>
-              <div><strong data-i18n="milestone_2015">2015/2016年：难民危机爆发，年净移民创下+113.8万人历史峰值</strong></div>
+              <div><strong data-i18n="milestone_2015">2015/2016年：难民危机爆发，年净移居创下+113.8万人历史峰值</strong></div>
             </div>
             <div class="timeline-item">
               <span class="timeline-dot" style="background:var(--warning);"></span>
@@ -324,7 +335,7 @@
             </div>
             <div class="timeline-item">
               <span class="timeline-dot" style="background:var(--positive);"></span>
-              <div><strong data-i18n="milestone_2022">2022年：乌克兰危机爆发，单年净移民突破+151.6万人，创二战后最高纪录</strong></div>
+              <div><strong data-i18n="milestone_2022">2022年：乌克兰危机爆发，单年净移居突破+151.6万人，创二战后最高纪录</strong></div>
             </div>
             <div class="timeline-item">
               <span class="timeline-dot"></span>
@@ -332,7 +343,7 @@
             </div>
             <div class="timeline-item">
               <span class="timeline-dot" style="background:var(--negative);"></span>
-              <div><strong data-i18n="milestone_2026">2026年（1—8月）：夏季净移民由正转负，德国与欧盟公民双向净流出加速</strong></div>
+              <div><strong data-i18n="milestone_2026">2026年（1—8月）：夏季净移居由正转负，德国与欧盟公民双向净流出加速</strong></div>
             </div>
           </div>
         </div>
@@ -358,14 +369,14 @@
       <div class="grid-2col">
         <div class="chart-card">
           <div class="chart-header">
-            <div class="chart-title" id="mod3-compare-chart-title" data-i18n="mod3_compare_chart_title">所选重点国籍历年净移民演变走势对比</div>
+            <div class="chart-title" id="mod3-compare-chart-title" data-i18n="mod3_compare_chart_title">重点国籍历年跨国移居走势演变对比</div>
           </div>
           <div class="echarts-box" id="chart-nat-compare"></div>
         </div>
 
         <div class="table-card">
           <div style="padding: 1rem 1.25rem; border-bottom: 1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
-            <strong data-i18n="mod3_ranking_title">2025年重点国籍净移民排名与流向</strong>
+            <strong data-i18n="mod3_ranking_title">2025年重点国籍跨国净移居排名与流向 (常住生活 · 非入籍)</strong>
             <div class="chart-controls">
               <button class="btn-toggle active" data-ranking-metric="net_pos" data-i18n="btn_ranking_net_pos">净迁入排行</button>
               <button class="btn-toggle" data-ranking-metric="net_neg" data-i18n="btn_ranking_net_neg">净迁出排行</button>
@@ -380,7 +391,7 @@
                   <th data-i18n="col_category">群体大类</th>
                   <th data-i18n="col_inflow">移入德国</th>
                   <th data-i18n="col_outflow">迁出德国</th>
-                  <th data-i18n="col_net">净移民</th>
+                  <th data-i18n="col_net">净移居 (Saldo)</th>
                 </tr>
               </thead>
               <tbody id="tbody-nat-ranking">
@@ -395,13 +406,13 @@
     <!-- MODULE 4: EU vs Non-EU Tripartite Comparison -->
     <section class="module-section" id="section-eu_comparison">
       <div class="module-header">
-        <h2 class="module-title" data-i18n="mod4_title">模块四：德国、欧盟与非欧盟移民互斥三元比较</h2>
+        <h2 class="module-title" data-i18n="mod4_title">模块四：德国本土公民、欧盟与非欧盟群体跨国迁徙比较</h2>
         <p class="module-subtitle" data-i18n="mod4_subtitle">德国公民、其他欧盟公民与非欧盟第三国公民的结构性分化</p>
       </div>
 
       <div class="chart-card">
         <div class="chart-header">
-          <div class="chart-title" data-i18n="mod4_chart_title">三大互斥群体历年净移民走势 (2015-2026)</div>
+          <div class="chart-title" data-i18n="mod4_chart_title">三大互斥群体历年跨国净移居走势 (2015-2026)</div>
         </div>
         <div class="echarts-box" id="chart-eu-compare"></div>
       </div>
@@ -452,8 +463,8 @@
     <!-- MODULE 6: Geography & Bundesländer with Interactive Map -->
     <section class="module-section" id="section-geography">
       <div class="module-header">
-        <h2 class="module-title" data-i18n="mod6_title">模块六：德国联邦州与移民地理分布</h2>
-        <p class="module-subtitle" data-i18n="mod6_subtitle">16个联邦州国际迁入、迁出与净移民格局 (包含交互式德国全景地图)</p>
+        <h2 class="module-title" data-i18n="mod6_title">模块六：德国联邦州与跨国移居地理分布</h2>
+        <p class="module-subtitle" data-i18n="mod6_subtitle">16个联邦州国际迁入、迁出与净移居格局 (包含交互式德国全景地图)</p>
       </div>
 
       <div class="grid-2col">
@@ -466,7 +477,7 @@
 
         <div class="chart-card">
           <div class="chart-header">
-            <div class="chart-title" data-i18n="mod6_states_chart_title">各联邦州国际净移民横向排名 (Wanderungssaldo Ausland)</div>
+            <div class="chart-title" data-i18n="mod6_states_chart_title">各联邦州国际净移居横向排名 (Wanderungssaldo Ausland)</div>
           </div>
           <div class="echarts-box" id="chart-states-bar" style="height: 480px;"></div>
         </div>
@@ -513,7 +524,7 @@
 
       <div class="alert-box info">
         <div class="alert-title">
-          <span>💡</span> <strong data-i18n="mod7_clarification_title">核心概念辨析：入籍 ≠ 新增移民</strong>
+          <span>💡</span> <strong data-i18n="mod7_clarification_title">核心概念辨析：跨国移居生活 (Wanderung) ≠ 取得德国国籍 (Einbürgerung)</strong>
         </div>
         <p data-i18n="mod7_clarification_content">入籍（Einbürgerung）指长期合法居留德国的外国公民通过法律程序正式获得德国国籍，属于法律身份的变更，发生入籍时该居民早已居住在德国，绝非当年新迁入的移民。中国公民迁出德国不代表放弃中国国籍，德国公民外迁也不丧失德国国籍。迁移统计记录的是跨境居住变动事件，入籍统计记录的是国籍身份变更事件。</p>
       </div>
@@ -550,24 +561,24 @@
         <!-- 4 Key Teaser Metric Pills -->
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1rem; margin-bottom:2rem;">
           <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:0.6rem; padding:1.1rem;">
-            <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">2022年 二战后峰值净移民</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">2022年 二战后峰值净移居 (Saldo)</div>
             <div style="font-size:1.6rem; font-weight:800; color:#10b981; margin-top:0.25rem;">+1,515,755</div>
             <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem;">乌克兰危机人道脉冲峰值</div>
           </div>
           <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:0.6rem; padding:1.1rem;">
-            <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">2025年 均值回落后净移民</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">2025年 均值回落后净移居 (Saldo)</div>
             <div style="font-size:1.6rem; font-weight:800; color:#38bdf8; margin-top:0.25rem;">+235,000</div>
             <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem;">较峰值剧烈收缩 84.5%</div>
           </div>
           <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:0.6rem; padding:1.1rem;">
-            <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">2026年 1—8月累计净移民</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">2026年 1—8月累计净移居 (初步)</div>
             <div style="font-size:1.6rem; font-weight:800; color:#f59e0b; margin-top:0.25rem;">+16,841</div>
             <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem;">夏季单月出现罕见净流出</div>
           </div>
           <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:0.6rem; padding:1.1rem;">
             <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">2025年 新法入籍历史极值</div>
             <div style="font-size:1.6rem; font-weight:800; color:#818cf8; margin-top:0.25rem;">333,343 人</div>
-            <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem;">存量外籍入籍，非当年新移民</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem;">存量外籍入籍，非当年新增移居者</div>
           </div>
         </div>
 
@@ -656,14 +667,14 @@
     <!-- SMART INSIGHTS: DECOMPOSITION CALCULATOR -->
     <section class="module-section" id="section-insights">
       <div class="module-header">
-        <h2 class="module-title" data-i18n="insights_title">智能归因洞察：净移民变动恒等式分解计算器</h2>
+        <h2 class="module-title" data-i18n="insights_title">智能归因洞察：净移居变动恒等式分解计算器</h2>
         <p class="module-subtitle" data-i18n="insights_subtitle">基于统计恒等式与 Destatis 官方底账的迁入减少与迁出增加动态贡献率测算</p>
       </div>
 
       <!-- Dynamic Statistical Decomposition Calculator -->
       <div class="chart-card">
         <div class="chart-header">
-          <div class="chart-title" data-i18n="decomp_title">净移民变动之动态统计恒等式归因计算器</div>
+          <div class="chart-title" data-i18n="decomp_title">净移居变动之动态统计恒等式归因计算器</div>
         </div>
         
         <div class="calc-container">
@@ -693,7 +704,7 @@
 
           <div class="calc-stats-grid">
             <div class="calc-stat-pill">
-              <div class="kpi-title">净移民总变动 (ΔSaldo)</div>
+              <div class="kpi-title">净移居总变动 (ΔSaldo)</div>
               <div class="kpi-value negative" id="decomp-val-net">-1,280,755 人</div>
             </div>
             <div class="calc-stat-pill">
@@ -736,7 +747,7 @@
                 <th data-sort="year_num" data-i18n="col_year_period">时间 / 统计区间 ⇕</th>
                 <th data-sort="zuzuege" data-i18n="col_inflow">移入德国 (Zuzüge) ⇕</th>
                 <th data-sort="fortzuege" data-i18n="col_outflow">迁出德国 (Fortzüge) ⇕</th>
-                <th data-sort="saldo" data-i18n="col_net">净移民 (Saldo) ⇕</th>
+                <th data-sort="saldo" data-i18n="col_net">净移居 (Saldo) ⇕</th>
                 <th data-sort="de_saldo">德国公民净值 ⇕</th>
                 <th data-sort="eu_saldo">欧盟公民净值 ⇕</th>
                 <th data-sort="noneu_saldo">非欧盟公民净值 ⇕</th>
@@ -824,7 +835,7 @@
   <!-- Global Footer -->
   <footer style="border-top: 1px solid var(--border-color); background: var(--bg-card); padding: 1.5rem; margin-top: 2rem; text-align: center; font-size: 0.825rem; color: var(--text-muted);">
     <div style="max-width: 1440px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.5rem;">
-      <p data-i18n="footer_text">德国移民数据智能分析平台 | 官方数据源：Statistisches Bundesamt (Destatis) GENESIS-Online | 自动化更新周期：每周一 08:00 (Europe/Berlin)</p>
+      <p data-i18n="footer_text">德国人口跨国迁徙与移居数据智能分析平台 | 官方数据源：Statistisches Bundesamt (Destatis) GENESIS-Online | 自动化更新周期：每周一 08:00 (Europe/Berlin)</p>
       <p style="font-size:0.75rem;">Official Portal: <a href="https://genesis.destatis.de/" target="_blank" style="color:var(--primary); text-decoration:none;">https://genesis.destatis.de/</a> | Swagger API: <a href="https://genesis.destatis.de/genesisWS/swagger-ui/index.html" target="_blank" style="color:var(--primary); text-decoration:none;">Destatis REST 2020</a></p>
     </div>
   </footer>

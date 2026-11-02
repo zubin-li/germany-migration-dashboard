@@ -503,7 +503,7 @@ function updateFilterStatusIndicator() {
   // Flow Direction
   if (AppState.flowType === "inflow") parts.push(isZh ? "仅移入" : "Inflow Only");
   else if (AppState.flowType === "outflow") parts.push(isZh ? "仅迁出" : "Outflow Only");
-  else if (AppState.flowType === "net") parts.push(isZh ? "仅净移民" : "Net Only");
+  else if (AppState.flowType === "net") parts.push(isZh ? "仅净移居" : "Net Only");
 
   // Federal State
   if (AppState.selectedState !== "all") {
@@ -530,7 +530,7 @@ function getActiveFilterSummary() {
     tags.push(catLabels[AppState.selectedCategory] || AppState.selectedCategory);
   }
   if (AppState.flowType !== "all") {
-    const flowLabels = { inflow: "仅移入", outflow: "仅迁出", net: "仅净移民" };
+    const flowLabels = { inflow: "仅移入", outflow: "仅迁出", net: "仅净移居" };
     tags.push(flowLabels[AppState.flowType] || AppState.flowType);
   }
   if (AppState.selectedState !== "all") {
@@ -594,7 +594,7 @@ function getNationalityChartTitle() {
     const code = AppState.selectedNationalities[0];
     const natRows = AppState.nationalities.filter(r => r.code === code);
     const countryName = natRows[0] ? (isZh ? natRows[0].name_zh : natRows[0].name_en) : code;
-    return isZh ? `按${countryName}籍历年跨国迁移走势演变 (2000-2025)` : `Migration Trends for ${countryName} (2000-2025)`;
+    return isZh ? `按${countryName}籍历年跨国迁徙与移居走势演变 (2000-2025 · 常住登记)` : `Migration & Relocation Trends for ${countryName} (2000-2025)`;
   }
 
   const countryNames = AppState.selectedNationalities.map(code => {
@@ -607,8 +607,8 @@ function getNationalityChartTitle() {
     : `${countryNames.slice(0, 3).join(" / ")} 等 ${countryNames.length} 国`;
 
   return isZh 
-    ? `重点国籍历年跨国迁移走势对比 (${summaryStr})`
-    : `Net Migration Trends Comparison (${summaryStr})`;
+    ? `重点国籍历年跨国迁徙与移居走势对比 (${summaryStr})`
+    : `Net Relocation Trends Comparison (${summaryStr})`;
 }
 
 // Master Render
@@ -761,8 +761,8 @@ function renderOverviewChart() {
     inflows = countryRows.map(r => r.zuzuege);
     outflows = countryRows.map(r => r.fortzuege);
     chartTitle = isZh 
-      ? `按${cName}籍历年净移民变化走势 (2000-2025 · 表 12711-0007)` 
-      : `Net Migration Trends for ${cName} (2000-2025 · Destatis 12711-0007)`;
+      ? `按${cName}籍历年净移居变化走势 (2000-2025 · 表 12711-0007)` 
+      : `Net Relocation Trends for ${cName} (2000-2025 · Destatis 12711-0007)`;
   } else if (AppState.dataMode === "annual") {
     const data = filterByTime(AppState.annualTotals);
     labels = data.map(r => String(r.year_num || r.year));
@@ -919,7 +919,7 @@ function renderHistoricalTrendsChart() {
   let inflows = [];
   let outflows = [];
   let nets = [];
-  let chartTitle = isZh ? "总体移入、迁出与净差额历年走势 (2000-2026)" : "Cross-Border Migration Trends (2000-2026)";
+  let chartTitle = isZh ? "总体移入、迁出与净移居走势 (2000-2026 · Wanderung)" : "Cross-Border Migration & Relocation Trends (2000-2026)";
   let markPointsData = [
     { name: "2015 难民潮", coord: ["2015", 2135502], value: "2015 峰值" },
     { name: "2022 乌克兰危机", coord: ["2022", 2733538], value: "2022 历史最高" }
@@ -934,8 +934,8 @@ function renderHistoricalTrendsChart() {
     outflows = countryRows.map(r => r.fortzuege);
     nets = countryRows.map(r => r.saldo);
     chartTitle = isZh 
-      ? `${cName}籍历年迁入、迁出与净迁徙演变 (2000-2025 · 表 12711-0007)` 
-      : `Historical Migration Flows for ${cName} (2000-2025 · Destatis 12711-0007)`;
+      ? `${cName}籍历年迁入、迁出与净移居演变 (2000-2025 · 表 12711-0007)` 
+      : `Historical Migration & Relocation Flows for ${cName} (2000-2025 · Destatis 12711-0007)`;
 
     if (inflows.length > 0) {
       let maxIn = -1;
@@ -1373,7 +1373,7 @@ function renderFederalStatesCharts() {
           const displayName = AppState.lang === "zh-CN" ? match.name_zh : match.name_en;
           return `
             <strong>${displayName} (${match.name})</strong><br/>
-            净移民: <span style="color:#10b981; font-weight:800;">+${formatNumber(match.value)}</span> 人<br/>
+            净移居: <span style="color:#10b981; font-weight:800;">+${formatNumber(match.value)}</span> 人<br/>
             移入: ${formatNumber(match.zuzuege)} | 迁出: ${formatNumber(match.fortzuege)}
           `;
         }
@@ -1523,7 +1523,7 @@ function renderDecompositionWidget() {
     },
     tooltip: { trigger: "axis", axisPointer: { type: "shadow" }, backgroundColor: th.tooltipBg, textStyle: { color: th.titleColor } },
     grid: { left: "3%", right: "5%", bottom: 30, top: 45, containLabel: true },
-    xAxis: { type: "category", data: ["净移民变化 (ΔSaldo)", "移入变化 (ΔZuzüge)", "迁出变化 (ΔFortzüge)"], axisLabel: { color: th.textColor } },
+    xAxis: { type: "category", data: ["净移居变化 (ΔSaldo)", "移入变化 (ΔZuzüge)", "迁出变化 (ΔFortzüge)"], axisLabel: { color: th.textColor } },
     yAxis: { type: "value", splitLine: { lineStyle: { color: th.splitLine, type: "dashed" } }, axisLabel: { color: th.textColor } },
     series: [{
       type: "bar",
@@ -1743,7 +1743,7 @@ function renderSlide1Chart() {
       data: [
         isZh ? "移入总量 (Zuzüge)" : "Total Inflow (Zuzüge)",
         isZh ? "迁出总量 (Fortzüge)" : "Total Outflow (Fortzüge)",
-        isZh ? "净移民差额 (Saldo)" : "Net Migration (Saldo)"
+        isZh ? "净移居差额 (Saldo)" : "Net Relocation (Saldo)"
       ]
     },
     grid: { left: 65, right: 35, top: 75, bottom: 45, containLabel: true },
@@ -1761,7 +1761,7 @@ function renderSlide1Chart() {
     },
     series: [
       {
-        name: isZh ? "净移民差额 (Saldo)" : "Net Migration (Saldo)",
+        name: isZh ? "净移居差额 (Saldo)" : "Net Relocation (Saldo)",
         type: "bar",
         data: saldos.map(v => ({
           value: v,
@@ -1921,7 +1921,7 @@ function renderSlide3Chart() {
 
   ChartInstances.slide3.setOption({
     title: {
-      text: isZh ? "重点国籍净移民：2022峰值 vs 2025常态化 (单位: 人)" : "Key Nationalities Net Migration: 2022 Peak vs 2025 (Persons)",
+      text: isZh ? "重点国籍净移居：2022峰值 vs 2025常态化 (单位: 人)" : "Key Nationalities Net Relocation: 2022 Peak vs 2025 (Persons)",
       textStyle: { color: th.titleColor, fontSize: 13, fontWeight: 800 },
       left: "center",
       top: 5
@@ -1943,7 +1943,7 @@ function renderSlide3Chart() {
     legend: {
       top: 30,
       textStyle: { color: th.textColor, fontSize: 11 },
-      data: [isZh ? "2022年峰值净移民" : "2022 Peak Net", isZh ? "2025年常态净移民" : "2025 Baseline Net"]
+      data: [isZh ? "2022年峰值净移居" : "2022 Peak Net", isZh ? "2025年常态净移居" : "2025 Baseline Net"]
     },
     grid: { left: 20, right: 65, top: 75, bottom: 35, containLabel: true },
     xAxis: {
@@ -1959,14 +1959,14 @@ function renderSlide3Chart() {
     },
     series: [
       {
-        name: isZh ? "2022年峰值净移民" : "2022 Peak Net",
+        name: isZh ? "2022年峰值净移居" : "2022 Peak Net",
         type: "bar",
         data: val2022,
         itemStyle: { color: "rgba(56, 189, 248, 0.45)", borderRadius: [0, 4, 4, 0] },
         barMaxWidth: 16
       },
       {
-        name: isZh ? "2025年常态净移民" : "2025 Baseline Net",
+        name: isZh ? "2025年常态净移居" : "2025 Baseline Net",
         type: "bar",
         data: val2025,
         itemStyle: { color: "#10b981", borderRadius: [0, 4, 4, 0] },

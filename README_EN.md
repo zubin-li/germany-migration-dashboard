@@ -14,6 +14,11 @@
 
 An authoritative, fully interactive, and longitudinal demographic intelligence platform synthesizing official German cross-border migration, naturalization, and labor market trends (2000–2026). Directly powered by **Statistisches Bundesamt (Destatis)** GENESIS-Online databases and the Federal Office for Migration and Refugees (BAMF). Zero backend configuration required; runs out-of-the-box in any modern browser.
 
+> [!NOTE]
+> 💡 **Core Statutory Distinction: Cross-Border Relocation (Wanderung) vs. German Citizenship (Einbürgerung)**  
+> • **Cross-Border Relocation (Wanderung / Main Dashboard Datasets)**: Regulated by the German Federal Registration Act (BMG), tracking residential registrations (Anmeldung) at municipal Bürgerämter. It captures professionals (EU Blue Card / skilled work permits), university students, family reunifications, and humanitarian refugees. **Residents overwhelmingly retain their original nationalities; this does NOT signify passport conferral or naturalization**. For instance, annual net relocation from India of ~40k reflects IT specialists, engineers, and graduate students settling in Germany with their Indian passports, rather than 40k naturalizations.  
+> • **Naturalization (Einbürgerung / Module 7)**: Legal transition whereby long-term foreign residents acquire German citizenship and passports after meeting multi-year statutory residency, language, and civic criteria (~100k-300k individuals annually nationwide).
+
 ---
 
 ## 🌟 Key Architecture & Interactive Highlights (v2.6)

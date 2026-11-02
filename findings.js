@@ -119,7 +119,7 @@ function renderChart1() {
       data: [
         isZh ? "移入总量 (Zuzüge)" : "Total Inflow (Zuzüge)",
         isZh ? "迁出总量 (Fortzüge)" : "Total Outflow (Fortzüge)",
-        isZh ? "净移民差额 (Saldo)" : "Net Migration (Saldo)"
+        isZh ? "净移居差额 (Saldo)" : "Net Relocation (Saldo)"
       ]
     },
     grid: { left: 65, right: 35, top: 75, bottom: 45, containLabel: true },
@@ -140,7 +140,7 @@ function renderChart1() {
     },
     series: [
       {
-        name: isZh ? "净移民差额 (Saldo)" : "Net Migration (Saldo)",
+        name: isZh ? "净移居差额 (Saldo)" : "Net Relocation (Saldo)",
         type: "bar",
         data: saldos.map(v => ({
           value: v,
@@ -305,7 +305,7 @@ function renderChart3() {
 
   DeckCharts.chart3.setOption({
     title: {
-      text: isZh ? "重点国籍净移民：2022峰值 vs 2025常态化 (单位: 人)" : "Key Nationalities Net Migration: 2022 Peak vs 2025 (Persons)",
+      text: isZh ? "重点国籍净移居：2022峰值 vs 2025常态化 (单位: 人)" : "Key Nationalities Net Relocation: 2022 Peak vs 2025 (Persons)",
       textStyle: { color: th.titleColor, fontSize: 13, fontWeight: 800 },
       left: "center",
       top: 5
@@ -327,7 +327,7 @@ function renderChart3() {
     legend: {
       top: 30,
       textStyle: { color: th.textColor, fontSize: 11 },
-      data: [isZh ? "2022年峰值净移民" : "2022 Peak Net", isZh ? "2025年常态净移民" : "2025 Baseline Net"]
+      data: [isZh ? "2022年峰值净移居" : "2022 Peak Net", isZh ? "2025年常态净移居" : "2025 Baseline Net"]
     },
     grid: { left: 20, right: 65, top: 75, bottom: 35, containLabel: true },
     xAxis: {
@@ -346,14 +346,14 @@ function renderChart3() {
     },
     series: [
       {
-        name: isZh ? "2022年峰值净移民" : "2022 Peak Net",
+        name: isZh ? "2022年峰值净移居" : "2022 Peak Net",
         type: "bar",
         data: val2022,
         itemStyle: { color: "rgba(56, 189, 248, 0.45)", borderRadius: [0, 4, 4, 0] },
         barMaxWidth: 16
       },
       {
-        name: isZh ? "2025年常态净移民" : "2025 Baseline Net",
+        name: isZh ? "2025年常态净移居" : "2025 Baseline Net",
         type: "bar",
         data: val2025,
         itemStyle: { color: "#10b981", borderRadius: [0, 4, 4, 0] },
