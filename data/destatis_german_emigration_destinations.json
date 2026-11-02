@@ -1,0 +1,167 @@
+{
+  "destinations": [
+    {
+      "code": "CH",
+      "name_de": "Schweiz",
+      "name_zh": "瑞士",
+      "name_en": "Switzerland",
+      "history": {
+        "2021": 19100,
+        "2022": 20100,
+        "2023": 21200,
+        "2024": 20695,
+        "2025": 22730
+      }
+    },
+    {
+      "code": "AT",
+      "name_de": "Österreich",
+      "name_zh": "奥地利",
+      "name_en": "Austria",
+      "history": {
+        "2021": 12100,
+        "2022": 12800,
+        "2023": 13100,
+        "2024": 13308,
+        "2025": 13549
+      }
+    },
+    {
+      "code": "US",
+      "name_de": "Vereinigte Staaten",
+      "name_zh": "美国",
+      "name_en": "United States",
+      "history": {
+        "2021": 8100,
+        "2022": 9500,
+        "2023": 9182,
+        "2024": 9307,
+        "2025": 8860
+      }
+    },
+    {
+      "code": "ES",
+      "name_de": "Spanien",
+      "name_zh": "西班牙",
+      "name_en": "Spain",
+      "history": {
+        "2021": 7200,
+        "2022": 8400,
+        "2023": 8600,
+        "2024": 8450,
+        "2025": 8620
+      }
+    },
+    {
+      "code": "GB",
+      "name_de": "Vereinigtes Königreich",
+      "name_zh": "英国",
+      "name_en": "United Kingdom",
+      "history": {
+        "2021": 5800,
+        "2022": 5600,
+        "2023": 5400,
+        "2024": 5210,
+        "2025": 5080
+      }
+    },
+    {
+      "code": "FR",
+      "name_de": "Frankreich",
+      "name_zh": "法国",
+      "name_en": "France",
+      "history": {
+        "2021": 4600,
+        "2022": 4800,
+        "2023": 4700,
+        "2024": 4650,
+        "2025": 4580
+      }
+    },
+    {
+      "code": "PL",
+      "name_de": "Polen",
+      "name_zh": "波兰",
+      "name_en": "Poland",
+      "history": {
+        "2021": 3900,
+        "2022": 4100,
+        "2023": 4200,
+        "2024": 4350,
+        "2025": 4420
+      }
+    },
+    {
+      "code": "NL",
+      "name_de": "Niederlande",
+      "name_zh": "荷兰",
+      "name_en": "Netherlands",
+      "history": {
+        "2021": 3800,
+        "2022": 4000,
+        "2023": 3950,
+        "2024": 4100,
+        "2025": 4150
+      }
+    },
+    {
+      "code": "SE",
+      "name_de": "Schweden",
+      "name_zh": "瑞典",
+      "name_en": "Sweden",
+      "history": {
+        "2021": 3100,
+        "2022": 3400,
+        "2023": 3550,
+        "2024": 3600,
+        "2025": 3710
+      }
+    },
+    {
+      "code": "IT",
+      "name_de": "Italien",
+      "name_zh": "意大利",
+      "name_en": "Italy",
+      "history": {
+        "2021": 2900,
+        "2022": 3200,
+        "2023": 3300,
+        "2024": 3250,
+        "2025": 3340
+      }
+    }
+  ],
+  "age_demographics": [
+    {
+      "group": "unter 18",
+      "group_zh": "18岁以下",
+      "share": 0.12
+    },
+    {
+      "group": "18 bis 24",
+      "group_zh": "18至24岁",
+      "share": 0.14
+    },
+    {
+      "group": "25 bis 39",
+      "group_zh": "25至39岁 (核心工作人口)",
+      "share": 0.46
+    },
+    {
+      "group": "40 bis 64",
+      "group_zh": "40至64岁",
+      "share": 0.21
+    },
+    {
+      "group": "65 und älter",
+      "group_zh": "65岁及以上 (退休人员)",
+      "share": 0.07
+    }
+  ],
+  "gender_ratio_2025": {
+    "male": 0.58,
+    "female": 0.42
+  },
+  "critical_methodological_note_zh": "注意：德国联邦统计局人口迁移统计仅记录居民在户籍登记处（Einwohnermeldeamt）办理的迁出登记，并不包含教育程度、职业、收入或高技能资格数据。根据净迁出数据直接得出'高学历人才流失'的推论缺乏官方统计登记依据，不可将相关性或舆论假设直接视作因果定论。",
+  "critical_methodological_note_en": "Caution: Destatis migration statistics register mandatory address deregistration events and do not capture education level, profession, income, or skill certificates. Inferring 'brain drain' solely from net German emigration is statistically ungrounded without supplementary survey data."
+}

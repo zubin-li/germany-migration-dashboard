@@ -1,0 +1,227 @@
+{
+  "table_code": "12511-0001, 12511-0002",
+  "description_zh": "入籍（Einbürgerung）指外国公民通过法律程序取得德国国籍，属于法律身份改变事件，绝不能等同于新入境移民人数。",
+  "description_en": "Naturalization (Einbürgerung) represents the legal conferral of German citizenship upon a foreign national; it is a legal status transition, NOT a physical immigration influx.",
+  "annual_totals": [
+    {
+      "year": 2000,
+      "count": 186672,
+      "yoy_pct": -24.8
+    },
+    {
+      "year": 2001,
+      "count": 178098,
+      "yoy_pct": -4.6
+    },
+    {
+      "year": 2002,
+      "count": 154547,
+      "yoy_pct": -13.2
+    },
+    {
+      "year": 2003,
+      "count": 140731,
+      "yoy_pct": -8.9
+    },
+    {
+      "year": 2004,
+      "count": 127153,
+      "yoy_pct": -9.6
+    },
+    {
+      "year": 2005,
+      "count": 117241,
+      "yoy_pct": -7.8
+    },
+    {
+      "year": 2006,
+      "count": 124566,
+      "yoy_pct": 6.2
+    },
+    {
+      "year": 2007,
+      "count": 113030,
+      "yoy_pct": -9.3
+    },
+    {
+      "year": 2008,
+      "count": 94474,
+      "yoy_pct": -16.4
+    },
+    {
+      "year": 2009,
+      "count": 96122,
+      "yoy_pct": 1.7
+    },
+    {
+      "year": 2010,
+      "count": 101570,
+      "yoy_pct": 5.7
+    },
+    {
+      "year": 2011,
+      "count": 106897,
+      "yoy_pct": 5.2
+    },
+    {
+      "year": 2012,
+      "count": 112348,
+      "yoy_pct": 5.1
+    },
+    {
+      "year": 2013,
+      "count": 112353,
+      "yoy_pct": 0.0
+    },
+    {
+      "year": 2014,
+      "count": 108422,
+      "yoy_pct": -3.5
+    },
+    {
+      "year": 2015,
+      "count": 107317,
+      "yoy_pct": -1.0
+    },
+    {
+      "year": 2016,
+      "count": 110383,
+      "yoy_pct": 2.9
+    },
+    {
+      "year": 2017,
+      "count": 112211,
+      "yoy_pct": 1.7
+    },
+    {
+      "year": 2018,
+      "count": 112340,
+      "yoy_pct": 0.1
+    },
+    {
+      "year": 2019,
+      "count": 128905,
+      "yoy_pct": 14.7
+    },
+    {
+      "year": 2020,
+      "count": 109880,
+      "yoy_pct": -14.8
+    },
+    {
+      "year": 2021,
+      "count": 131595,
+      "yoy_pct": 19.8
+    },
+    {
+      "year": 2022,
+      "count": 168775,
+      "yoy_pct": 28.3
+    },
+    {
+      "year": 2023,
+      "count": 200095,
+      "yoy_pct": 18.6
+    },
+    {
+      "year": 2024,
+      "count": 292020,
+      "yoy_pct": 46.0
+    },
+    {
+      "year": 2025,
+      "count": 333343,
+      "yoy_pct": 14.1
+    }
+  ],
+  "by_origin_2025": [
+    {
+      "country_de": "Syrien",
+      "country_zh": "叙利亚",
+      "country_en": "Syria",
+      "total": 65775,
+      "male": 39465,
+      "female": 26310
+    },
+    {
+      "country_de": "Türkei",
+      "country_zh": "土耳其",
+      "country_en": "Turkey",
+      "total": 34185,
+      "male": 17434,
+      "female": 16751
+    },
+    {
+      "country_de": "Irak",
+      "country_zh": "伊拉克",
+      "country_en": "Iraq",
+      "total": 12420,
+      "male": 7203,
+      "female": 5217
+    },
+    {
+      "country_de": "Ukraine",
+      "country_zh": "乌克兰",
+      "country_en": "Ukraine",
+      "total": 10582,
+      "male": 4232,
+      "female": 6350
+    },
+    {
+      "country_de": "Rumänien",
+      "country_zh": "罗马尼亚",
+      "country_en": "Romania",
+      "total": 9210,
+      "male": 4510,
+      "female": 4700
+    },
+    {
+      "country_de": "Afghanistan",
+      "country_zh": "阿富汗",
+      "country_en": "Afghanistan",
+      "total": 8940,
+      "male": 5364,
+      "female": 3576
+    },
+    {
+      "country_de": "Polen",
+      "country_zh": "波兰",
+      "country_en": "Poland",
+      "total": 7820,
+      "male": 3519,
+      "female": 4301
+    },
+    {
+      "country_de": "Indien",
+      "country_zh": "印度",
+      "country_en": "India",
+      "total": 6508,
+      "male": 3801,
+      "female": 2707
+    },
+    {
+      "country_de": "Iran",
+      "country_zh": "伊朗",
+      "country_en": "Iran",
+      "total": 5930,
+      "male": 3142,
+      "female": 2788
+    },
+    {
+      "country_de": "Vietnam",
+      "country_zh": "越南",
+      "country_en": "Vietnam",
+      "total": 3685,
+      "male": 1402,
+      "female": 2283
+    },
+    {
+      "country_de": "China",
+      "country_zh": "中国",
+      "country_en": "China",
+      "total": 1235,
+      "male": 544,
+      "female": 689
+    }
+  ]
+}

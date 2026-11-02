@@ -1,0 +1,121 @@
+{
+  "project_name": "Germany Migration Intelligence Dashboard",
+  "project_name_zh": "德国移民数据智能分析平台",
+  "system_version": "2.4.0",
+  "data_status": "operational",
+  "last_checked_at": "2026-11-01T10:35:31.031378",
+  "last_updated_at": "2026-11-01T08:15:32+01:00",
+  "refresh_schedule": {
+    "cadence": "weekly",
+    "day_of_week": "Monday",
+    "time": "08:00",
+    "timezone": "Europe/Berlin",
+    "cron_expression": "CRON_TZ=Europe/Berlin 0 8 * * 1"
+  },
+  "official_sources": [
+    {
+      "agency": "Statistisches Bundesamt (Destatis)",
+      "agency_zh": "德国联邦统计局",
+      "database": "GENESIS-Online",
+      "base_url": "https://www-genesis.destatis.de/genesisWS/rest/2020/",
+      "portal_url": "https://genesis.destatis.de/",
+      "tables": [
+        {
+          "code": "12711-0005",
+          "name_de": "Wanderungen zwischen Deutschland und dem Ausland: Deutschland, Jahre, Nationalität, Geschlecht",
+          "name_zh": "德国与外国国籍、性别划分的年度国际迁移",
+          "coverage": "2000-2025",
+          "status": "final_up_to_2024_preliminary_2025"
+        },
+        {
+          "code": "12711-0007",
+          "name_de": "Wanderungen zwischen Deutschland und dem Ausland: Deutschland, Jahre, Staatsangehörigkeit",
+          "name_zh": "按具体国籍划分的年度国际迁移",
+          "coverage": "2000-2025",
+          "status": "final_up_to_2024_preliminary_2025"
+        },
+        {
+          "code": "12711-0011",
+          "name_de": "Wanderungen zwischen Deutschland und dem Ausland: Deutschland, Monate, Nationalität, Geschlecht",
+          "name_zh": "按月份、国籍大类及性别划分的国际迁移",
+          "coverage": "2020-01 to 2026-08",
+          "status": "preliminary_monthly_results"
+        },
+        {
+          "code": "12711-0008",
+          "name_de": "Wanderungen über die Auslandsgrenzen nach Herkunfts- und Zielländern",
+          "name_zh": "迁入来源国及迁出目的国迁移统计",
+          "coverage": "2000-2025",
+          "status": "final_up_to_2024_preliminary_2025"
+        },
+        {
+          "code": "12711-0023",
+          "name_de": "Wanderungen zwischen Deutschland und dem Ausland: Bundesländer, Jahre, Nationalität, Geschlecht",
+          "name_zh": "按德国联邦州划分的国际迁移",
+          "coverage": "2015-2025",
+          "status": "final_up_to_2024_preliminary_2025"
+        },
+        {
+          "code": "12511-0001",
+          "name_de": "Einbürgerungen von Ausländern: Deutschland, Jahre",
+          "name_zh": "德国年度入籍总人数",
+          "coverage": "2000-2025",
+          "status": "final_up_to_2024_preliminary_2025"
+        },
+        {
+          "code": "12511-0002",
+          "name_de": "Einbürgerungen von Ausländern: Deutschland, Jahre, bisherige Staatsangehörigkeit, Geschlecht",
+          "name_zh": "按原国籍及性别划分的入籍情况",
+          "coverage": "2015-2025",
+          "status": "final_up_to_2024_preliminary_2025"
+        }
+      ]
+    }
+  ],
+  "statistical_identity_rule": "Wanderungssaldo = Zuzüge - Fortzüge",
+  "reporting_date_note": "System-Refresh-Zeit (2026-11-01) != Datenberichtszeitraum (Letztes vollständiges Jahr: 2025; Letzte vorläufige Monatsdaten: 2026-08).",
+  "sync_audit": [
+    {
+      "code": "12711-0005",
+      "description": "Wanderungen Deutschland/Ausland nach Nationalität",
+      "status": "cached_verified_snapshot",
+      "timestamp": "2026-11-01T10:35:31.031378"
+    },
+    {
+      "code": "12711-0007",
+      "description": "Wanderungen nach Staatsangehörigkeit",
+      "status": "cached_verified_snapshot",
+      "timestamp": "2026-11-01T10:35:31.031378"
+    },
+    {
+      "code": "12711-0011",
+      "description": "Wanderungen monatlich nach Nationalität",
+      "status": "cached_verified_snapshot",
+      "timestamp": "2026-11-01T10:35:31.031378"
+    },
+    {
+      "code": "12711-0008",
+      "description": "Wanderungen nach Herkunfts-/Zielländern",
+      "status": "cached_verified_snapshot",
+      "timestamp": "2026-11-01T10:35:31.031378"
+    },
+    {
+      "code": "12711-0023",
+      "description": "Wanderungen nach Bundesländern",
+      "status": "cached_verified_snapshot",
+      "timestamp": "2026-11-01T10:35:31.031378"
+    },
+    {
+      "code": "12511-0001",
+      "description": "Einbürgerungen insgesamt",
+      "status": "cached_verified_snapshot",
+      "timestamp": "2026-11-01T10:35:31.031378"
+    },
+    {
+      "code": "12511-0002",
+      "description": "Einbürgerungen nach Staatsangehörigkeit",
+      "status": "cached_verified_snapshot",
+      "timestamp": "2026-11-01T10:35:31.031378"
+    }
+  ]
+}

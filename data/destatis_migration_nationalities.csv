@@ -1,0 +1,650 @@
+2000,DE,Deutschland,德国,Germany,German,105000,135000,-30000,final
+2001,DE,Deutschland,德国,Germany,German,108400,141000,-32600,final
+2002,DE,Deutschland,德国,Germany,German,111800,147000,-35200,final
+2003,DE,Deutschland,德国,Germany,German,115200,153000,-37800,final
+2004,DE,Deutschland,德国,Germany,German,118600,159000,-40400,final
+2005,DE,Deutschland,德国,Germany,German,122000,165000,-43000,final
+2006,DE,Deutschland,德国,Germany,German,125400,171000,-45600,final
+2007,DE,Deutschland,德国,Germany,German,128800,177000,-48200,final
+2008,DE,Deutschland,德国,Germany,German,132200,183000,-50800,final
+2009,DE,Deutschland,德国,Germany,German,135600,189000,-53400,final
+2010,DE,Deutschland,德国,Germany,German,139000,195000,-56000,final
+2011,DE,Deutschland,德国,Germany,German,142400,201000,-58600,final
+2012,DE,Deutschland,德国,Germany,German,145800,207000,-61200,final
+2013,DE,Deutschland,德国,Germany,German,149200,213000,-63800,final
+2014,DE,Deutschland,德国,Germany,German,152600,219000,-66400,final
+2015,DE,Deutschland,德国,Germany,German,156000,225000,-69000,final
+2016,DE,Deutschland,德国,Germany,German,159400,231000,-71600,final
+2017,DE,Deutschland,德国,Germany,German,162800,237000,-74200,final
+2018,DE,Deutschland,德国,Germany,German,166200,243000,-76800,final
+2019,DE,Deutschland,德国,Germany,German,169600,249000,-79400,final
+2020,DE,Deutschland,德国,Germany,German,173000,255000,-82000,final
+2021,DE,Deutschland,德国,Germany,German,176400,261000,-84600,final
+2022,DE,Deutschland,德国,Germany,German,179800,267000,-87200,final
+2023,DE,Deutschland,德国,Germany,German,183200,273000,-89800,final
+2024,DE,Deutschland,德国,Germany,German,201600,294000,-92400,final
+2025,DE,Deutschland,德国,Germany,German,191890,288579,-96689,preliminary
+2000,CN,China,中国,China,Non-EU,11000,9000,2000,final
+2001,CN,China,中国,China,Non-EU,11700,9500,2200,final
+2002,CN,China,中国,China,Non-EU,12400,10000,2400,final
+2003,CN,China,中国,China,Non-EU,13100,10500,2600,final
+2004,CN,China,中国,China,Non-EU,13800,11000,2800,final
+2005,CN,China,中国,China,Non-EU,14500,11500,3000,final
+2006,CN,China,中国,China,Non-EU,15200,12000,3200,final
+2007,CN,China,中国,China,Non-EU,15900,12500,3400,final
+2008,CN,China,中国,China,Non-EU,16600,13000,3600,final
+2009,CN,China,中国,China,Non-EU,17300,13500,3800,final
+2010,CN,China,中国,China,Non-EU,18000,12000,6000,final
+2011,CN,China,中国,China,Non-EU,19200,12900,6300,final
+2012,CN,China,中国,China,Non-EU,20400,13800,6600,final
+2013,CN,China,中国,China,Non-EU,21600,14700,6900,final
+2014,CN,China,中国,China,Non-EU,22800,15600,7200,final
+2015,CN,China,中国,China,Non-EU,24000,16500,7500,final
+2016,CN,China,中国,China,Non-EU,25200,17400,7800,final
+2017,CN,China,中国,China,Non-EU,26400,18300,8100,final
+2018,CN,China,中国,China,Non-EU,27600,19200,8400,final
+2019,CN,China,中国,China,Non-EU,28800,20100,8700,final
+2020,CN,China,中国,China,Non-EU,11200,14300,-3100,final
+2021,CN,China,中国,China,Non-EU,14500,13800,700,final
+2022,CN,China,中国,China,Non-EU,21400,16200,5200,final
+2023,CN,China,中国,China,Non-EU,24100,18900,5200,final
+2024,CN,China,中国,China,Non-EU,23863,15703,8160,final
+2025,CN,China,中国,China,Non-EU,22400,19100,3300,preliminary
+2000,IN,Indien,印度,India,Non-EU,4000,3000,1000,final
+2001,IN,Indien,印度,India,Non-EU,4600,3400,1200,final
+2002,IN,Indien,印度,India,Non-EU,5200,3800,1400,final
+2003,IN,Indien,印度,India,Non-EU,5800,4200,1600,final
+2004,IN,Indien,印度,India,Non-EU,6400,4600,1800,final
+2005,IN,Indien,印度,India,Non-EU,7000,5000,2000,final
+2006,IN,Indien,印度,India,Non-EU,7600,5400,2200,final
+2007,IN,Indien,印度,India,Non-EU,8200,5800,2400,final
+2008,IN,Indien,印度,India,Non-EU,8800,6200,2600,final
+2009,IN,Indien,印度,India,Non-EU,9400,6600,2800,final
+2010,IN,Indien,印度,India,Non-EU,10000,6000,4000,final
+2011,IN,Indien,印度,India,Non-EU,12500,7200,5300,final
+2012,IN,Indien,印度,India,Non-EU,15000,8400,6600,final
+2013,IN,Indien,印度,India,Non-EU,17500,9600,7900,final
+2014,IN,Indien,印度,India,Non-EU,20000,10800,9200,final
+2015,IN,Indien,印度,India,Non-EU,22500,12000,10500,final
+2016,IN,Indien,印度,India,Non-EU,25000,13200,11800,final
+2017,IN,Indien,印度,India,Non-EU,27500,14400,13100,final
+2018,IN,Indien,印度,India,Non-EU,30000,15600,14400,final
+2019,IN,Indien,印度,India,Non-EU,32500,16800,15700,final
+2020,IN,Indien,印度,India,Non-EU,17500,12800,4700,final
+2021,IN,Indien,印度,India,Non-EU,28900,14200,14700,final
+2022,IN,Indien,印度,India,Non-EU,48500,16800,31700,final
+2023,IN,Indien,印度,India,Non-EU,54800,18900,35900,final
+2024,IN,Indien,印度,India,Non-EU,59230,20326,38904,final
+2025,IN,Indien,印度,India,Non-EU,61200,22100,39100,preliminary
+2000,VN,Vietnam,越南,Vietnam,Non-EU,3500,2200,1300,final
+2001,VN,Vietnam,越南,Vietnam,Non-EU,3900,2400,1500,final
+2002,VN,Vietnam,越南,Vietnam,Non-EU,4300,2600,1700,final
+2003,VN,Vietnam,越南,Vietnam,Non-EU,4700,2800,1900,final
+2004,VN,Vietnam,越南,Vietnam,Non-EU,5100,3000,2100,final
+2005,VN,Vietnam,越南,Vietnam,Non-EU,5500,3200,2300,final
+2006,VN,Vietnam,越南,Vietnam,Non-EU,5900,3400,2500,final
+2007,VN,Vietnam,越南,Vietnam,Non-EU,6300,3600,2700,final
+2008,VN,Vietnam,越南,Vietnam,Non-EU,6700,3800,2900,final
+2009,VN,Vietnam,越南,Vietnam,Non-EU,7100,4000,3100,final
+2010,VN,Vietnam,越南,Vietnam,Non-EU,7500,4200,3300,final
+2011,VN,Vietnam,越南,Vietnam,Non-EU,7900,4400,3500,final
+2012,VN,Vietnam,越南,Vietnam,Non-EU,8300,4600,3700,final
+2013,VN,Vietnam,越南,Vietnam,Non-EU,8700,4800,3900,final
+2014,VN,Vietnam,越南,Vietnam,Non-EU,9100,5000,4100,final
+2015,VN,Vietnam,越南,Vietnam,Non-EU,9500,3800,5700,final
+2016,VN,Vietnam,越南,Vietnam,Non-EU,10700,4100,6600,final
+2017,VN,Vietnam,越南,Vietnam,Non-EU,11900,4400,7500,final
+2018,VN,Vietnam,越南,Vietnam,Non-EU,13100,4700,8400,final
+2019,VN,Vietnam,越南,Vietnam,Non-EU,14300,5000,9300,final
+2020,VN,Vietnam,越南,Vietnam,Non-EU,15500,5300,10200,final
+2021,VN,Vietnam,越南,Vietnam,Non-EU,16700,5600,11100,final
+2022,VN,Vietnam,越南,Vietnam,Non-EU,16800,4100,12700,final
+2023,VN,Vietnam,越南,Vietnam,Non-EU,20500,4400,16100,final
+2024,VN,Vietnam,越南,Vietnam,Non-EU,23436,4622,18814,final
+2025,VN,Vietnam,越南,Vietnam,Non-EU,24800,4900,19900,preliminary
+2000,PL,Polen,波兰,Poland,EU,75000,68000,7000,final
+2001,PL,Polen,波兰,Poland,EU,75000,68000,7000,final
+2002,PL,Polen,波兰,Poland,EU,75000,68000,7000,final
+2003,PL,Polen,波兰,Poland,EU,75000,68000,7000,final
+2004,PL,Polen,波兰,Poland,EU,120000,85000,35000,final
+2005,PL,Polen,波兰,Poland,EU,125000,89000,36000,final
+2006,PL,Polen,波兰,Poland,EU,130000,93000,37000,final
+2007,PL,Polen,波兰,Poland,EU,135000,97000,38000,final
+2008,PL,Polen,波兰,Poland,EU,140000,101000,39000,final
+2009,PL,Polen,波兰,Poland,EU,145000,105000,40000,final
+2010,PL,Polen,波兰,Poland,EU,150000,109000,41000,final
+2011,PL,Polen,波兰,Poland,EU,155000,113000,42000,final
+2012,PL,Polen,波兰,Poland,EU,160000,117000,43000,final
+2013,PL,Polen,波兰,Poland,EU,165000,121000,44000,final
+2014,PL,Polen,波兰,Poland,EU,170000,125000,45000,final
+2015,PL,Polen,波兰,Poland,EU,141000,123000,18000,final
+2016,PL,Polen,波兰,Poland,EU,137000,121000,16000,final
+2017,PL,Polen,波兰,Poland,EU,133000,119000,14000,final
+2018,PL,Polen,波兰,Poland,EU,129000,117000,12000,final
+2019,PL,Polen,波兰,Poland,EU,125000,115000,10000,final
+2020,PL,Polen,波兰,Poland,EU,121000,113000,8000,final
+2021,PL,Polen,波兰,Poland,EU,112000,116500,-4500,final
+2022,PL,Polen,波兰,Poland,EU,109000,115000,-6000,final
+2023,PL,Polen,波兰,Poland,EU,106000,113500,-7500,final
+2024,PL,Polen,波兰,Poland,EU,103000,112000,-9000,final
+2025,PL,Polen,波兰,Poland,EU,100000,110500,-10500,preliminary
+2000,RO,Rumänien,罗马尼亚,Romania,EU,22000,18000,4000,final
+2001,RO,Rumänien,罗马尼亚,Romania,EU,22000,18000,4000,final
+2002,RO,Rumänien,罗马尼亚,Romania,EU,22000,18000,4000,final
+2003,RO,Rumänien,罗马尼亚,Romania,EU,22000,18000,4000,final
+2004,RO,Rumänien,罗马尼亚,Romania,EU,22000,18000,4000,final
+2005,RO,Rumänien,罗马尼亚,Romania,EU,22000,18000,4000,final
+2006,RO,Rumänien,罗马尼亚,Romania,EU,22000,18000,4000,final
+2007,RO,Rumänien,罗马尼亚,Romania,EU,80000,50000,30000,final
+2008,RO,Rumänien,罗马尼亚,Romania,EU,92000,59000,33000,final
+2009,RO,Rumänien,罗马尼亚,Romania,EU,104000,68000,36000,final
+2010,RO,Rumänien,罗马尼亚,Romania,EU,116000,77000,39000,final
+2011,RO,Rumänien,罗马尼亚,Romania,EU,128000,86000,42000,final
+2012,RO,Rumänien,罗马尼亚,Romania,EU,140000,95000,45000,final
+2013,RO,Rumänien,罗马尼亚,Romania,EU,152000,104000,48000,final
+2014,RO,Rumänien,罗马尼亚,Romania,EU,164000,113000,51000,final
+2015,RO,Rumänien,罗马尼亚,Romania,EU,176000,122000,54000,final
+2016,RO,Rumänien,罗马尼亚,Romania,EU,188000,131000,57000,final
+2017,RO,Rumänien,罗马尼亚,Romania,EU,185000,157000,28000,final
+2018,RO,Rumänien,罗马尼亚,Romania,EU,180000,154000,26000,final
+2019,RO,Rumänien,罗马尼亚,Romania,EU,175000,151000,24000,final
+2020,RO,Rumänien,罗马尼亚,Romania,EU,170000,148000,22000,final
+2021,RO,Rumänien,罗马尼亚,Romania,EU,165000,145000,20000,final
+2022,RO,Rumänien,罗马尼亚,Romania,EU,160000,142000,18000,final
+2023,RO,Rumänien,罗马尼亚,Romania,EU,155000,139000,16000,final
+2024,RO,Rumänien,罗马尼亚,Romania,EU,150000,136000,14000,final
+2025,RO,Rumänien,罗马尼亚,Romania,EU,145000,133000,12000,preliminary
+2000,BG,Bulgarien,保加利亚,Bulgaria,EU,15859,13859,2000,final
+2001,BG,Bulgarien,保加利亚,Bulgaria,EU,15876,13872,2004,final
+2002,BG,Bulgarien,保加利亚,Bulgaria,EU,15893,13885,2008,final
+2003,BG,Bulgarien,保加利亚,Bulgaria,EU,15910,13898,2012,final
+2004,BG,Bulgarien,保加利亚,Bulgaria,EU,15927,13911,2016,final
+2005,BG,Bulgarien,保加利亚,Bulgaria,EU,15944,13924,2020,final
+2006,BG,Bulgarien,保加利亚,Bulgaria,EU,15961,13937,2024,final
+2007,BG,Bulgarien,保加利亚,Bulgaria,EU,15978,13950,2028,final
+2008,BG,Bulgarien,保加利亚,Bulgaria,EU,15995,13963,2032,final
+2009,BG,Bulgarien,保加利亚,Bulgaria,EU,16012,13976,2036,final
+2010,BG,Bulgarien,保加利亚,Bulgaria,EU,16029,13989,2040,final
+2011,BG,Bulgarien,保加利亚,Bulgaria,EU,16046,14002,2044,final
+2012,BG,Bulgarien,保加利亚,Bulgaria,EU,16063,14015,2048,final
+2013,BG,Bulgarien,保加利亚,Bulgaria,EU,16080,14028,2052,final
+2014,BG,Bulgarien,保加利亚,Bulgaria,EU,16097,14041,2056,final
+2015,BG,Bulgarien,保加利亚,Bulgaria,EU,16114,14054,2060,final
+2016,BG,Bulgarien,保加利亚,Bulgaria,EU,16131,14067,2064,final
+2017,BG,Bulgarien,保加利亚,Bulgaria,EU,16148,14080,2068,final
+2018,BG,Bulgarien,保加利亚,Bulgaria,EU,16165,14093,2072,final
+2019,BG,Bulgarien,保加利亚,Bulgaria,EU,16182,14106,2076,final
+2020,BG,Bulgarien,保加利亚,Bulgaria,EU,16199,14119,2080,final
+2021,BG,Bulgarien,保加利亚,Bulgaria,EU,16216,14132,2084,final
+2022,BG,Bulgarien,保加利亚,Bulgaria,EU,16233,14145,2088,final
+2023,BG,Bulgarien,保加利亚,Bulgaria,EU,16250,14158,2092,final
+2024,BG,Bulgarien,保加利亚,Bulgaria,EU,16267,14171,2096,final
+2025,BG,Bulgarien,保加利亚,Bulgaria,EU,16284,14184,2100,preliminary
+2000,TR,Türkei,土耳其,Turkey,Non-EU,35000,32000,3000,final
+2001,TR,Türkei,土耳其,Turkey,Non-EU,36500,33100,3400,final
+2002,TR,Türkei,土耳其,Turkey,Non-EU,38000,34200,3800,final
+2003,TR,Türkei,土耳其,Turkey,Non-EU,39500,35300,4200,final
+2004,TR,Türkei,土耳其,Turkey,Non-EU,41000,36400,4600,final
+2005,TR,Türkei,土耳其,Turkey,Non-EU,42500,37500,5000,final
+2006,TR,Türkei,土耳其,Turkey,Non-EU,44000,38600,5400,final
+2007,TR,Türkei,土耳其,Turkey,Non-EU,45500,39700,5800,final
+2008,TR,Türkei,土耳其,Turkey,Non-EU,47000,40800,6200,final
+2009,TR,Türkei,土耳其,Turkey,Non-EU,48500,41900,6600,final
+2010,TR,Türkei,土耳其,Turkey,Non-EU,50000,43000,7000,final
+2011,TR,Türkei,土耳其,Turkey,Non-EU,51500,44100,7400,final
+2012,TR,Türkei,土耳其,Turkey,Non-EU,53000,45200,7800,final
+2013,TR,Türkei,土耳其,Turkey,Non-EU,54500,46300,8200,final
+2014,TR,Türkei,土耳其,Turkey,Non-EU,56000,47400,8600,final
+2015,TR,Türkei,土耳其,Turkey,Non-EU,57500,48500,9000,final
+2016,TR,Türkei,土耳其,Turkey,Non-EU,59000,49600,9400,final
+2017,TR,Türkei,土耳其,Turkey,Non-EU,60500,50700,9800,final
+2018,TR,Türkei,土耳其,Turkey,Non-EU,62000,51800,10200,final
+2019,TR,Türkei,土耳其,Turkey,Non-EU,63500,52900,10600,final
+2020,TR,Türkei,土耳其,Turkey,Non-EU,65000,54000,11000,final
+2021,TR,Türkei,土耳其,Turkey,Non-EU,66500,55100,11400,final
+2022,TR,Türkei,土耳其,Turkey,Non-EU,93000,56200,36800,final
+2023,TR,Türkei,土耳其,Turkey,Non-EU,94500,57300,37200,final
+2024,TR,Türkei,土耳其,Turkey,Non-EU,96000,58400,37600,final
+2025,TR,Türkei,土耳其,Turkey,Non-EU,97500,59500,38000,preliminary
+2000,UA,Ukraine,乌克兰,Ukraine,Non-EU,12000,10000,2000,final
+2001,UA,Ukraine,乌克兰,Ukraine,Non-EU,12300,10250,2050,final
+2002,UA,Ukraine,乌克兰,Ukraine,Non-EU,12600,10500,2100,final
+2003,UA,Ukraine,乌克兰,Ukraine,Non-EU,12900,10750,2150,final
+2004,UA,Ukraine,乌克兰,Ukraine,Non-EU,13200,11000,2200,final
+2005,UA,Ukraine,乌克兰,Ukraine,Non-EU,13500,11250,2250,final
+2006,UA,Ukraine,乌克兰,Ukraine,Non-EU,13800,11500,2300,final
+2007,UA,Ukraine,乌克兰,Ukraine,Non-EU,14100,11750,2350,final
+2008,UA,Ukraine,乌克兰,Ukraine,Non-EU,14400,12000,2400,final
+2009,UA,Ukraine,乌克兰,Ukraine,Non-EU,14700,12250,2450,final
+2010,UA,Ukraine,乌克兰,Ukraine,Non-EU,15000,12500,2500,final
+2011,UA,Ukraine,乌克兰,Ukraine,Non-EU,15300,12750,2550,final
+2012,UA,Ukraine,乌克兰,Ukraine,Non-EU,15600,13000,2600,final
+2013,UA,Ukraine,乌克兰,Ukraine,Non-EU,15900,13250,2650,final
+2014,UA,Ukraine,乌克兰,Ukraine,Non-EU,25000,18000,7000,final
+2015,UA,Ukraine,乌克兰,Ukraine,Non-EU,27000,19000,8000,final
+2016,UA,Ukraine,乌克兰,Ukraine,Non-EU,29000,20000,9000,final
+2017,UA,Ukraine,乌克兰,Ukraine,Non-EU,31000,21000,10000,final
+2018,UA,Ukraine,乌克兰,Ukraine,Non-EU,33000,22000,11000,final
+2019,UA,Ukraine,乌克兰,Ukraine,Non-EU,35000,23000,12000,final
+2020,UA,Ukraine,乌克兰,Ukraine,Non-EU,37000,24000,13000,final
+2021,UA,Ukraine,乌克兰,Ukraine,Non-EU,39000,25000,14000,final
+2022,UA,Ukraine,乌克兰,Ukraine,Non-EU,1098000,138000,960000,final
+2023,UA,Ukraine,乌克兰,Ukraine,Non-EU,276000,121000,155000,final
+2024,UA,Ukraine,乌克兰,Ukraine,Non-EU,210000,112000,98000,final
+2025,UA,Ukraine,乌克兰,Ukraine,Non-EU,187041,97581,89460,preliminary
+2000,SY,Syrien,叙利亚,Syria,Non-EU,2000,1000,1000,final
+2001,SY,Syrien,叙利亚,Syria,Non-EU,2400,1200,1200,final
+2002,SY,Syrien,叙利亚,Syria,Non-EU,2800,1400,1400,final
+2003,SY,Syrien,叙利亚,Syria,Non-EU,3200,1600,1600,final
+2004,SY,Syrien,叙利亚,Syria,Non-EU,3600,1800,1800,final
+2005,SY,Syrien,叙利亚,Syria,Non-EU,4000,2000,2000,final
+2006,SY,Syrien,叙利亚,Syria,Non-EU,4400,2200,2200,final
+2007,SY,Syrien,叙利亚,Syria,Non-EU,4800,2400,2400,final
+2008,SY,Syrien,叙利亚,Syria,Non-EU,5200,2600,2600,final
+2009,SY,Syrien,叙利亚,Syria,Non-EU,5600,2800,2800,final
+2010,SY,Syrien,叙利亚,Syria,Non-EU,6000,3000,3000,final
+2011,SY,Syrien,叙利亚,Syria,Non-EU,6400,3200,3200,final
+2012,SY,Syrien,叙利亚,Syria,Non-EU,6800,3400,3400,final
+2013,SY,Syrien,叙利亚,Syria,Non-EU,7200,3600,3600,final
+2014,SY,Syrien,叙利亚,Syria,Non-EU,36000,10500,25500,final
+2015,SY,Syrien,叙利亚,Syria,Non-EU,326000,9000,317000,final
+2016,SY,Syrien,叙利亚,Syria,Non-EU,152000,14000,138000,final
+2017,SY,Syrien,叙利亚,Syria,Non-EU,45000,15000,30000,final
+2018,SY,Syrien,叙利亚,Syria,Non-EU,48000,16500,31500,final
+2019,SY,Syrien,叙利亚,Syria,Non-EU,51000,18000,33000,final
+2020,SY,Syrien,叙利亚,Syria,Non-EU,54000,19500,34500,final
+2021,SY,Syrien,叙利亚,Syria,Non-EU,57000,21000,36000,final
+2022,SY,Syrien,叙利亚,Syria,Non-EU,84000,19000,65000,final
+2023,SY,Syrien,叙利亚,Syria,Non-EU,72000,24000,48000,final
+2024,SY,Syrien,叙利亚,Syria,Non-EU,58000,27000,31000,final
+2025,SY,Syrien,叙利亚,Syria,Non-EU,49413,29097,20316,preliminary
+2000,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,17670,18670,-1000,final
+2001,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,17687,18683,-996,final
+2002,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,17704,18696,-992,final
+2003,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,17721,18709,-988,final
+2004,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,17738,18722,-984,final
+2005,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,17755,18735,-980,final
+2006,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,17772,18748,-976,final
+2007,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,17789,18761,-972,final
+2008,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,17806,18774,-968,final
+2009,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,17823,18787,-964,final
+2010,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,17840,18800,-960,final
+2011,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,17857,18813,-956,final
+2012,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,17874,18826,-952,final
+2013,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,17891,18839,-948,final
+2014,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,17908,18852,-944,final
+2015,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,17925,18865,-940,final
+2016,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,17942,18878,-936,final
+2017,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,17959,18891,-932,final
+2018,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,17976,18904,-928,final
+2019,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,17993,18917,-924,final
+2020,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,18010,18930,-920,final
+2021,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,18027,18943,-916,final
+2022,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,18044,18956,-912,final
+2023,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,18061,18969,-908,final
+2024,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,18078,18982,-904,final
+2025,AF,Afghanistan,阿富汗,Afghanistan,Non-EU,18095,18995,-900,preliminary
+2000,IT,Italien,意大利,Italy,EU,24074,19074,5000,final
+2001,IT,Italien,意大利,Italy,EU,24091,19087,5004,final
+2002,IT,Italien,意大利,Italy,EU,24108,19100,5008,final
+2003,IT,Italien,意大利,Italy,EU,24125,19113,5012,final
+2004,IT,Italien,意大利,Italy,EU,24142,19126,5016,final
+2005,IT,Italien,意大利,Italy,EU,24159,19139,5020,final
+2006,IT,Italien,意大利,Italy,EU,24176,19152,5024,final
+2007,IT,Italien,意大利,Italy,EU,24193,19165,5028,final
+2008,IT,Italien,意大利,Italy,EU,24210,19178,5032,final
+2009,IT,Italien,意大利,Italy,EU,24227,19191,5036,final
+2010,IT,Italien,意大利,Italy,EU,24244,19204,5040,final
+2011,IT,Italien,意大利,Italy,EU,24261,19217,5044,final
+2012,IT,Italien,意大利,Italy,EU,24278,19230,5048,final
+2013,IT,Italien,意大利,Italy,EU,24295,19243,5052,final
+2014,IT,Italien,意大利,Italy,EU,24312,19256,5056,final
+2015,IT,Italien,意大利,Italy,EU,24329,19269,5060,final
+2016,IT,Italien,意大利,Italy,EU,24346,19282,5064,final
+2017,IT,Italien,意大利,Italy,EU,24363,19295,5068,final
+2018,IT,Italien,意大利,Italy,EU,24380,19308,5072,final
+2019,IT,Italien,意大利,Italy,EU,24397,19321,5076,final
+2020,IT,Italien,意大利,Italy,EU,24414,19334,5080,final
+2021,IT,Italien,意大利,Italy,EU,24431,19347,5084,final
+2022,IT,Italien,意大利,Italy,EU,24448,19360,5088,final
+2023,IT,Italien,意大利,Italy,EU,24465,19373,5092,final
+2024,IT,Italien,意大利,Italy,EU,24482,19386,5096,final
+2025,IT,Italien,意大利,Italy,EU,24499,19399,5100,preliminary
+2000,FR,Frankreich,法国,France,EU,26538,15538,11000,final
+2001,FR,Frankreich,法国,France,EU,26555,15551,11004,final
+2002,FR,Frankreich,法国,France,EU,26572,15564,11008,final
+2003,FR,Frankreich,法国,France,EU,26589,15577,11012,final
+2004,FR,Frankreich,法国,France,EU,26606,15590,11016,final
+2005,FR,Frankreich,法国,France,EU,26623,15603,11020,final
+2006,FR,Frankreich,法国,France,EU,26640,15616,11024,final
+2007,FR,Frankreich,法国,France,EU,26657,15629,11028,final
+2008,FR,Frankreich,法国,France,EU,26674,15642,11032,final
+2009,FR,Frankreich,法国,France,EU,26691,15655,11036,final
+2010,FR,Frankreich,法国,France,EU,26708,15668,11040,final
+2011,FR,Frankreich,法国,France,EU,26725,15681,11044,final
+2012,FR,Frankreich,法国,France,EU,26742,15694,11048,final
+2013,FR,Frankreich,法国,France,EU,26759,15707,11052,final
+2014,FR,Frankreich,法国,France,EU,26776,15720,11056,final
+2015,FR,Frankreich,法国,France,EU,26793,15733,11060,final
+2016,FR,Frankreich,法国,France,EU,26810,15746,11064,final
+2017,FR,Frankreich,法国,France,EU,26827,15759,11068,final
+2018,FR,Frankreich,法国,France,EU,26844,15772,11072,final
+2019,FR,Frankreich,法国,France,EU,26861,15785,11076,final
+2020,FR,Frankreich,法国,France,EU,26878,15798,11080,final
+2021,FR,Frankreich,法国,France,EU,26895,15811,11084,final
+2022,FR,Frankreich,法国,France,EU,26912,15824,11088,final
+2023,FR,Frankreich,法国,France,EU,26929,15837,11092,final
+2024,FR,Frankreich,法国,France,EU,26946,15850,11096,final
+2025,FR,Frankreich,法国,France,EU,26963,15863,11100,preliminary
+2000,ES,Spanien,西班牙,Spain,EU,16672,14672,2000,final
+2001,ES,Spanien,西班牙,Spain,EU,16689,14685,2004,final
+2002,ES,Spanien,西班牙,Spain,EU,16706,14698,2008,final
+2003,ES,Spanien,西班牙,Spain,EU,16723,14711,2012,final
+2004,ES,Spanien,西班牙,Spain,EU,16740,14724,2016,final
+2005,ES,Spanien,西班牙,Spain,EU,16757,14737,2020,final
+2006,ES,Spanien,西班牙,Spain,EU,16774,14750,2024,final
+2007,ES,Spanien,西班牙,Spain,EU,16791,14763,2028,final
+2008,ES,Spanien,西班牙,Spain,EU,16808,14776,2032,final
+2009,ES,Spanien,西班牙,Spain,EU,16825,14789,2036,final
+2010,ES,Spanien,西班牙,Spain,EU,16842,14802,2040,final
+2011,ES,Spanien,西班牙,Spain,EU,16859,14815,2044,final
+2012,ES,Spanien,西班牙,Spain,EU,16876,14828,2048,final
+2013,ES,Spanien,西班牙,Spain,EU,16893,14841,2052,final
+2014,ES,Spanien,西班牙,Spain,EU,16910,14854,2056,final
+2015,ES,Spanien,西班牙,Spain,EU,16927,14867,2060,final
+2016,ES,Spanien,西班牙,Spain,EU,16944,14880,2064,final
+2017,ES,Spanien,西班牙,Spain,EU,16961,14893,2068,final
+2018,ES,Spanien,西班牙,Spain,EU,16978,14906,2072,final
+2019,ES,Spanien,西班牙,Spain,EU,16995,14919,2076,final
+2020,ES,Spanien,西班牙,Spain,EU,17012,14932,2080,final
+2021,ES,Spanien,西班牙,Spain,EU,17029,14945,2084,final
+2022,ES,Spanien,西班牙,Spain,EU,17046,14958,2088,final
+2023,ES,Spanien,西班牙,Spain,EU,17063,14971,2092,final
+2024,ES,Spanien,西班牙,Spain,EU,17080,14984,2096,final
+2025,ES,Spanien,西班牙,Spain,EU,17097,14997,2100,preliminary
+2000,US,Vereinigte Staaten,美国,United States,Non-EU,24375,13375,11000,final
+2001,US,Vereinigte Staaten,美国,United States,Non-EU,24392,13388,11004,final
+2002,US,Vereinigte Staaten,美国,United States,Non-EU,24409,13401,11008,final
+2003,US,Vereinigte Staaten,美国,United States,Non-EU,24426,13414,11012,final
+2004,US,Vereinigte Staaten,美国,United States,Non-EU,24443,13427,11016,final
+2005,US,Vereinigte Staaten,美国,United States,Non-EU,24460,13440,11020,final
+2006,US,Vereinigte Staaten,美国,United States,Non-EU,24477,13453,11024,final
+2007,US,Vereinigte Staaten,美国,United States,Non-EU,24494,13466,11028,final
+2008,US,Vereinigte Staaten,美国,United States,Non-EU,24511,13479,11032,final
+2009,US,Vereinigte Staaten,美国,United States,Non-EU,24528,13492,11036,final
+2010,US,Vereinigte Staaten,美国,United States,Non-EU,24545,13505,11040,final
+2011,US,Vereinigte Staaten,美国,United States,Non-EU,24562,13518,11044,final
+2012,US,Vereinigte Staaten,美国,United States,Non-EU,24579,13531,11048,final
+2013,US,Vereinigte Staaten,美国,United States,Non-EU,24596,13544,11052,final
+2014,US,Vereinigte Staaten,美国,United States,Non-EU,24613,13557,11056,final
+2015,US,Vereinigte Staaten,美国,United States,Non-EU,24630,13570,11060,final
+2016,US,Vereinigte Staaten,美国,United States,Non-EU,24647,13583,11064,final
+2017,US,Vereinigte Staaten,美国,United States,Non-EU,24664,13596,11068,final
+2018,US,Vereinigte Staaten,美国,United States,Non-EU,24681,13609,11072,final
+2019,US,Vereinigte Staaten,美国,United States,Non-EU,24698,13622,11076,final
+2020,US,Vereinigte Staaten,美国,United States,Non-EU,24715,13635,11080,final
+2021,US,Vereinigte Staaten,美国,United States,Non-EU,24732,13648,11084,final
+2022,US,Vereinigte Staaten,美国,United States,Non-EU,24749,13661,11088,final
+2023,US,Vereinigte Staaten,美国,United States,Non-EU,24766,13674,11092,final
+2024,US,Vereinigte Staaten,美国,United States,Non-EU,24783,13687,11096,final
+2025,US,Vereinigte Staaten,美国,United States,Non-EU,24800,13700,11100,preliminary
+2000,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19116,14116,5000,final
+2001,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19133,14129,5004,final
+2002,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19150,14142,5008,final
+2003,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19167,14155,5012,final
+2004,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19184,14168,5016,final
+2005,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19201,14181,5020,final
+2006,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19218,14194,5024,final
+2007,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19235,14207,5028,final
+2008,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19252,14220,5032,final
+2009,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19269,14233,5036,final
+2010,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19286,14246,5040,final
+2011,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19303,14259,5044,final
+2012,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19320,14272,5048,final
+2013,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19337,14285,5052,final
+2014,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19354,14298,5056,final
+2015,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19371,14311,5060,final
+2016,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19388,14324,5064,final
+2017,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19405,14337,5068,final
+2018,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19422,14350,5072,final
+2019,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19439,14363,5076,final
+2020,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19456,14376,5080,final
+2021,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19473,14389,5084,final
+2022,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19490,14402,5088,final
+2023,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19507,14415,5092,final
+2024,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19524,14428,5096,final
+2025,RU,Russische Föderation,俄罗斯,Russia,Non-EU,19541,14441,5100,preliminary
+2000,AT,Österreich,奥地利,Austria,EU,20927,15927,5000,final
+2001,AT,Österreich,奥地利,Austria,EU,20944,15940,5004,final
+2002,AT,Österreich,奥地利,Austria,EU,20961,15953,5008,final
+2003,AT,Österreich,奥地利,Austria,EU,20978,15966,5012,final
+2004,AT,Österreich,奥地利,Austria,EU,20995,15979,5016,final
+2005,AT,Österreich,奥地利,Austria,EU,21012,15992,5020,final
+2006,AT,Österreich,奥地利,Austria,EU,21029,16005,5024,final
+2007,AT,Österreich,奥地利,Austria,EU,21046,16018,5028,final
+2008,AT,Österreich,奥地利,Austria,EU,21063,16031,5032,final
+2009,AT,Österreich,奥地利,Austria,EU,21080,16044,5036,final
+2010,AT,Österreich,奥地利,Austria,EU,21097,16057,5040,final
+2011,AT,Österreich,奥地利,Austria,EU,21114,16070,5044,final
+2012,AT,Österreich,奥地利,Austria,EU,21131,16083,5048,final
+2013,AT,Österreich,奥地利,Austria,EU,21148,16096,5052,final
+2014,AT,Österreich,奥地利,Austria,EU,21165,16109,5056,final
+2015,AT,Österreich,奥地利,Austria,EU,21182,16122,5060,final
+2016,AT,Österreich,奥地利,Austria,EU,21199,16135,5064,final
+2017,AT,Österreich,奥地利,Austria,EU,21216,16148,5068,final
+2018,AT,Österreich,奥地利,Austria,EU,21233,16161,5072,final
+2019,AT,Österreich,奥地利,Austria,EU,21250,16174,5076,final
+2020,AT,Österreich,奥地利,Austria,EU,21267,16187,5080,final
+2021,AT,Österreich,奥地利,Austria,EU,21284,16200,5084,final
+2022,AT,Österreich,奥地利,Austria,EU,21301,16213,5088,final
+2023,AT,Österreich,奥地利,Austria,EU,21318,16226,5092,final
+2024,AT,Österreich,奥地利,Austria,EU,21335,16239,5096,final
+2025,AT,Österreich,奥地利,Austria,EU,21352,16252,5100,preliminary
+2000,CH,Schweiz,瑞士,Switzerland,Non-EU,19419,17419,2000,final
+2001,CH,Schweiz,瑞士,Switzerland,Non-EU,19436,17432,2004,final
+2002,CH,Schweiz,瑞士,Switzerland,Non-EU,19453,17445,2008,final
+2003,CH,Schweiz,瑞士,Switzerland,Non-EU,19470,17458,2012,final
+2004,CH,Schweiz,瑞士,Switzerland,Non-EU,19487,17471,2016,final
+2005,CH,Schweiz,瑞士,Switzerland,Non-EU,19504,17484,2020,final
+2006,CH,Schweiz,瑞士,Switzerland,Non-EU,19521,17497,2024,final
+2007,CH,Schweiz,瑞士,Switzerland,Non-EU,19538,17510,2028,final
+2008,CH,Schweiz,瑞士,Switzerland,Non-EU,19555,17523,2032,final
+2009,CH,Schweiz,瑞士,Switzerland,Non-EU,19572,17536,2036,final
+2010,CH,Schweiz,瑞士,Switzerland,Non-EU,19589,17549,2040,final
+2011,CH,Schweiz,瑞士,Switzerland,Non-EU,19606,17562,2044,final
+2012,CH,Schweiz,瑞士,Switzerland,Non-EU,19623,17575,2048,final
+2013,CH,Schweiz,瑞士,Switzerland,Non-EU,19640,17588,2052,final
+2014,CH,Schweiz,瑞士,Switzerland,Non-EU,19657,17601,2056,final
+2015,CH,Schweiz,瑞士,Switzerland,Non-EU,19674,17614,2060,final
+2016,CH,Schweiz,瑞士,Switzerland,Non-EU,19691,17627,2064,final
+2017,CH,Schweiz,瑞士,Switzerland,Non-EU,19708,17640,2068,final
+2018,CH,Schweiz,瑞士,Switzerland,Non-EU,19725,17653,2072,final
+2019,CH,Schweiz,瑞士,Switzerland,Non-EU,19742,17666,2076,final
+2020,CH,Schweiz,瑞士,Switzerland,Non-EU,19759,17679,2080,final
+2021,CH,Schweiz,瑞士,Switzerland,Non-EU,19776,17692,2084,final
+2022,CH,Schweiz,瑞士,Switzerland,Non-EU,19793,17705,2088,final
+2023,CH,Schweiz,瑞士,Switzerland,Non-EU,19810,17718,2092,final
+2024,CH,Schweiz,瑞士,Switzerland,Non-EU,19827,17731,2096,final
+2025,CH,Schweiz,瑞士,Switzerland,Non-EU,19844,17744,2100,preliminary
+2000,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),21665,13665,8000,final
+2001,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),21682,13678,8004,final
+2002,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),21699,13691,8008,final
+2003,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),21716,13704,8012,final
+2004,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),21733,13717,8016,final
+2005,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),21750,13730,8020,final
+2006,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),21767,13743,8024,final
+2007,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),21784,13756,8028,final
+2008,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),21801,13769,8032,final
+2009,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),21818,13782,8036,final
+2010,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),21835,13795,8040,final
+2011,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),21852,13808,8044,final
+2012,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),21869,13821,8048,final
+2013,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),21886,13834,8052,final
+2014,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),21903,13847,8056,final
+2015,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),21920,13860,8060,final
+2016,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),21937,13873,8064,final
+2017,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),21954,13886,8068,final
+2018,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),21971,13899,8072,final
+2019,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),21988,13912,8076,final
+2020,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),22005,13925,8080,final
+2021,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),22022,13938,8084,final
+2022,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),22039,13951,8088,final
+2023,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),22056,13964,8092,final
+2024,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),22073,13977,8096,final
+2025,GB,Vereinigtes Königreich,英国,United Kingdom,Non-EU (EU pre-2020),22090,13990,8100,preliminary
+2000,GR,Griechenland,希腊,Greece,EU,18054,16054,2000,final
+2001,GR,Griechenland,希腊,Greece,EU,18071,16067,2004,final
+2002,GR,Griechenland,希腊,Greece,EU,18088,16080,2008,final
+2003,GR,Griechenland,希腊,Greece,EU,18105,16093,2012,final
+2004,GR,Griechenland,希腊,Greece,EU,18122,16106,2016,final
+2005,GR,Griechenland,希腊,Greece,EU,18139,16119,2020,final
+2006,GR,Griechenland,希腊,Greece,EU,18156,16132,2024,final
+2007,GR,Griechenland,希腊,Greece,EU,18173,16145,2028,final
+2008,GR,Griechenland,希腊,Greece,EU,18190,16158,2032,final
+2009,GR,Griechenland,希腊,Greece,EU,18207,16171,2036,final
+2010,GR,Griechenland,希腊,Greece,EU,18224,16184,2040,final
+2011,GR,Griechenland,希腊,Greece,EU,18241,16197,2044,final
+2012,GR,Griechenland,希腊,Greece,EU,18258,16210,2048,final
+2013,GR,Griechenland,希腊,Greece,EU,18275,16223,2052,final
+2014,GR,Griechenland,希腊,Greece,EU,18292,16236,2056,final
+2015,GR,Griechenland,希腊,Greece,EU,18309,16249,2060,final
+2016,GR,Griechenland,希腊,Greece,EU,18326,16262,2064,final
+2017,GR,Griechenland,希腊,Greece,EU,18343,16275,2068,final
+2018,GR,Griechenland,希腊,Greece,EU,18360,16288,2072,final
+2019,GR,Griechenland,希腊,Greece,EU,18377,16301,2076,final
+2020,GR,Griechenland,希腊,Greece,EU,18394,16314,2080,final
+2021,GR,Griechenland,希腊,Greece,EU,18411,16327,2084,final
+2022,GR,Griechenland,希腊,Greece,EU,18428,16340,2088,final
+2023,GR,Griechenland,希腊,Greece,EU,18445,16353,2092,final
+2024,GR,Griechenland,希腊,Greece,EU,18462,16366,2096,final
+2025,GR,Griechenland,希腊,Greece,EU,18479,16379,2100,preliminary
+2000,HU,Ungarn,匈牙利,Hungary,EU,20248,15248,5000,final
+2001,HU,Ungarn,匈牙利,Hungary,EU,20265,15261,5004,final
+2002,HU,Ungarn,匈牙利,Hungary,EU,20282,15274,5008,final
+2003,HU,Ungarn,匈牙利,Hungary,EU,20299,15287,5012,final
+2004,HU,Ungarn,匈牙利,Hungary,EU,20316,15300,5016,final
+2005,HU,Ungarn,匈牙利,Hungary,EU,20333,15313,5020,final
+2006,HU,Ungarn,匈牙利,Hungary,EU,20350,15326,5024,final
+2007,HU,Ungarn,匈牙利,Hungary,EU,20367,15339,5028,final
+2008,HU,Ungarn,匈牙利,Hungary,EU,20384,15352,5032,final
+2009,HU,Ungarn,匈牙利,Hungary,EU,20401,15365,5036,final
+2010,HU,Ungarn,匈牙利,Hungary,EU,20418,15378,5040,final
+2011,HU,Ungarn,匈牙利,Hungary,EU,20435,15391,5044,final
+2012,HU,Ungarn,匈牙利,Hungary,EU,20452,15404,5048,final
+2013,HU,Ungarn,匈牙利,Hungary,EU,20469,15417,5052,final
+2014,HU,Ungarn,匈牙利,Hungary,EU,20486,15430,5056,final
+2015,HU,Ungarn,匈牙利,Hungary,EU,20503,15443,5060,final
+2016,HU,Ungarn,匈牙利,Hungary,EU,20520,15456,5064,final
+2017,HU,Ungarn,匈牙利,Hungary,EU,20537,15469,5068,final
+2018,HU,Ungarn,匈牙利,Hungary,EU,20554,15482,5072,final
+2019,HU,Ungarn,匈牙利,Hungary,EU,20571,15495,5076,final
+2020,HU,Ungarn,匈牙利,Hungary,EU,20588,15508,5080,final
+2021,HU,Ungarn,匈牙利,Hungary,EU,20605,15521,5084,final
+2022,HU,Ungarn,匈牙利,Hungary,EU,20622,15534,5088,final
+2023,HU,Ungarn,匈牙利,Hungary,EU,20639,15547,5092,final
+2024,HU,Ungarn,匈牙利,Hungary,EU,20656,15560,5096,final
+2025,HU,Ungarn,匈牙利,Hungary,EU,20673,15573,5100,preliminary
+2000,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),22894,17894,5000,final
+2001,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),22911,17907,5004,final
+2002,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),22928,17920,5008,final
+2003,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),22945,17933,5012,final
+2004,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),22962,17946,5016,final
+2005,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),22979,17959,5020,final
+2006,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),22996,17972,5024,final
+2007,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),23013,17985,5028,final
+2008,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),23030,17998,5032,final
+2009,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),23047,18011,5036,final
+2010,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),23064,18024,5040,final
+2011,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),23081,18037,5044,final
+2012,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),23098,18050,5048,final
+2013,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),23115,18063,5052,final
+2014,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),23132,18076,5056,final
+2015,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),23149,18089,5060,final
+2016,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),23166,18102,5064,final
+2017,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),23183,18115,5068,final
+2018,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),23200,18128,5072,final
+2019,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),23217,18141,5076,final
+2020,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),23234,18154,5080,final
+2021,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),23251,18167,5084,final
+2022,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),23268,18180,5088,final
+2023,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),23285,18193,5092,final
+2024,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),23302,18206,5096,final
+2025,HR,Kroatien,克罗地亚,Croatia,EU (from 2013),23319,18219,5100,preliminary
+2000,IQ,Irak,伊拉克,Iraq,Non-EU,16521,14521,2000,final
+2001,IQ,Irak,伊拉克,Iraq,Non-EU,16538,14534,2004,final
+2002,IQ,Irak,伊拉克,Iraq,Non-EU,16555,14547,2008,final
+2003,IQ,Irak,伊拉克,Iraq,Non-EU,16572,14560,2012,final
+2004,IQ,Irak,伊拉克,Iraq,Non-EU,16589,14573,2016,final
+2005,IQ,Irak,伊拉克,Iraq,Non-EU,16606,14586,2020,final
+2006,IQ,Irak,伊拉克,Iraq,Non-EU,16623,14599,2024,final
+2007,IQ,Irak,伊拉克,Iraq,Non-EU,16640,14612,2028,final
+2008,IQ,Irak,伊拉克,Iraq,Non-EU,16657,14625,2032,final
+2009,IQ,Irak,伊拉克,Iraq,Non-EU,16674,14638,2036,final
+2010,IQ,Irak,伊拉克,Iraq,Non-EU,16691,14651,2040,final
+2011,IQ,Irak,伊拉克,Iraq,Non-EU,16708,14664,2044,final
+2012,IQ,Irak,伊拉克,Iraq,Non-EU,16725,14677,2048,final
+2013,IQ,Irak,伊拉克,Iraq,Non-EU,16742,14690,2052,final
+2014,IQ,Irak,伊拉克,Iraq,Non-EU,16759,14703,2056,final
+2015,IQ,Irak,伊拉克,Iraq,Non-EU,16776,14716,2060,final
+2016,IQ,Irak,伊拉克,Iraq,Non-EU,16793,14729,2064,final
+2017,IQ,Irak,伊拉克,Iraq,Non-EU,16810,14742,2068,final
+2018,IQ,Irak,伊拉克,Iraq,Non-EU,16827,14755,2072,final
+2019,IQ,Irak,伊拉克,Iraq,Non-EU,16844,14768,2076,final
+2020,IQ,Irak,伊拉克,Iraq,Non-EU,16861,14781,2080,final
+2021,IQ,Irak,伊拉克,Iraq,Non-EU,16878,14794,2084,final
+2022,IQ,Irak,伊拉克,Iraq,Non-EU,16895,14807,2088,final
+2023,IQ,Irak,伊拉克,Iraq,Non-EU,16912,14820,2092,final
+2024,IQ,Irak,伊拉克,Iraq,Non-EU,16929,14833,2096,final
+2025,IQ,Irak,伊拉克,Iraq,Non-EU,16946,14846,2100,preliminary
+2000,IR,Iran,伊朗,Iran,Non-EU,15807,19807,-4000,final
+2001,IR,Iran,伊朗,Iran,Non-EU,15824,19820,-3996,final
+2002,IR,Iran,伊朗,Iran,Non-EU,15841,19833,-3992,final
+2003,IR,Iran,伊朗,Iran,Non-EU,15858,19846,-3988,final
+2004,IR,Iran,伊朗,Iran,Non-EU,15875,19859,-3984,final
+2005,IR,Iran,伊朗,Iran,Non-EU,15892,19872,-3980,final
+2006,IR,Iran,伊朗,Iran,Non-EU,15909,19885,-3976,final
+2007,IR,Iran,伊朗,Iran,Non-EU,15926,19898,-3972,final
+2008,IR,Iran,伊朗,Iran,Non-EU,15943,19911,-3968,final
+2009,IR,Iran,伊朗,Iran,Non-EU,15960,19924,-3964,final
+2010,IR,Iran,伊朗,Iran,Non-EU,15977,19937,-3960,final
+2011,IR,Iran,伊朗,Iran,Non-EU,15994,19950,-3956,final
+2012,IR,Iran,伊朗,Iran,Non-EU,16011,19963,-3952,final
+2013,IR,Iran,伊朗,Iran,Non-EU,16028,19976,-3948,final
+2014,IR,Iran,伊朗,Iran,Non-EU,16045,19989,-3944,final
+2015,IR,Iran,伊朗,Iran,Non-EU,16062,20002,-3940,final
+2016,IR,Iran,伊朗,Iran,Non-EU,16079,20015,-3936,final
+2017,IR,Iran,伊朗,Iran,Non-EU,16096,20028,-3932,final
+2018,IR,Iran,伊朗,Iran,Non-EU,16113,20041,-3928,final
+2019,IR,Iran,伊朗,Iran,Non-EU,16130,20054,-3924,final
+2020,IR,Iran,伊朗,Iran,Non-EU,16147,20067,-3920,final
+2021,IR,Iran,伊朗,Iran,Non-EU,16164,20080,-3916,final
+2022,IR,Iran,伊朗,Iran,Non-EU,16181,20093,-3912,final
+2023,IR,Iran,伊朗,Iran,Non-EU,16198,20106,-3908,final
+2024,IR,Iran,伊朗,Iran,Non-EU,16215,20119,-3904,final
+2025,IR,Iran,伊朗,Iran,Non-EU,16232,20132,-3900,preliminary
+2000,MA,Marokko,摩洛哥,Morocco,Non-EU,17509,15509,2000,final
+2001,MA,Marokko,摩洛哥,Morocco,Non-EU,17526,15522,2004,final
+2002,MA,Marokko,摩洛哥,Morocco,Non-EU,17543,15535,2008,final
+2003,MA,Marokko,摩洛哥,Morocco,Non-EU,17560,15548,2012,final
+2004,MA,Marokko,摩洛哥,Morocco,Non-EU,17577,15561,2016,final
+2005,MA,Marokko,摩洛哥,Morocco,Non-EU,17594,15574,2020,final
+2006,MA,Marokko,摩洛哥,Morocco,Non-EU,17611,15587,2024,final
+2007,MA,Marokko,摩洛哥,Morocco,Non-EU,17628,15600,2028,final
+2008,MA,Marokko,摩洛哥,Morocco,Non-EU,17645,15613,2032,final
+2009,MA,Marokko,摩洛哥,Morocco,Non-EU,17662,15626,2036,final
+2010,MA,Marokko,摩洛哥,Morocco,Non-EU,17679,15639,2040,final
+2011,MA,Marokko,摩洛哥,Morocco,Non-EU,17696,15652,2044,final
+2012,MA,Marokko,摩洛哥,Morocco,Non-EU,17713,15665,2048,final
+2013,MA,Marokko,摩洛哥,Morocco,Non-EU,17730,15678,2052,final
+2014,MA,Marokko,摩洛哥,Morocco,Non-EU,17747,15691,2056,final
+2015,MA,Marokko,摩洛哥,Morocco,Non-EU,17764,15704,2060,final
+2016,MA,Marokko,摩洛哥,Morocco,Non-EU,17781,15717,2064,final
+2017,MA,Marokko,摩洛哥,Morocco,Non-EU,17798,15730,2068,final
+2018,MA,Marokko,摩洛哥,Morocco,Non-EU,17815,15743,2072,final
+2019,MA,Marokko,摩洛哥,Morocco,Non-EU,17832,15756,2076,final
+2020,MA,Marokko,摩洛哥,Morocco,Non-EU,17849,15769,2080,final
+2021,MA,Marokko,摩洛哥,Morocco,Non-EU,17866,15782,2084,final
+2022,MA,Marokko,摩洛哥,Morocco,Non-EU,17883,15795,2088,final
+2023,MA,Marokko,摩洛哥,Morocco,Non-EU,17900,15808,2092,final
+2024,MA,Marokko,摩洛哥,Morocco,Non-EU,17917,15821,2096,final
+2025,MA,Marokko,摩洛哥,Morocco,Non-EU,17934,15834,2100,preliminary

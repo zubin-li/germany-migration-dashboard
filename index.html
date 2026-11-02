@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>德国移民数据智能分析平台 | Germany Migration Intelligence Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Vendor Charting & Map Engine (100% Local Offline) -->
+  <script src="vendor/echarts.min.js"></script>
+  <script src="vendor/germany_map.js"></script>
+  
+  <!-- Bilingual Dictionary & Embedded Data Store -->
+  <script src="i18n.js"></script>
+  <script src="data.js"></script>
+</head>
+<body>
+
+  <!-- Top Sticky Navigation & Control Bar -->
+  <header class="header-container">
+    <div class="top-bar">
+      <div class="brand-area">
+        <span class="brand-badge" data-i18n="badge_destatis_intel">DESTATIS INTEL</span>
+        <div class="title-group">
+          <h1 data-i18n="app_title">德国移民数据智能分析平台</h1>
+          <p data-i18n="app_subtitle">基于德国联邦统计局（Destatis）官方数据库的可持续更新智能分析系统</p>
+        </div>
+      </div>
+
+      <div class="actions-area">
+        <!-- Language Switcher: 中文 | English -->
+        <div class="lang-toggle-btn" id="lang-toggle-container" title="Switch Language / 切换语言">
+          <span class="lang-option active" id="lang-opt-zh" data-i18n="lang_toggle_zh">中文</span>
+          <span class="lang-option" id="lang-opt-en" data-i18n="lang_toggle_en">English</span>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button class="theme-btn" id="theme-toggle-btn" title="Toggle Theme">☀️ Light</button>
+
+        <!-- Refresh Button -->
+        <button class="btn-primary" id="btn-trigger-refresh" data-i18n="btn_refresh">更新官方数据</button>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-bar">
+      <a href="#section-overview" class="nav-link active" data-i18n="nav_overview">移民总览</a>
+      <a href="#section-trends" class="nav-link" data-i18n="nav_trends">历史趋势</a>
+      <a href="#section-nationalities" class="nav-link" data-i18n="nav_nationalities">国籍深度分析</a>
+      <a href="#section-eu_comparison" class="nav-link" data-i18n="nav_eu_comparison">德国/欧盟/非欧盟</a>
+      <a href="#section-emigration" class="nav-link" data-i18n="nav_emigration">德国公民迁出</a>
+      <a href="#section-geography" class="nav-link" data-i18n="nav_geography">地理分布与地图</a>
+      <a href="#section-naturalization" class="nav-link" data-i18n="nav_naturalization">德国入籍统计</a>
+      <a href="#section-findings" class="nav-link" data-i18n="nav_findings">战略发现与洞察 (Deck)</a>
+      <a href="findings.html" target="_blank" class="nav-link" style="color:var(--primary); font-weight:800;" data-i18n="btn_pdf_mode">📄 独立战略研报 (PDF浏览) ↗</a>
+      <a href="#section-insights" class="nav-link" data-i18n="nav_insights">智能归因与事实核查</a>
+      <a href="#section-query" class="nav-link" data-i18n="nav_query">完整数据查询 (BI)</a>
+    </nav>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="dashboard-container">
+
+    <!-- Status & Authority Banner -->
+    <div class="status-banner">
+      <div class="status-badge-item">
+        <span class="status-indicator"></span>
+        <strong data-i18n="official_source_badge">官方数据源: Destatis GENESIS-Online (表 12711 / 12511)</strong>
+      </div>
+      <div class="status-badge-item">
+        <span data-i18n="data_as_of">最新统计区间</span>: 
+        <strong>2025 (初步年度) | 2026年1—8月 (初步月度)</strong>
+      </div>
+      <div class="status-badge-item">
+        <span data-i18n="system_refresh_time">系统刷新时间</span>: 
+        <strong id="meta-last-refresh">2026-11-01 08:15:32 (Europe/Berlin)</strong>
+      </div>
+    </div>
+
+    <!-- System Refresh Caveat Alert -->
+    <div class="alert-box info">
+      <div class="alert-title">
+        <span>ℹ️</span> <strong data-i18n="refresh_note">统计口径与时间范围说明：系统刷新时间 ≠ 官方统计所属时间。2025年为官方初步年度核算，2026年数据仅涵盖1—8月初步月度统计，切勿将8个月累计直接作为2026全年数据。</strong>
+      </div>
+    </div>
+
+    <!-- Top KPI Metric Cards Container (Balanced 2-Tier Architecture) -->
+    <div class="kpi-container">
+      <!-- Tier 1: Macro Annual Indicators (4 Cards) -->
+      <div>
+        <div class="kpi-tier-header" style="margin-bottom: 0.5rem;">
+          <div class="kpi-section-title">
+            <span>📊</span> <span data-i18n="kpi_macro_section_title">2025年度宏观全貌指标 (Destatis 初步核算)</span>
+          </div>
+        </div>
+        <div class="kpi-grid kpi-grid-macro">
+          <div class="kpi-card" title="点击查看 2025 总体移入">
+            <div class="kpi-title" data-i18n="kpi_latest_inflow">最新完整年度移入总量 (2025)</div>
+            <div class="kpi-value" id="kpi-inflow-val">1,483,518</div>
+            <div class="kpi-footer">
+              <span>Destatis 12711-0005</span>
+              <span class="badge badge-neutral" data-i18n="status_preliminary">初步核算</span>
+            </div>
+          </div>
+
+          <div class="kpi-card" title="点击查看 2025 总体迁出">
+            <div class="kpi-title" data-i18n="kpi_latest_outflow">最新完整年度迁出总量 (2025)</div>
+            <div class="kpi-value" id="kpi-outflow-val">1,248,518</div>
+            <div class="kpi-footer">
+              <span>Destatis 12711-0005</span>
+              <span class="badge badge-neutral" data-i18n="status_preliminary">初步核算</span>
+            </div>
+          </div>
+
+          <div class="kpi-card" title="点击查看 2025 净移民">
+            <div class="kpi-title" data-i18n="kpi_latest_net">最新完整年度净移民 (2025)</div>
+            <div class="kpi-value positive" id="kpi-net-val">+235,000</div>
+            <div class="kpi-footer">
+              <span data-i18n="kpi_net_sub">官方净差额</span>
+              <span class="badge badge-positive">-45% vs 2024</span>
+            </div>
+          </div>
+
+          <div class="kpi-card" style="border-left: 3px solid var(--accent);" title="2026年1-8月前瞻统计">
+            <div class="kpi-title" data-i18n="kpi_ytd_net_2026">2026年1—8月累计净移民</div>
+            <div class="kpi-value positive" id="kpi-ytd-val">+16,841</div>
+            <div class="kpi-footer">
+              <span>Destatis 12711-0011</span>
+              <span class="badge badge-warning" data-i18n="status_ytd">1—8月累计初步</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tier 2: 2026 YTD Demographic Cohort Breakdown (3 Cards) -->
+      <div>
+        <div class="kpi-tier-header" style="margin-bottom: 0.5rem;">
+          <div class="kpi-section-title">
+            <span>👥</span> <span data-i18n="kpi_cohorts_section_title">2026年1—8月前瞻人群净迁移拆解 (Destatis 月度统计)</span>
+          </div>
+        </div>
+        <div class="kpi-grid kpi-grid-cohorts">
+          <div class="kpi-card" title="快速筛选：德国公民" data-cohort="de">
+            <div class="kpi-title" data-i18n="kpi_de_net_2026">德国公民净迁移 (2026年1—8月)</div>
+            <div class="kpi-value negative" id="kpi-de-val">-91,773</div>
+            <div class="kpi-footer">
+              <span data-i18n="kpi_de_sub">德国本土公民</span>
+              <span class="badge badge-negative" data-i18n="badge_net_outflow">净流出</span>
+            </div>
+          </div>
+
+          <div class="kpi-card" title="快速筛选：欧盟公民" data-cohort="eu">
+            <div class="kpi-title" data-i18n="kpi_eu_net_2026">欧盟公民净迁移 (2026年1—8月)</div>
+            <div class="kpi-value negative" id="kpi-eu-val">-42,862</div>
+            <div class="kpi-footer">
+              <span data-i18n="kpi_eu_sub">欧盟成员国公民</span>
+              <span class="badge badge-negative" data-i18n="badge_net_outflow">净流出</span>
+            </div>
+          </div>
+
+          <div class="kpi-card" title="快速筛选：非欧盟公民" data-cohort="noneu">
+            <div class="kpi-title" data-i18n="kpi_noneu_net_2026">非欧盟第三国净迁移 (2026年1—8月)</div>
+            <div class="kpi-value positive" id="kpi-noneu-val">+151,473</div>
+            <div class="kpi-footer">
+              <span data-i18n="kpi_noneu_sub">非欧盟第三国公民</span>
+              <span class="badge badge-positive" data-i18n="badge_steady_inflow">持续净流入</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Global Interactive Filter Console -->
+    <section class="filter-card">
+      <div class="filter-header">
+        <h3 data-i18n="filter_title">全局交互筛选控制台</h3>
+        <button class="btn-secondary" id="btn-reset-filter" data-i18n="btn_reset_filter">重置所有筛选</button>
+      </div>
+
+      <div class="filter-controls">
+        <div class="filter-group">
+          <label class="filter-label" data-i18n="filter_time_range">时间范围</label>
+          <select class="filter-select" id="filter-time">
+            <option value="all" data-i18n="filter_all_years">全部年份 (2000-2026)</option>
+            <option value="last_20" data-i18n="filter_last_20_years">近20年 (2006-2025)</option>
+            <option value="last_10" data-i18n="filter_last_10_years">近10年 (2016-2025)</option>
+            <option value="last_5" data-i18n="filter_last_5_years">近5年 (2021-2025)</option>
+            <option value="post_covid" data-i18n="filter_post_covid">疫情及后疫情期 (2020-2026)</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label class="filter-label" data-i18n="filter_nationality">国籍快速选择</label>
+          <select class="filter-select" id="filter-nationality">
+            <option value="all" data-i18n="filter_all_nationalities">核心重点国籍对比组合</option>
+            <option value="CN">🇨🇳 中国 (China)</option>
+            <option value="IN">🇮🇳 印度 (India)</option>
+            <option value="VN">🇻🇳 越南 (Vietnam)</option>
+            <option value="DE">🇩🇪 德国 (Deutschland)</option>
+            <option value="PL">🇵🇱 波兰 (Poland)</option>
+            <option value="RO">🇷🇴 罗马尼亚 (Romania)</option>
+            <option value="BG">🇧🇬 保加利亚 (Bulgaria)</option>
+            <option value="TR">🇹🇷 土耳其 (Turkey)</option>
+            <option value="UA">🇺🇦 乌克兰 (Ukraine)</option>
+            <option value="SY">🇸🇾 叙利亚 (Syria)</option>
+            <option value="AF">🇦🇫 阿富汗 (Afghanistan)</option>
+            <option value="IT">🇮🇹 意大利 (Italy)</option>
+            <option value="FR">🇫🇷 法国 (France)</option>
+            <option value="ES">🇪🇸 西班牙 (Spain)</option>
+            <option value="US">🇺🇸 美国 (United States)</option>
+            <option value="RU">🇷🇺 俄罗斯 (Russia)</option>
+            <option value="CH">🇨🇭 瑞士 (Switzerland)</option>
+            <option value="AT">🇦🇹 奥地利 (Austria)</option>
+            <option value="GB">🇬🇧 英国 (United Kingdom)</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label class="filter-label" data-i18n="filter_category">群体分类</label>
+          <select class="filter-select" id="filter-category">
+            <option value="all" data-i18n="filter_all_categories">全部群体</option>
+            <option value="de" data-i18n="filter_category_de">德国公民 (Deutsche)</option>
+            <option value="eu" data-i18n="filter_category_eu">其他欧盟公民 (EU-Ausländer)</option>
+            <option value="noneu" data-i18n="filter_category_noneu">非欧盟第三国公民 (Drittstaaten)</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label class="filter-label" data-i18n="filter_flow_type">迁移方向</label>
+          <select class="filter-select" id="filter-flow">
+            <option value="all" data-i18n="filter_all_flows">移入、迁出与净值</option>
+            <option value="inflow" data-i18n="filter_inflow_only">仅移入 (Zuzüge)</option>
+            <option value="outflow" data-i18n="filter_outflow_only">仅迁出 (Fortzüge)</option>
+            <option value="net" data-i18n="filter_net_only">仅净移民 (Saldo)</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label class="filter-label" data-i18n="filter_state">联邦州筛选</label>
+          <select class="filter-select" id="filter-state">
+            <option value="all" data-i18n="filter_all_states">全德国 (Deutschland insgesamt)</option>
+            <option value="NW">北莱茵-威斯特法伦 (Nordrhein-Westfalen)</option>
+            <option value="BY">巴伐利亚 (Bayern)</option>
+            <option value="BW">巴登-符腾堡 (Baden-Württemberg)</option>
+            <option value="NI">下萨克森 (Niedersachsen)</option>
+            <option value="HE">黑森 (Hessen)</option>
+            <option value="BE">柏林 (Berlin)</option>
+            <option value="RP">莱茵兰-普法尔茨 (Rheinland-Pfalz)</option>
+            <option value="SN">萨克森 (Sachsen)</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 1: Overview -->
+    <section class="module-section" id="section-overview">
+      <div class="module-header">
+        <h2 class="module-title" data-i18n="mod1_title">模块一：德国移民总览</h2>
+        <p class="module-subtitle" data-i18n="mod1_subtitle">德国历年净移民变化趋势及中枢结构（支持拖拽时间轴缩放）</p>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-header">
+          <div class="chart-title" data-i18n="mod1_chart_title">德国历年净移民变化趋势 (Wanderungssaldo 2000-2026)</div>
+          <div class="chart-controls">
+            <button class="btn-toggle active" id="btn-view-annual" data-i18n="mod1_view_annual">年度视图 (2000-2026)</button>
+            <button class="btn-toggle" id="btn-view-monthly" data-i18n="mod1_view_monthly">月度视图 (2020-2026)</button>
+          </div>
+        </div>
+        <div class="echarts-box" id="chart-overview"></div>
+      </div>
+    </section>
+
+    <!-- MODULE 2: Historical Trends & Milestones -->
+    <section class="module-section" id="section-trends">
+      <div class="module-header">
+        <h2 class="module-title" data-i18n="mod2_title">模块二：德国历史移民趋势与重大历史节点</h2>
+        <p class="module-subtitle" data-i18n="mod2_subtitle">2000年至2026年长期迁入、迁出与净迁徙演变 (双折线 + 差额柱图)</p>
+      </div>
+
+      <div class="grid-2col">
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">移入 (Zuzüge) vs 迁出 (Fortzüge) 长期双折线与净差额柱状图</div>
+          </div>
+          <div class="echarts-box" id="chart-trends"></div>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title" data-i18n="mod2_milestones_title">重大历史与统计口径变革</div>
+          </div>
+          <div class="timeline-container">
+            <div class="timeline-item">
+              <span class="timeline-dot"></span>
+              <div><strong data-i18n="milestone_2004">2004年：欧盟东扩（波兰等国加入），启动新一轮中东欧迁入潮</strong></div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-dot"></span>
+              <div><strong data-i18n="milestone_2015">2015/2016年：难民危机爆发，年净移民创下+113.8万人历史峰值</strong></div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-dot" style="background:var(--warning);"></span>
+              <div><strong data-i18n="milestone_2016">2016年：统计口径调整（Destatis人口登记制度优化，历史数据可比性存在微调）</strong></div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-dot"></span>
+              <div><strong data-i18n="milestone_2020">2020年：新冠疫情全球爆发迁移受限，同年英国正式脱欧（分类转为非欧盟）</strong></div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-dot" style="background:var(--positive);"></span>
+              <div><strong data-i18n="milestone_2022">2022年：乌克兰危机爆发，单年净移民突破+151.6万人，创二战后最高纪录</strong></div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-dot"></span>
+              <div><strong data-i18n="milestone_2024">2024年：德国实施新国籍法改革（允许双重国籍并缩短居住年限），入籍量激增</strong></div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-dot" style="background:var(--negative);"></span>
+              <div><strong data-i18n="milestone_2026">2026年（1—8月）：夏季净移民由正转负，德国与欧盟公民双向净流出加速</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 3: Granular Nationality Analysis -->
+    <section class="module-section" id="section-nationalities">
+      <div class="module-header">
+        <h2 class="module-title" data-i18n="mod3_title">模块三：重点国籍深入对比分析</h2>
+        <p class="module-subtitle" data-i18n="mod3_subtitle">多国籍任意对比、排名、正负值分布及历史演进（支持快捷预设标签与搜索）</p>
+      </div>
+
+      <!-- Presets bar -->
+      <div class="presets-bar">
+        <span style="font-size:0.8rem; font-weight:700; color:var(--text-muted);">快速对比预设:</span>
+        <button class="preset-chip active" data-preset="asia" data-i18n="preset_asia">🌏 亚太重点 (中/印/越)</button>
+        <button class="preset-chip" data-preset="refugee" data-i18n="preset_refugee">🕊️ 避难重点 (乌/叙/阿)</button>
+        <button class="preset-chip" data-preset="eu" data-i18n="preset_eu">🇪🇺 欧盟主要 (波/罗/保/意)</button>
+        <button class="preset-chip" data-preset="western" data-i18n="preset_western">💼 欧美发达 (美/法/西/奥/瑞/英)</button>
+      </div>
+
+      <div class="grid-2col">
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title" data-i18n="mod3_compare_chart_title">选中国籍历年净移民演变对比</div>
+          </div>
+          <div class="echarts-box" id="chart-nat-compare"></div>
+        </div>
+
+        <div class="table-card">
+          <div style="padding: 1rem 1.25rem; border-bottom: 1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+            <strong data-i18n="mod3_ranking_title">2025年重点国籍净移民排名与流向</strong>
+            <div class="chart-controls">
+              <button class="btn-toggle active" data-ranking-metric="net_pos" data-i18n="btn_ranking_net_pos">净迁入排行</button>
+              <button class="btn-toggle" data-ranking-metric="net_neg" data-i18n="btn_ranking_net_neg">净迁出排行</button>
+              <button class="btn-toggle" data-ranking-metric="inflow" data-i18n="btn_ranking_inflow">总移入排行</button>
+            </div>
+          </div>
+          <div class="table-responsive" style="max-height: 420px; overflow-y: auto;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th data-i18n="col_country">国籍 / 国家</th>
+                  <th data-i18n="col_category">群体大类</th>
+                  <th data-i18n="col_inflow">移入德国</th>
+                  <th data-i18n="col_outflow">迁出德国</th>
+                  <th data-i18n="col_net">净移民</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-nat-ranking">
+                <!-- Injected via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 4: EU vs Non-EU Tripartite Comparison -->
+    <section class="module-section" id="section-eu_comparison">
+      <div class="module-header">
+        <h2 class="module-title" data-i18n="mod4_title">模块四：德国、欧盟与非欧盟移民互斥三元比较</h2>
+        <p class="module-subtitle" data-i18n="mod4_subtitle">德国公民、其他欧盟公民与非欧盟第三国公民的结构性分化</p>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-header">
+          <div class="chart-title" data-i18n="mod4_chart_title">三大互斥群体历年净移民走势 (2015-2026)</div>
+        </div>
+        <div class="echarts-box" id="chart-eu-compare"></div>
+      </div>
+
+      <div class="alert-box info">
+        <div class="alert-title">
+          <span>📌</span> <strong data-i18n="mod4_note_title">关键统计学与口径说明：</strong>
+        </div>
+        <p data-i18n="mod4_note_brexit">1. 英国脱欧口径：2020年1月31日前英国计入欧盟历史成员国，2020年2月1日后根据现行口径归入非欧盟（Drittstaaten）。</p>
+        <p data-i18n="mod4_note_exclusive">2. 严格互斥原则：本平台'欧盟公民'明确扣除德国公民本身（EU-Ausländer），杜绝双重计算。</p>
+      </div>
+    </section>
+
+    <!-- MODULE 5: German Citizen Emigration -->
+    <section class="module-section" id="section-emigration">
+      <div class="module-header">
+        <h2 class="module-title" data-i18n="mod5_title">模块五：德国公民迁出（Auswanderung）专题分析</h2>
+        <p class="module-subtitle" data-i18n="mod5_subtitle">德国本国国籍持有者的国际外流、主要目的地与人口学特征</p>
+      </div>
+
+      <div class="grid-2col">
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title" data-i18n="mod5_dest_title">德国公民主要迁往目的国排名 (Top Destinations 2025)</div>
+          </div>
+          <div class="echarts-box" id="chart-german-emig"></div>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title" data-i18n="mod5_age_title">迁出德国公民年龄分布</div>
+          </div>
+          <div class="echarts-box" id="chart-german-age"></div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: 0.75rem;">
+            <span>性别分布 (2025): <strong>男性 58%</strong> | <strong>女性 42%</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert-box">
+        <div class="alert-title">
+          <span>⚠️</span> <strong data-i18n="mod5_caveat_title">数据局限性与科学严谨声明：</strong>
+        </div>
+        <p data-i18n="mod5_caveat_content">德国联邦统计局人口迁移统计依托居民户籍注销（Abmeldung）登记，并不包含学历等级、职业资格、企业岗位或个人纳税收入等信息。社会舆论中常将德国公民净流出直接解读为'高学历技术人才流失（Brain Drain）'，虽然部分抽样研究支持这一倾向，但该结论无法直接从官方户籍迁移登记中证实。本平台恪守统计事实，严谨区分事实与推论。</p>
+      </div>
+    </section>
+
+    <!-- MODULE 6: Geography & Bundesländer with Interactive Map -->
+    <section class="module-section" id="section-geography">
+      <div class="module-header">
+        <h2 class="module-title" data-i18n="mod6_title">模块六：德国联邦州与移民地理分布</h2>
+        <p class="module-subtitle" data-i18n="mod6_subtitle">16个联邦州国际迁入、迁出与净移民格局 (包含交互式德国全景地图)</p>
+      </div>
+
+      <div class="grid-2col">
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title" data-i18n="mod6_map_title">德国各联邦州国际净迁徙地理热力图 (2025)</div>
+          </div>
+          <div class="echarts-box" id="chart-states-map" style="height: 480px;"></div>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title" data-i18n="mod6_states_chart_title">各联邦州国际净移民横向排名 (Wanderungssaldo Ausland)</div>
+          </div>
+          <div class="echarts-box" id="chart-states-bar" style="height: 480px;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 7: Naturalization Statistics -->
+    <section class="module-section" id="section-naturalization">
+      <div class="module-header">
+        <h2 class="module-title" data-i18n="mod7_title">模块七：德国入籍统计分析 (Einbürgerungsstatistik)</h2>
+        <p class="module-subtitle" data-i18n="mod7_subtitle">依据官方表格 12511-0001 / 12511-0002 构建的入籍规模与原国籍分析</p>
+      </div>
+
+      <div class="grid-2col">
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title" data-i18n="mod7_chart_title">2000年至2025年德国历年入籍总人数变动 (标明2024新国籍法改革红利)</div>
+          </div>
+          <div class="echarts-box" id="chart-naturalization"></div>
+        </div>
+
+        <div class="table-card">
+          <div style="padding: 1rem 1.25rem; border-bottom: 1px solid var(--border-color);">
+            <strong data-i18n="mod7_origin_title">2025年入籍申请者原国籍构成 (Top Origins 12511-0002)</strong>
+          </div>
+          <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>原国籍</th>
+                  <th>入籍人数</th>
+                  <th>男性</th>
+                  <th>女性</th>
+                  <th>女性占比</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-natz-ranking">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert-box info">
+        <div class="alert-title">
+          <span>💡</span> <strong data-i18n="mod7_clarification_title">核心概念辨析：入籍 ≠ 新增移民</strong>
+        </div>
+        <p data-i18n="mod7_clarification_content">入籍（Einbürgerung）指长期合法居留德国的外国公民通过法律程序正式获得德国国籍，属于法律身份的变更，发生入籍时该居民早已居住在德国，绝非当年新迁入的移民。中国公民迁出德国不代表放弃中国国籍，德国公民外迁也不丧失德国国籍。迁移统计记录的是跨境居住变动事件，入籍统计记录的是国籍身份变更事件。</p>
+      </div>
+    </section>
+
+    <!-- MODULE: EXECUTIVE STRATEGIC FINDINGS (CONSULTING STORYLINE DECK) -->
+    <section class="module-section" id="section-findings">
+      <div class="module-header">
+        <h2 class="module-title" data-i18n="findings_title">战略发现：2000—2026年德国人口迁移智库咨询洞察 (Executive Findings)</h2>
+        <p class="module-subtitle" data-i18n="findings_subtitle">采用麦肯锡/BCG Consulting Top-Down 框架：全局宏观演进 → 结构性断裂 → 重点国别生态 → 制度改革红利 → 商业与战略启示</p>
+      </div>
+
+      <!-- Slide Deck Controls -->
+      <div class="deck-controls-bar" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem;">
+        <div class="deck-nav-pills" style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+          <a href="#slide-card-1" class="btn-toggle active" style="text-decoration:none;">01 宏观范式</a>
+          <a href="#slide-card-2" class="btn-toggle" style="text-decoration:none;">02 结构撕裂</a>
+          <a href="#slide-card-3" class="btn-toggle" style="text-decoration:none;">03 国籍生态</a>
+          <a href="#slide-card-4" class="btn-toggle" style="text-decoration:none;">04 制度入籍</a>
+          <a href="#slide-card-5" class="btn-toggle" style="text-decoration:none;">05 商业启示</a>
+        </div>
+
+        <div class="deck-action-buttons" style="display:flex; gap:0.6rem; align-items:center;">
+          <a href="findings.html" target="_blank" class="btn-primary" style="text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem; padding:0.45rem 1rem;" data-i18n="btn_pdf_mode">
+            📄 独立战略研报 (PDF浏览) ↗
+          </a>
+          <button class="btn-secondary" onclick="window.print()" data-i18n="btn_print_pdf" style="padding:0.45rem 0.9rem;">
+            🖨️ 导出为 PDF / 打印
+          </button>
+        </div>
+      </div>
+
+      <!-- Slides Container (Continuous Vertical Presentation Flow - PDF Style) -->
+      <div id="deck-slides-container">
+
+        <!-- SLIDE 1 -->
+        <article class="deck-slide" id="slide-card-1">
+          <div class="slide-header">
+            <div class="slide-meta-row">
+              <span class="slide-tag" data-i18n="slide1_tag">1. 宏观范式剧变 (Macro Paradigm)</span>
+              <span class="slide-page-num">SLIDE 01 / 05</span>
+            </div>
+            <h3 class="slide-title" data-i18n="slide1_title">26年沧海桑田：从人口磁石到转折临界点</h3>
+            <div class="slide-action-banner" data-i18n="slide1_action">
+              德国人口迁徙经历了"常态微增 → 两次极端人道避难峰值 → 结构性急剧收缩"三阶段演进；2026年夏季首现单月净流出，标志着后冷战以来人口红利进入临界调整期。
+            </div>
+          </div>
+          <div class="slide-body">
+            <div class="slide-left-content">
+              <div class="slide-bullet" data-i18n="slide1_p1">
+                • <strong>历史演进三阶段</strong>：2000-2014年净移民维持在年均+15万至+40万的温和区间；2015年叙利亚危机（净移民+113.8万）与2022年乌克兰危机（二战后最高峰+151.6万）造成两次历史级脉冲；2023年后迅速断崖式回落（2025年回落至+23.5万）。
+              </div>
+              <div class="slide-bullet" data-i18n="slide1_p2">
+                • <strong>2026年拐点信号</strong>：2026年1—8月累计净移民仅录得+16,841人，6-8月连续三个月净流出（7月-1.54万、8月-6,965人）。
+              </div>
+              <div class="slide-root-cause-box">
+                <div class="slide-root-cause-title" data-i18n="slide1_root_cause_title">⚠️ 【底层驱动原因 (Root Causes)】</div>
+                <p data-i18n="slide1_root_cause">
+                  地缘危机脉冲式避难是推高历史峰值的唯一主因，而非德国经济内生引力爆发；随着周边避难压力消退与边境管控趋严，入境人次断崖回落97.6%，彻底暴露出德国在缺乏难民脉冲时常态引才吸纳力的乏力。
+                </p>
+              </div>
+            </div>
+            <div class="slide-right-visual">
+              <div class="slide-echarts-box" id="chart-slide1"></div>
+            </div>
+          </div>
+          <div class="slide-footer-bar">
+            <span>数据源：Statistisches Bundesamt 12711-0005 & 12711-0011</span>
+            <span>德国移民数据智能分析平台 · 战略咨询简报</span>
+          </div>
+        </article>
+
+        <!-- SLIDE 2 -->
+        <article class="deck-slide" id="slide-card-2">
+          <div class="slide-header">
+            <div class="slide-meta-row">
+              <span class="slide-tag" data-i18n="slide2_tag">2. 结构性撕裂 (Structural Divergence)</span>
+              <span class="slide-page-num">SLIDE 02 / 05</span>
+            </div>
+            <h3 class="slide-title" data-i18n="slide2_title">冰与火之歌：德国公民外流加速 vs 欧盟红利终结 vs 第三国单核支撑</h3>
+            <div class="slide-action-banner" data-i18n="slide2_action">
+              人口基本盘出现"三层断裂"：德国本土公民连续20年结构性失血（2025年净流出9.67万人创新高）；欧盟自由流动红利消耗殆尽；全德净人口增长已几乎100%依赖非欧盟第三国。
+            </div>
+          </div>
+          <div class="slide-body">
+            <div class="slide-left-content">
+              <div class="slide-bullet" data-i18n="slide2_p1">
+                • <strong>德国公民净流出加速</strong>：2024年净流出8.14万，2025年升至9.67万（迁出28.86万人创历史最高），2026年1-8月累计净流出达-91,773人。其中25-39岁核心劳动力占46%，首选瑞士（2.27万）与奥地利（1.35万）。
+              </div>
+              <div class="slide-bullet" data-i18n="slide2_p2">
+                • <strong>欧盟成员国红利见顶</strong>：波兰、罗马尼亚等中东欧国家随着本土经济崛起，来德务工意愿下降并伴随大规模回流，欧盟公民净迁移在2024-2026年由正转负（2026前8月为-42,862人）。
+              </div>
+              <div class="slide-root-cause-box">
+                <div class="slide-root-cause-title" data-i18n="slide2_root_cause_title">⚠️ 【底层驱动原因 (Root Causes)】</div>
+                <p data-i18n="slide2_root_cause">
+                  1) 德奥瑞薪酬剪刀差与税负痛点：瑞士平均薪资高出德国30%-50%，且德国个税与社保边际费率高企；2) 欧盟新老成员国经济收敛效应：中东欧国家人均GDP与生活质量大幅改善，传统劳工输出红利彻底终结。
+                </p>
+              </div>
+            </div>
+            <div class="slide-right-visual">
+              <div class="slide-echarts-box" id="chart-slide2"></div>
+            </div>
+          </div>
+          <div class="slide-footer-bar">
+            <span>数据源：Statistisches Bundesamt 12711-0005, 12711-0011 & 12711-0008</span>
+            <span>德国移民数据智能分析平台 · 战略咨询简报</span>
+          </div>
+        </article>
+
+        <!-- SLIDE 3 -->
+        <article class="deck-slide" id="slide-card-3">
+          <div class="slide-header">
+            <div class="slide-meta-row">
+              <span class="slide-tag" data-i18n="slide3_tag">3. 微观国别生态 (Micro Divergence)</span>
+              <span class="slide-page-num">SLIDE 03 / 05</span>
+            </div>
+            <h3 class="slide-title" data-i18n="slide3_title">两极分化的微观生态：亚洲技术蓝卡引擎 vs 难民潮断崖退潮</h3>
+            <div class="slide-action-banner" data-i18n="slide3_action">
+              国别引流发生质变：印度已锁定德国IT与STEM第一大技术引擎；越南依托双边职业教育（Azubi/护士）异军突起；中国留学回流温和再平衡；而难民来源国出现断崖式收缩。
+            </div>
+          </div>
+          <div class="slide-body">
+            <div class="slide-left-content">
+              <div class="slide-bullet" data-i18n="slide3_p1">
+                • <strong>印度（高技能与STEM）</strong>：2024年移入近6万人，年均净移民稳定在+3.5万至+4万人，成为德国解决工程师短缺的支柱力量。
+              </div>
+              <div class="slide-bullet" data-i18n="slide3_p2">
+                • <strong>越南（双边职业培训）</strong>：年移入突破2.4万人（净移入+1.88万），在德老年护理、餐饮与技工领域快速替代传统东欧劳动力。
+              </div>
+              <div class="slide-bullet" data-i18n="slide3_p3">
+                • <strong>中国（留学生与科研流动）</strong>：移入约2.2万、迁出约1.9万，净值微幅平衡，留学与研发合作成为核心压舱石。
+              </div>
+              <div class="slide-bullet" data-i18n="slide3_p4">
+                • <strong>乌克兰与叙利亚（避难消退）</strong>：乌克兰年净移民从2022年+96万人暴跌至2025年+8.9万人，成为全德净移民下行的决定性因素。
+              </div>
+              <div class="slide-root-cause-box">
+                <div class="slide-root-cause-title" data-i18n="slide3_root_cause_title">⚠️ 【底层驱动原因 (Root Causes)】</div>
+                <p data-i18n="slide3_root_cause">
+                  《新技术移民法》（FEG）蓝卡降门槛与"机会卡"有效打通了印、越两国专业技术通道；而边境管控与人道主义通道收窄直接遏制了中东避难流向。
+                </p>
+              </div>
+            </div>
+            <div class="slide-right-visual">
+              <div class="slide-echarts-box" id="chart-slide3"></div>
+            </div>
+          </div>
+          <div class="slide-footer-bar">
+            <span>数据源：Statistisches Bundesamt 12711-0007</span>
+            <span>德国移民数据智能分析平台 · 战略咨询简报</span>
+          </div>
+        </article>
+
+        <!-- SLIDE 4 -->
+        <article class="deck-slide" id="slide-card-4">
+          <div class="slide-header">
+            <div class="slide-meta-row">
+              <span class="slide-tag" data-i18n="slide4_tag">4. 制度入籍悖论 (Institutional Dynamics)</span>
+              <span class="slide-page-num">SLIDE 04 / 05</span>
+            </div>
+            <h3 class="slide-title" data-i18n="slide4_title">国籍法世纪改革：入籍暴增下的"存量制度化转化"</h3>
+            <div class="slide-action-banner" data-i18n="slide4_action">
+              2024年新《国籍法》（StAG）允许双重国籍并缩短居住年限，引爆2024-2025年入籍申请井喷（2025年达33.3万人历史天花板）。必须建立科学认知：入籍是存量外国人的身份归化，绝非新增入境移民。
+            </div>
+          </div>
+          <div class="slide-body">
+            <div class="slide-left-content">
+              <div class="slide-bullet" data-i18n="slide4_p1">
+                • <strong>入籍规模翻倍</strong>：2000-2021年德国年入籍维持在10万-13万人；2024年跃升至29.2万，2025年冲上33.3万人（同比+14.1%）。
+              </div>
+              <div class="slide-bullet" data-i18n="slide4_p2">
+                • <strong>原国籍构成</strong>：叙利亚（2025年6.58万人，主要是2015/16年难民满居留期归化）、土耳其（3.42万人，受允许保留双重国籍极大激发）、伊拉克与乌克兰。
+              </div>
+              <div class="slide-root-cause-box">
+                <div class="slide-root-cause-title" data-i18n="slide4_root_cause_title">⚠️ 【底层驱动原因 (Root Causes)】</div>
+                <p data-i18n="slide4_root_cause">
+                  制度堵点被彻底打破：历史上一代土耳其劳工因不愿放弃原籍而拒绝入籍，新法允许"双重国籍"释放了数十年的存量归化需求；同时2015年难民一代在德国完成语言与就业考核，达到入籍年限要求。
+                </p>
+              </div>
+            </div>
+            <div class="slide-right-visual">
+              <div class="slide-echarts-box" id="chart-slide4"></div>
+            </div>
+          </div>
+          <div class="slide-footer-bar">
+            <span>数据源：Statistisches Bundesamt 12511-0001 & 12511-0002</span>
+            <span>德国移民数据智能分析平台 · 战略咨询简报</span>
+          </div>
+        </article>
+
+        <!-- SLIDE 5 -->
+        <article class="deck-slide" id="slide-card-5">
+          <div class="slide-header">
+            <div class="slide-meta-row">
+              <span class="slide-tag" data-i18n="slide5_tag">5. 商业与战略启示 (Strategic Implications)</span>
+              <span class="slide-page-num">SLIDE 05 / 05</span>
+            </div>
+            <h3 class="slide-title" data-i18n="slide5_title">人口重压下的德国未来：劳动力短缺与企业战略应对之道</h3>
+            <div class="slide-action-banner" data-i18n="slide5_action">
+              在"婴儿潮一代（Babyboomer）退休"与"净移民急剧收窄"双重挤压下，德国每年面临超40万劳动力结构性缺口。企业与跨国机构必须彻底重塑人力供应链战略。
+            </div>
+          </div>
+          <div class="slide-body">
+            <div class="slide-left-content">
+              <div class="slide-bullet" data-i18n="slide5_p1">
+                • <strong>战略启示一【全球人才直聘渠道重构】</strong>：不能再依赖欧盟内部自然流动（已转为净流出），必须建立直连印度、越南、西巴尔干的定向人才直聘与双元制职业培训基地；
+              </div>
+              <div class="slide-bullet" data-i18n="slide5_p2">
+                • <strong>战略启示二【企业全英文工作环境转型】</strong>：破除严苛的德语准入门槛，设立英语友好的技术研发团队，否则在与瑞士、荷兰争夺高技能人才中将持续处于劣势；
+              </div>
+              <div class="slide-bullet" data-i18n="slide5_p3">
+                • <strong>战略启示三【本土高技术人才留存防线】</strong>：面对每年数万骨干工程师外流瑞士与奥地利，企业须通过灵活远程办公、股权激励与税务筹划重塑雇主品牌；
+              </div>
+              <div class="slide-bullet" data-i18n="slide5_p4">
+                • <strong>战略启示四【产业区位重布策略】</strong>：鉴于柏林、慕尼黑住房与生活成本极端拥挤，外向型企业应加速向北威州莱茵鲁尔区、萨克森（德累斯顿半导体走廊）等具备生活成本优势的次中心城市布局。
+              </div>
+              <div class="slide-root-cause-box">
+                <div class="slide-root-cause-title" data-i18n="slide5_root_cause_title">💡 【咨询总结 (Executive Summary)】</div>
+                <p data-i18n="slide5_root_cause">
+                  德国已从"自然享有欧洲劳动力红利"的舒适区，跌入"必须全球主动竞争高技能人才"的严酷战场。移民数据不再仅仅是人口报表，而是直接决定德国未来十年工业制造竞争力与主权财政养老金平衡的生死线。
+                </p>
+              </div>
+            </div>
+            <div class="slide-right-visual">
+              <div class="slide-echarts-box" id="chart-slide5"></div>
+            </div>
+          </div>
+          <div class="slide-footer-bar">
+            <span>战略模型出处：德国联邦劳工局 (BA) 缺口测算与麦肯锡宏观劳动力模型整合</span>
+            <span>德国移民数据智能分析平台 · 战略咨询简报</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SMART INSIGHTS & FACT-CHECKING REPORT -->
+    <section class="module-section" id="section-insights">
+      <div class="module-header">
+        <h2 class="module-title" data-i18n="insights_title">智能分析洞察与官方数据事实核查</h2>
+        <p class="module-subtitle" data-i18n="insights_subtitle">基于统计恒等式与官方原始底账的归因分析及网络传播数据验证</p>
+      </div>
+
+      <!-- Dynamic Statistical Decomposition Calculator -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <div class="chart-title" data-i18n="decomp_title">净移民变动之动态统计恒等式归因计算器</div>
+        </div>
+        
+        <div class="calc-container">
+          <div class="calc-inputs">
+            <div class="filter-group">
+              <label class="filter-label" data-i18n="decomp_base_year">基准年份 (Base Year)</label>
+              <select class="filter-select" id="calc-base-year">
+                <option value="2015">2015 (叙利亚难民峰值)</option>
+                <option value="2019">2019 (疫情前基准)</option>
+                <option value="2022" selected>2022 (乌克兰战事历史最高)</option>
+                <option value="2023">2023 (高位回落期)</option>
+                <option value="2024">2024 (近三年对比)</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label class="filter-label" data-i18n="decomp_comp_year">对比年份 (Target Year)</label>
+              <select class="filter-select" id="calc-comp-year">
+                <option value="2023">2023 (年度核算)</option>
+                <option value="2024">2024 (最新确定)</option>
+                <option value="2025" selected>2025 (初步年度核算)</option>
+              </select>
+            </div>
+
+            <button class="btn-primary" id="btn-calc-decomp" data-i18n="decomp_btn_calc">执行恒等式分解计算</button>
+          </div>
+
+          <div class="calc-stats-grid">
+            <div class="calc-stat-pill">
+              <div class="kpi-title">净移民总变动 (ΔSaldo)</div>
+              <div class="kpi-value negative" id="decomp-val-net">-1,280,755 人</div>
+            </div>
+            <div class="calc-stat-pill">
+              <div class="kpi-title">入境减少贡献 (ΔZuzüge)</div>
+              <div style="font-size:1.15rem; font-weight:800; color:#38bdf8;" id="decomp-val-in">-1,250,020 人 (97.6% 贡献率)</div>
+            </div>
+            <div class="calc-stat-pill">
+              <div class="kpi-title">出境增加贡献 (ΔFortzüge)</div>
+              <div style="font-size:1.15rem; font-weight:800; color:#f59e0b;" id="decomp-val-out">+30,735 人 (2.4% 贡献率)</div>
+            </div>
+          </div>
+
+          <div class="echarts-box" id="chart-decomp-waterfall" style="height: 280px;"></div>
+        </div>
+      </div>
+
+      <!-- Independent Fact-Checking Table (Viral Claim Verification) -->
+      <div class="table-card">
+        <div style="padding: 1.25rem; border-bottom: 1px solid var(--border-color); background: var(--bg-card-hover); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+          <div>
+            <strong style="font-size: 1rem;" data-i18n="verification_title">针对网络流传'2026年1—8月德国移民数据'之官方独立核实报告</strong>
+            <p style="font-size:0.8rem; color:var(--text-muted); margin-top:0.25rem;">
+              依据德国联邦统计局 Destatis GENESIS-Online 官方数据库（表 12711-0011 及 12711-0007）逐项严格比对
+            </p>
+          </div>
+          <div class="chart-controls">
+            <button class="btn-toggle active" data-verify-filter="all" data-i18n="verify_filter_all">全部指标</button>
+            <button class="btn-toggle" data-verify-filter="verified" data-i18n="verify_filter_verified">已验证</button>
+            <button class="btn-toggle" data-verify-filter="provisional" data-i18n="verify_filter_provisional">需审慎核验</button>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th data-i18n="col_claim_metric">网络声称指标</th>
+                <th data-i18n="col_claim_val">图片声称数值</th>
+                <th data-i18n="col_verify_status">官方核实结论</th>
+                <th data-i18n="col_official_val">官方真实数值</th>
+                <th data-i18n="col_verify_evidence">核实依据与官方出处说明</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-verification">
+              <!-- Injected via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 8: BI Comprehensive Data Query -->
+    <section class="module-section" id="section-query">
+      <div class="module-header">
+        <h2 class="module-title" data-i18n="mod8_title">模块八：专业 BI 级完整数据多维查询</h2>
+        <p class="module-subtitle" data-i18n="mod8_subtitle">支持全局即时检索、多列排序、分页浏览及全量 CSV / JSON 导出</p>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-header">
+          <div style="display:flex; gap:0.75rem; align-items:center; flex:1; max-width:400px;">
+            <input type="text" id="bi-search-input" class="filter-input" style="width:100%;" placeholder="输入关键词检索年份或口径..." data-i18n-placeholder="search_query_placeholder">
+          </div>
+          <div class="chart-controls">
+            <button class="btn-secondary" id="btn-download-csv" data-i18n="btn_download_csv">下载 CSV 表格</button>
+            <button class="btn-primary" id="btn-download-json" data-i18n="btn_download_json">下载 JSON 原始数据</button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th data-sort="year_num" data-i18n="col_year_period">时间 / 统计区间 ⇕</th>
+                <th data-sort="zuzuege" data-i18n="col_inflow">移入德国 (Zuzüge) ⇕</th>
+                <th data-sort="fortzuege" data-i18n="col_outflow">迁出德国 (Fortzüge) ⇕</th>
+                <th data-sort="saldo" data-i18n="col_net">净移民 (Saldo) ⇕</th>
+                <th data-sort="de_saldo">德国公民净值 ⇕</th>
+                <th data-sort="eu_saldo">欧盟公民净值 ⇕</th>
+                <th data-sort="noneu_saldo">非欧盟公民净值 ⇕</th>
+                <th data-sort="status" data-i18n="col_status">统计状态 ⇕</th>
+                <th>官方表代码</th>
+              </tr>
+            </thead>
+            <tbody id="tbody-bi-query">
+              <!-- Injected via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination Bar -->
+        <div class="pagination-bar">
+          <span id="page-info-text">显示记录 1 - 15 / 27</span>
+          <div class="page-controls">
+            <button class="page-btn" id="btn-page-prev" data-i18n="page_prev">上一页</button>
+            <button class="page-btn" id="btn-page-next" data-i18n="page_next">下一页</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <footer style="border-top: 1px solid var(--border-color); background: var(--bg-card); padding: 1.5rem; margin-top: 2rem; text-align: center; font-size: 0.825rem; color: var(--text-muted);">
+    <div style="max-width: 1440px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.5rem;">
+      <p data-i18n="footer_text">德国移民数据智能分析平台 | 官方数据源：Statistisches Bundesamt (Destatis) GENESIS-Online | 自动化更新周期：每周一 08:00 (Europe/Berlin)</p>
+      <p style="font-size:0.75rem;">Official Portal: <a href="https://genesis.destatis.de/" target="_blank" style="color:var(--primary); text-decoration:none;">https://genesis.destatis.de/</a> | Swagger API: <a href="https://genesis.destatis.de/genesisWS/swagger-ui/index.html" target="_blank" style="color:var(--primary); text-decoration:none;">Destatis REST 2020</a></p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

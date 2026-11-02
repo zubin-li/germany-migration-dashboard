@@ -1,0 +1,157 @@
+{
+  "year": 2025,
+  "table_code": "12711-0023",
+  "states": [
+    {
+      "state_code": "BW",
+      "name_de": "Baden-Württemberg",
+      "name_zh": "巴登-符腾堡",
+      "name_en": "Baden-Württemberg",
+      "zuzuege_2025": 212190,
+      "fortzuege_2025": 190533,
+      "saldo_2025": 21657
+    },
+    {
+      "state_code": "BY",
+      "name_de": "Bayern",
+      "name_zh": "巴伐利亚",
+      "name_en": "Bavaria",
+      "zuzuege_2025": 254779,
+      "fortzuege_2025": 232180,
+      "saldo_2025": 22599
+    },
+    {
+      "state_code": "BE",
+      "name_de": "Berlin",
+      "name_zh": "柏林",
+      "name_en": "Berlin",
+      "zuzuege_2025": 111064,
+      "fortzuege_2025": 78883,
+      "saldo_2025": 32181
+    },
+    {
+      "state_code": "BB",
+      "name_de": "Brandenburg",
+      "name_zh": "勃兰登堡",
+      "name_en": "Brandenburg",
+      "zuzuege_2025": 30531,
+      "fortzuege_2025": 22952,
+      "saldo_2025": 7579
+    },
+    {
+      "state_code": "HB",
+      "name_de": "Bremen",
+      "name_zh": "不来梅",
+      "name_en": "Bremen",
+      "zuzuege_2025": 15237,
+      "fortzuege_2025": 9091,
+      "saldo_2025": 6146
+    },
+    {
+      "state_code": "HH",
+      "name_de": "Hamburg",
+      "name_zh": "汉堡",
+      "name_en": "Hamburg",
+      "zuzuege_2025": 40093,
+      "fortzuege_2025": 29667,
+      "saldo_2025": 10426
+    },
+    {
+      "state_code": "HE",
+      "name_de": "Hessen",
+      "name_zh": "黑森",
+      "name_en": "Hesse",
+      "zuzuege_2025": 121947,
+      "fortzuege_2025": 100977,
+      "saldo_2025": 20970
+    },
+    {
+      "state_code": "MV",
+      "name_de": "Mecklenburg-Vorpommern",
+      "name_zh": "梅克伦堡-前波美拉尼亚",
+      "name_en": "Mecklenburg-Western Pomerania",
+      "zuzuege_2025": 20282,
+      "fortzuege_2025": 15277,
+      "saldo_2025": 5005
+    },
+    {
+      "state_code": "NI",
+      "name_de": "Niedersachsen",
+      "name_zh": "下萨克森",
+      "name_en": "Lower Saxony",
+      "zuzuege_2025": 136920,
+      "fortzuege_2025": 106897,
+      "saldo_2025": 30023
+    },
+    {
+      "state_code": "NW",
+      "name_de": "Nordrhein-Westfalen",
+      "name_zh": "北莱茵-威斯特法伦",
+      "name_en": "North Rhine-Westphalia",
+      "zuzuege_2025": 291143,
+      "fortzuege_2025": 263882,
+      "saldo_2025": 27261
+    },
+    {
+      "state_code": "RP",
+      "name_de": "Rheinland-Pfalz",
+      "name_zh": "莱茵兰-普法尔茨",
+      "name_en": "Rhineland-Palatinate",
+      "zuzuege_2025": 72282,
+      "fortzuege_2025": 61459,
+      "saldo_2025": 10823
+    },
+    {
+      "state_code": "SL",
+      "name_de": "Saarland",
+      "name_zh": "萨尔",
+      "name_en": "Saarland",
+      "zuzuege_2025": 15693,
+      "fortzuege_2025": 12671,
+      "saldo_2025": 3022
+    },
+    {
+      "state_code": "SN",
+      "name_de": "Sachsen",
+      "name_zh": "萨克森",
+      "name_en": "Saxony",
+      "zuzuege_2025": 54044,
+      "fortzuege_2025": 40043,
+      "saldo_2025": 14001
+    },
+    {
+      "state_code": "ST",
+      "name_de": "Sachsen-Anhalt",
+      "name_zh": "萨克森-安哈尔特",
+      "name_en": "Saxony-Anhalt",
+      "zuzuege_2025": 32838,
+      "fortzuege_2025": 24322,
+      "saldo_2025": 8516
+    },
+    {
+      "state_code": "SH",
+      "name_de": "Schleswig-Holstein",
+      "name_zh": "石勒苏益格-荷尔斯泰因",
+      "name_en": "Schleswig-Holstein",
+      "zuzuege_2025": 43723,
+      "fortzuege_2025": 34292,
+      "saldo_2025": 9431
+    },
+    {
+      "state_code": "TH",
+      "name_de": "Thüringen",
+      "name_zh": "图林根",
+      "name_en": "Thuringia",
+      "zuzuege_2025": 27176,
+      "fortzuege_2025": 21815,
+      "saldo_2025": 5361
+    }
+  ],
+  "sum_check": {
+    "sum_zuzuege": 1479942,
+    "sum_fortzuege": 1244941,
+    "sum_saldo": 235001,
+    "official_total_saldo": 235000,
+    "discrepancy_note": "Geringfügige Rundungsdifferenzen (unter 0.05%) entstehen durch gesetzliche Geheimhaltungsverfahren (5-er Rundung) in kommunalen Einzelzellen."
+  }
+}
