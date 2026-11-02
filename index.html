@@ -53,7 +53,7 @@
       <a href="#section-naturalization" class="nav-link" data-i18n="nav_naturalization">德国入籍统计</a>
       <a href="#section-findings" class="nav-link" data-i18n="nav_findings">战略发现与洞察 (Deck)</a>
       <a href="findings.html" target="_blank" class="nav-link" style="color:var(--primary); font-weight:800;" data-i18n="btn_pdf_mode">📄 独立战略研报 (PDF浏览) ↗</a>
-      <a href="#section-insights" class="nav-link" data-i18n="nav_insights">智能归因与事实核查</a>
+      <a href="#section-insights" class="nav-link" data-i18n="nav_insights">智能归因分析</a>
       <a href="#section-query" class="nav-link" data-i18n="nav_query">完整数据查询 (BI)</a>
       <a href="#section-citations" class="nav-link" data-i18n="nav_citations">数据出处与引用</a>
     </nav>
@@ -647,11 +647,11 @@
       </div>
     </section>
 
-    <!-- SMART INSIGHTS & FACT-CHECKING REPORT -->
+    <!-- SMART INSIGHTS: DECOMPOSITION CALCULATOR -->
     <section class="module-section" id="section-insights">
       <div class="module-header">
-        <h2 class="module-title" data-i18n="insights_title">智能分析洞察与官方数据事实核查</h2>
-        <p class="module-subtitle" data-i18n="insights_subtitle">基于统计恒等式与官方原始底账的归因分析及网络传播数据验证</p>
+        <h2 class="module-title" data-i18n="insights_title">智能归因洞察：净移民变动恒等式分解计算器</h2>
+        <p class="module-subtitle" data-i18n="insights_subtitle">基于统计恒等式与 Destatis 官方底账的迁入减少与迁出增加动态贡献率测算</p>
       </div>
 
       <!-- Dynamic Statistical Decomposition Calculator -->
@@ -701,39 +701,6 @@
           </div>
 
           <div class="echarts-box" id="chart-decomp-waterfall" style="height: 280px;"></div>
-        </div>
-      </div>
-
-      <!-- Independent Fact-Checking Table (Viral Claim Verification) -->
-      <div class="table-card">
-        <div style="padding: 1.25rem; border-bottom: 1px solid var(--border-color); background: var(--bg-card-hover); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
-          <div>
-            <strong style="font-size: 1rem;" data-i18n="verification_title">针对网络流传'2026年1—8月德国移民数据'之官方独立核实报告</strong>
-            <p style="font-size:0.8rem; color:var(--text-muted); margin-top:0.25rem;">
-              依据德国联邦统计局 Destatis GENESIS-Online 官方数据库（表 12711-0011 及 12711-0007）逐项严格比对
-            </p>
-          </div>
-          <div class="chart-controls">
-            <button class="btn-toggle active" data-verify-filter="all" data-i18n="verify_filter_all">全部指标</button>
-            <button class="btn-toggle" data-verify-filter="verified" data-i18n="verify_filter_verified">已验证</button>
-            <button class="btn-toggle" data-verify-filter="provisional" data-i18n="verify_filter_provisional">需审慎核验</button>
-          </div>
-        </div>
-        <div class="table-responsive">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th data-i18n="col_claim_metric">网络声称指标</th>
-                <th data-i18n="col_claim_val">图片声称数值</th>
-                <th data-i18n="col_verify_status">官方核实结论</th>
-                <th data-i18n="col_official_val">官方真实数值</th>
-                <th data-i18n="col_verify_evidence">核实依据与官方出处说明</th>
-              </tr>
-            </thead>
-            <tbody id="tbody-verification">
-              <!-- Injected via JS -->
-            </tbody>
-          </table>
         </div>
       </div>
     </section>

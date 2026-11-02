@@ -19,7 +19,7 @@ const translations = {
     nav_geography: "地理分布与地图",
     nav_naturalization: "德国入籍统计",
     nav_findings: "战略发现与洞察 (Deck)",
-    nav_insights: "智能归因与事实核查",
+    nav_insights: "智能归因分析",
     nav_query: "完整数据查询 (BI)",
     btn_refresh: "更新官方数据",
     btn_export: "导出当前数据",
@@ -233,8 +233,8 @@ const translations = {
     showing_records: "显示记录",
 
     // Smart Insights & Verification
-    insights_title: "智能分析洞察与官方数据事实核查",
-    insights_subtitle: "基于统计恒等式与官方原始底账的归因分析及网络传播数据验证",
+    insights_title: "智能归因洞察：净移民变动恒等式分解计算器",
+    insights_subtitle: "基于统计恒等式与 Destatis 官方底账的迁入减少与迁出增加动态贡献率测算",
     decomp_title: "净移民变动之动态统计恒等式归因计算器",
     decomp_desc_intro: "通过严谨数学恒等式 Net = Inflow - Outflow 进行两期对比归因分解：",
     decomp_base_year: "基准年份 (Base Year)",
@@ -285,7 +285,7 @@ const translations = {
     nav_geography: "Geographic Map",
     nav_naturalization: "Naturalization Statistics",
     nav_findings: "Executive Findings (Deck)",
-    nav_insights: "Smart Insights & Verification",
+    nav_insights: "Smart Decomposition Analysis",
     nav_query: "Comprehensive Query (BI)",
     btn_refresh: "Refresh Official Data",
     btn_export: "Export Current Data",
@@ -499,8 +499,8 @@ const translations = {
     showing_records: "Showing records",
 
     // Smart Insights & Verification
-    insights_title: "Smart Insights & Fact-Checking Report",
-    insights_subtitle: "Empirical statistical decomposition and independent verification of viral migration claims",
+    insights_title: "Smart Insights: Net Migration Identity Decomposition Calculator",
+    insights_subtitle: "Dynamic decomposition of inflow reduction vs outflow increase based on Destatis baseline",
     decomp_title: "Dynamic Statistical Decomposition Calculator",
     decomp_desc_intro: "Rigorous mathematical decomposition based on the identity Net = Inflow - Outflow:",
     decomp_base_year: "Base Year",
