@@ -10,7 +10,7 @@ import sys
 import json
 import subprocess
 from pathlib import Path
-from http.server import HTTPServer, SimpleHTTPRequestHandler
+from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 import urllib.parse
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -21,6 +21,10 @@ PORT = int(os.getenv("PORT", 8080))
 class DashboardHandler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(BASE_DIR), **kwargs)
+
+    def log_message(self, format, *args):
+        # Clean logging
+        sys.stderr.write(f"[{self.log_date_time_string()}] {format % args}\n")
 
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
@@ -102,7 +106,8 @@ def get_local_ip():
 def main():
     host = os.getenv("HOST", "0.0.0.0")
     server_address = (host, PORT)
-    httpd = HTTPServer(server_address, DashboardHandler)
+    httpd = ThreadingHTTPServer(server_address, DashboardHandler)
+    httpd.daemon_threads = True
     local_ip = get_local_ip()
     print("=" * 65)
     print("🇩🇪 Germany Migration Intelligence Dashboard (德国移民数据智能分析平台)")
