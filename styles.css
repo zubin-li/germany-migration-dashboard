@@ -1012,6 +1012,92 @@ table.data-table tr:hover td {
   }
 }
 
+/* Citations & Provenance Section */
+.citation-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .citation-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.citation-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.citation-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.citation-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.citation-list li {
+  padding-left: 1.2rem;
+  position: relative;
+  line-height: 1.4;
+}
+
+.citation-list li::before {
+  content: "•";
+  color: var(--primary);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.citation-format-box {
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-size: 0.775rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  word-break: break-all;
+}
+
+.btn-copy-citation {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.725rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-copy-citation:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
 @media print {
   .header, .nav-bar, .filter-card, .deck-controls-bar, footer {
     display: none !important;

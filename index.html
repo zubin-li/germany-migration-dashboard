@@ -55,6 +55,7 @@
       <a href="findings.html" target="_blank" class="nav-link" style="color:var(--primary); font-weight:800;" data-i18n="btn_pdf_mode">📄 独立战略研报 (PDF浏览) ↗</a>
       <a href="#section-insights" class="nav-link" data-i18n="nav_insights">智能归因与事实核查</a>
       <a href="#section-query" class="nav-link" data-i18n="nav_query">完整数据查询 (BI)</a>
+      <a href="#section-citations" class="nav-link" data-i18n="nav_citations">数据出处与引用</a>
     </nav>
   </header>
 
@@ -870,6 +871,64 @@
           <div class="page-controls">
             <button class="page-btn" id="btn-page-prev" data-i18n="page_prev">上一页</button>
             <button class="page-btn" id="btn-page-next" data-i18n="page_next">下一页</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 9: Official Data Citations & Academic Provenance -->
+    <section class="module-section" id="section-citations">
+      <div class="module-header">
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+          <div>
+            <h2 class="module-title" data-i18n="mod_citations_title">官方数据源出处、引用规范与权威依据</h2>
+            <p class="module-subtitle" data-i18n="mod_citations_subtitle">遵循德国联邦统计局 Destatis 开放数据许可 (dl-de/by-2-0)，提供学术论文与咨询研究标准引用格式 (APA / BibTeX)</p>
+          </div>
+          <a href="docs/citations.md" target="_blank" class="btn-secondary" style="text-decoration:none;" data-i18n="btn_view_citation_doc">查看完整引用文档 ↗</a>
+        </div>
+      </div>
+
+      <div class="citation-grid">
+        <div class="citation-card">
+          <div class="citation-header">
+            <span class="badge badge-neutral">Destatis 官方表号</span>
+            <strong>官方核心数据源索引</strong>
+          </div>
+          <ul class="citation-list">
+            <li><strong>表 12711-0005</strong>: 德国历年跨国迁移年度总表 (2000–2025)</li>
+            <li><strong>表 12711-0011</strong>: 德国月度国际迁移与三大互斥人群 (2020–2026/08M)</li>
+            <li><strong>表 12711-0007</strong>: 具体国籍年度跨国迁徙矩阵 (中国/印度/越南等)</li>
+            <li><strong>表 12711-0008</strong>: 迁入来源国与德国本土公民外迁目的国分布</li>
+            <li><strong>表 12711-0023</strong>: 德国 16 联邦州国际净迁移地理空间统计</li>
+            <li><strong>表 12511-0001 / 0002</strong>: 德国历年入籍统计与原国籍分布 (2000–2025)</li>
+            <li><strong>BAMF / AZR 快报</strong>: 外事局登记处人道避难与专项技能月度通报</li>
+          </ul>
+        </div>
+
+        <div class="citation-card">
+          <div class="citation-header">
+            <span class="badge badge-positive">Academic Citation</span>
+            <strong>学术与研究引用格式 (可直接复制)</strong>
+          </div>
+          <div class="citation-format-box">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+              <strong style="font-size:0.8rem; color:var(--primary);">APA 7th Edition:</strong>
+              <button class="btn-copy-citation" id="btn-copy-apa">复制 APA</button>
+            </div>
+            <code id="cite-apa">Statistisches Bundesamt (Destatis). (2026). Wanderungen zwischen Deutschland und dem Ausland (Tabellen 12711-0005, 12711-0011, 12511-0001). GENESIS-Online. Germany Migration Intelligence Dashboard. https://zubin-li.github.io/germany-migration-dashboard/</code>
+          </div>
+
+          <div class="citation-format-box" style="margin-top:0.75rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+              <strong style="font-size:0.8rem; color:var(--primary);">BibTeX:</strong>
+              <button class="btn-copy-citation" id="btn-copy-bibtex">复制 BibTeX</button>
+            </div>
+            <pre id="cite-bibtex" style="font-size:0.75rem; margin:0; line-height:1.4; color:var(--text-muted); font-family:monospace; white-space:pre-wrap;">@misc{germany_migration_2026,
+  author = {Statistisches Bundesamt (Destatis) and Li, Zubin},
+  title  = {Germany Migration Intelligence Dashboard},
+  year   = {2026},
+  url    = {https://zubin-li.github.io/germany-migration-dashboard/}
+}</pre>
           </div>
         </div>
       </div>

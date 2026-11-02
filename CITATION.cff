@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this intelligence dashboard, data synthesis, or consulting models, please cite it as below."
+title: "Germany Migration Intelligence Dashboard (德国移民数据智能分析平台)"
+version: 2.6.0
+date-released: 2026-11-01
+url: "https://zubin-li.github.io/germany-migration-dashboard/"
+repository-code: "https://github.com/zubin-li/germany-migration-dashboard"
+license: "MIT"
+authors:
+  - family-names: "Li"
+    given-names: "Zubin"
+    email: "zubin.li@mailbox.tu-dresden.de"
+keywords:
+  - "Germany Migration"
+  - "Destatis"
+  - "GENESIS-Online"
+  - "Demographics"
+  - "Naturalization"
+  - "Data Intelligence Dashboard"
+  - "ECharts"
+preferred-citation:
+  type: software
+  title: "Germany Migration Intelligence Dashboard: Longitudinal Destatis Official Synthesis & Strategic Labor Analytics (2000-2026)"
+  authors:
+    - family-names: "Li"
+      given-names: "Zubin"
+  year: 2026
+  url: "https://zubin-li.github.io/germany-migration-dashboard/"

@@ -262,6 +262,13 @@ const translations = {
     pdf_deck_title: "德意志联邦人口迁徙与劳动力转型战略咨询研报 (2000-2026)",
     pdf_deck_subtitle: "基于德国联邦统计局官方数据库与政策法案演进的顶层咨询研判 (Top-down McKinsey/BCG Framework)",
     pdf_cover_badge: "DESTATIS 官方权威智库 | 战略咨询简报",
+    nav_citations: "数据出处与引用",
+    mod_citations_title: "官方数据源出处、引用规范与权威依据",
+    mod_citations_subtitle: "遵循德国联邦统计局 Destatis 开放数据许可 (dl-de/by-2-0)，提供学术论文与咨询研究标准引用格式 (APA / BibTeX)",
+    btn_view_citation_doc: "查看完整引用文档 ↗",
+    slide6_tag: "6. 权威数据溯源与引用标准 (Citations & Provenance)",
+    slide6_title: "官方统计底层数据表、法律法规依据与学术引用规范",
+    slide6_action: "本报告全部图表与核心战略推论均源自德国联邦统计局 (Destatis) 官方直接核算与开放数据标准 (dl-de/by-2-0)；所有统计恒等式与跨期变化分解均公开数学推演公式，支持同行评议与独立复核。",
   },
 
   "en": {
@@ -519,6 +526,13 @@ const translations = {
     status_ytd_label: "Jan-Aug YTD (Provisional)",
     pdf_deck_title: "Germany Migration & Demographic Transition Strategic Report (2000-2026)",
     pdf_deck_subtitle: "Top-down Consulting Storyline based on Destatis Official Micro & Macro Time Series",
-    pdf_cover_badge: "DESTATIS OFFICIAL INTEL | EXECUTIVE BRIEFING"
+    pdf_cover_badge: "DESTATIS OFFICIAL INTEL | EXECUTIVE BRIEFING",
+    nav_citations: "Data Citations",
+    mod_citations_title: "Official Data Citations, Provenance & Academic Standards",
+    mod_citations_subtitle: "Under Destatis Open Data License (dl-de/by-2-0), providing standard APA & BibTeX citations for research and publications",
+    btn_view_citation_doc: "View Full Citation Doc ↗",
+    slide6_tag: "6. Official Data Provenance & Academic Citations",
+    slide6_title: "Underlying Destatis Tables, Legal Frameworks & Citation Standards",
+    slide6_action: "All charts and conclusions in this briefing are grounded in official Destatis primary accounts under the dl-de/by-2-0 open data license. All statistical identities and decomposition formulas are fully disclosed for peer-review.",
   }
 };

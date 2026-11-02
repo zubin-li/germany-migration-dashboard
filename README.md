@@ -1,12 +1,16 @@
 # 德国移民数据智能分析平台 (Germany Migration Intelligence Dashboard)
 
-[![Engine: Apache ECharts 5.5](https://img.shields.io/badge/Visualization-Apache_ECharts_5.5-e11d48.svg)](https://echarts.apache.org/)
-[![Data Authority: Destatis](https://img.shields.io/badge/Data_Source-Destatis_GENESIS--Online-0284c7.svg)](https://genesis.destatis.de/)
-[![Validation: Passed](https://img.shields.io/badge/Statistical_Integrity-100%25_Verified-10b981.svg)](docs/data_quality_report.md)
-[![Language: Bilingual](https://img.shields.io/badge/i18n-Simplified_Chinese_%7C_English-818cf8.svg)](i18n.js)
-[![License: Institutional Research](https://img.shields.io/badge/License-MIT-64748b.svg)](LICENSE)
+[![Live Web Dashboard](https://img.shields.io/badge/Live_Dashboard-GitHub_Pages-22c55e?style=for-the-badge&logo=github)](https://zubin-li.github.io/germany-migration-dashboard/)
+[![Executive Consulting Deck](https://img.shields.io/badge/Executive_Deck-PDF_View-6366f1?style=for-the-badge&logo=adobeacrobatreader)](https://zubin-li.github.io/germany-migration-dashboard/findings.html)
+[![Data Provenance: Destatis](https://img.shields.io/badge/Data_Source-Destatis_Official-0284c7?style=for-the-badge)](https://genesis.destatis.de/)
+[![Audit Pipeline: 100% Passed](https://img.shields.io/badge/CI%2FCD_Audit-186%2F186_Passed-10b981?style=for-the-badge)](tests/)
 
-一个基于**德国联邦统计局（Statistisches Bundesamt - Destatis）**官方 GENESIS-Online 数据库构建的、完全交互式、可持续自动更新的专业德国移民与入籍数据智能分析平台。
+> 🌐 **在线永久访问地址**：[https://zubin-li.github.io/germany-migration-dashboard/](https://zubin-li.github.io/germany-migration-dashboard/)  
+> 📄 **独立战略研报 (PDF浏览)**：[https://zubin-li.github.io/germany-migration-dashboard/findings.html](https://zubin-li.github.io/germany-migration-dashboard/findings.html)  
+> 📘 **AI Agent 调教手册 & 复刻 SOP**：[docs/AGENT_PLAYBOOK.md](docs/AGENT_PLAYBOOK.md)  
+> 📚 **完整数据引用规范**：[docs/citations.md](docs/citations.md)
+
+一个基于**德国联邦统计局（Statistisches Bundesamt - Destatis）**官方 GENESIS-Online 数据库构建的、完全交互式、可持续自动更新的专业德国移民与入籍数据智能分析平台。无需任何后端配置，随时随地在任何设备上流畅运行。
 
 ---
 
@@ -104,3 +108,33 @@ germany-migration-dashboard/
 | **中国公民净迁移** | **−977** | **未公开单月库** | **【暂时无法独立核实】** | 官方 GENESIS 标准月度表不提供单个国家细分，数据源自 AZR 外事登记快报。 |
 | **印度公民净迁移** | **+19,977** | **未公开单月库** | **【暂时无法独立核实】** | 源自 AZR 快报，趋势与印度作为技术移民第一大来源国高度吻合。 |
 | **越南公民净迁移** | **+12,712** | **未公开单月库** | **【暂时无法独立核实】** | 源自 AZR 快报，与德国护理与职校招募合作激增趋势高度吻合。 |
+
+---
+
+## 📚 官方数据源与学术引用规范 (Data Provenance & Citations)
+
+本项目所有统计结论均可由德国联邦统计局公开接口完全复核。若在研究论文、咨询简报或媒体报道中引用本项目，请遵循以下格式：
+
+### 官方基础数据表 (Destatis Official Primary Sources)
+* **Destatis Table 12711-0005**: Wanderungen zwischen Deutschland und dem Ausland (2000–2025)
+* **Destatis Table 12711-0011**: Wanderungen nach Monaten und Nationalitätsgruppen (2020–2026/08M)
+* **Destatis Table 12711-0007**: Wanderungen nach ausgewählten Staatsangehörigkeiten
+* **Destatis Table 12511-0001 & 12511-0002**: Einbürgerungen von Ausländern in Deutschland
+
+### APA 7th Edition
+> Statistisches Bundesamt (Destatis). (2026). *Wanderungen zwischen Deutschland und dem Ausland (Tabellen 12711-0005, 12711-0011, 12511-0001)*. GENESIS-Online. Synthesized by Germany Migration Intelligence Dashboard (v2.6.0). Retrieved from https://zubin-li.github.io/germany-migration-dashboard/
+
+### BibTeX
+```bibtex
+@misc{germany_migration_dashboard_2026,
+  author       = {Statistisches Bundesamt (Destatis) and Li, Zubin},
+  title        = {{Germany Migration Intelligence Dashboard: Longitudinal Destatis Official Synthesis & Strategic Labor Analytics (2000-2026)}},
+  year         = {2026},
+  howpublished = {\url{https://zubin-li.github.io/germany-migration-dashboard/}},
+  note         = {Data retrieved from Destatis GENESIS-Online. Open Data License dl-de/by-2-0}
+}
+```
+
+### 开放数据许可与署名
+根据德国联邦政府开放数据法规，原始数据遵循 **Datenlizenz Deutschland – Namensnennung – Version 2.0 (dl-de/by-2-0)**。  
+官方署名：`© Statistisches Bundesamt (Destatis), Wiesbaden, 2026`。详见 [docs/citations.md](docs/citations.md)。

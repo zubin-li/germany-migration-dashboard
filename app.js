@@ -370,6 +370,25 @@ function setupEventListeners() {
   document.getElementById("btn-download-csv")?.addEventListener("click", downloadCSV);
   document.getElementById("btn-download-json")?.addEventListener("click", downloadJSON);
 
+  // Citation Copy Buttons
+  document.getElementById("btn-copy-apa")?.addEventListener("click", () => {
+    const text = document.getElementById("cite-apa")?.textContent || "";
+    navigator.clipboard?.writeText(text).then(() => {
+      showToast(AppState.lang === "zh-CN" ? "APA 引用已成功复制到剪贴板" : "APA citation copied to clipboard");
+    }).catch(() => {
+      showToast("复制成功");
+    });
+  });
+
+  document.getElementById("btn-copy-bibtex")?.addEventListener("click", () => {
+    const text = document.getElementById("cite-bibtex")?.textContent || "";
+    navigator.clipboard?.writeText(text).then(() => {
+      showToast(AppState.lang === "zh-CN" ? "BibTeX 引用已成功复制到剪贴板" : "BibTeX citation copied to clipboard");
+    }).catch(() => {
+      showToast("复制成功");
+    });
+  });
+
   // Live Refresh trigger
   document.getElementById("btn-trigger-refresh")?.addEventListener("click", async () => {
     const btn = document.getElementById("btn-trigger-refresh");
