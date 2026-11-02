@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="dark">
+<html lang="zh-CN" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,8 +34,8 @@
           <span class="lang-option" id="lang-opt-en" data-i18n="lang_toggle_en">English</span>
         </div>
 
-        <!-- Theme Toggle -->
-        <button class="theme-btn" id="theme-toggle-btn" title="Toggle Theme">☀️ Light</button>
+        <!-- Theme Toggle (Default Light) -->
+        <button class="theme-btn" id="theme-toggle-btn" title="Toggle Theme">🌙 Dark</button>
 
         <!-- Refresh Button -->
         <button class="btn-primary" id="btn-trigger-refresh" data-i18n="btn_refresh">更新官方数据</button>
@@ -174,8 +174,16 @@
     <!-- Global Interactive Filter Console -->
     <section class="filter-card">
       <div class="filter-header">
-        <h3 data-i18n="filter_title">全局交互筛选控制台</h3>
-        <button class="btn-secondary" id="btn-reset-filter" data-i18n="btn_reset_filter">重置所有筛选</button>
+        <div style="display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap;">
+          <h3 data-i18n="filter_title">全局交互筛选控制台</h3>
+          <span class="badge badge-info" id="filter-status-indicator" style="font-size:0.75rem; background:rgba(56, 189, 248, 0.15); color:var(--primary); padding:0.2rem 0.6rem; border-radius:9999px;">全量宏观数据 (2000-2026)</span>
+        </div>
+        <div style="display:flex; gap:0.6rem; align-items:center;">
+          <button class="btn-primary" id="btn-apply-filters" style="display:inline-flex; align-items:center; gap:0.4rem; padding:0.45rem 1.1rem; font-weight:700;">
+            <span>⚡</span> <span data-i18n="btn_apply_filters">应用筛选</span>
+          </button>
+          <button class="btn-secondary" id="btn-reset-filter" data-i18n="btn_reset_filter">重置所有筛选</button>
+        </div>
       </div>
 
       <div class="filter-controls">
@@ -344,7 +352,7 @@
       <div class="grid-2col">
         <div class="chart-card">
           <div class="chart-header">
-            <div class="chart-title" data-i18n="mod3_compare_chart_title">选中国籍历年净移民演变对比</div>
+            <div class="chart-title" id="mod3-compare-chart-title" data-i18n="mod3_compare_chart_title">所选重点国籍历年净移民演变走势对比</div>
           </div>
           <div class="echarts-box" id="chart-nat-compare"></div>
         </div>
@@ -512,226 +520,130 @@
         <p class="module-subtitle" data-i18n="findings_subtitle">采用麦肯锡/BCG Consulting Top-Down 框架：全局宏观演进 → 结构性断裂 → 重点国别生态 → 制度改革红利 → 商业与战略启示</p>
       </div>
 
-      <!-- Slide Deck Controls -->
-      <div class="deck-controls-bar" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem;">
-        <div class="deck-nav-pills" style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-          <a href="#slide-card-1" class="btn-toggle active" style="text-decoration:none;">01 宏观范式</a>
-          <a href="#slide-card-2" class="btn-toggle" style="text-decoration:none;">02 结构撕裂</a>
-          <a href="#slide-card-3" class="btn-toggle" style="text-decoration:none;">03 国籍生态</a>
-          <a href="#slide-card-4" class="btn-toggle" style="text-decoration:none;">04 制度入籍</a>
-          <a href="#slide-card-5" class="btn-toggle" style="text-decoration:none;">05 商业启示</a>
+      <!-- Executive Strategic Report Portal Card -->
+      <div class="chart-card" style="padding: 2rem; background: linear-gradient(135deg, rgba(2, 132, 199, 0.08), rgba(21, 31, 50, 0.03)); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 1rem; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1.5rem; margin-bottom:1.5rem;">
+          <div style="max-width: 800px;">
+            <span class="badge badge-info" style="font-size:0.8rem; margin-bottom:0.75rem; display:inline-block;">🏛️ 独立高级战略咨询研报专区</span>
+            <h3 style="font-size:1.45rem; font-weight:800; margin-bottom:0.6rem; color:var(--text-main);">德意志联邦人口迁徙与劳动力转型战略咨询研报 (Executive Consulting Deck)</h3>
+            <p style="font-size:0.95rem; color:var(--text-muted); line-height:1.6;">
+              历经2000—2026年演变，德国人口迁移已进入全新周期。为提供最严谨的顶层决策支持，我们已将战略研报解耦为独立出版级 PDF 咨询研报（横跨6大战略议题、全套高清对比图表、底层因果剖析及商业破局方案，支持沉浸式阅读与一键高清 PDF 打印导出）。
+            </p>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:0.6rem; min-width:260px;">
+            <a href="findings.html" target="_blank" class="btn-primary" style="font-size:1.05rem; padding:0.85rem 1.6rem; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; font-weight:800; border-radius:0.5rem; box-shadow:0 4px 15px rgba(2,132,199,0.3);" data-i18n="btn_pdf_mode">
+              📄 浏览完整战略咨询研报 (独立 PDF 模式) ↗
+            </a>
+            <div style="font-size:0.75rem; color:var(--text-muted); text-align:center;">
+              ⚡ 包含 5 大核心咨询幻灯片 + 官方学术引用库
+            </div>
+          </div>
         </div>
 
-        <div class="deck-action-buttons" style="display:flex; gap:0.6rem; align-items:center;">
-          <a href="findings.html" target="_blank" class="btn-primary" style="text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem; padding:0.45rem 1rem;" data-i18n="btn_pdf_mode">
-            📄 独立战略研报 (PDF浏览) ↗
-          </a>
-          <button class="btn-secondary" onclick="window.print()" data-i18n="btn_print_pdf" style="padding:0.45rem 0.9rem;">
-            🖨️ 导出为 PDF / 打印
-          </button>
+        <!-- 4 Key Teaser Metric Pills -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1rem; margin-bottom:2rem;">
+          <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:0.6rem; padding:1.1rem;">
+            <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">2022年 二战后峰值净移民</div>
+            <div style="font-size:1.6rem; font-weight:800; color:#10b981; margin-top:0.25rem;">+1,515,755</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem;">乌克兰危机人道脉冲峰值</div>
+          </div>
+          <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:0.6rem; padding:1.1rem;">
+            <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">2025年 均值回落后净移民</div>
+            <div style="font-size:1.6rem; font-weight:800; color:#38bdf8; margin-top:0.25rem;">+235,000</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem;">较峰值剧烈收缩 84.5%</div>
+          </div>
+          <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:0.6rem; padding:1.1rem;">
+            <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">2026年 1—8月累计净移民</div>
+            <div style="font-size:1.6rem; font-weight:800; color:#f59e0b; margin-top:0.25rem;">+16,841</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem;">夏季单月出现罕见净流出</div>
+          </div>
+          <div style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:0.6rem; padding:1.1rem;">
+            <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">2025年 新法入籍历史极值</div>
+            <div style="font-size:1.6rem; font-weight:800; color:#818cf8; margin-top:0.25rem;">333,343 人</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem;">存量外籍入籍，非当年新移民</div>
+          </div>
         </div>
-      </div>
 
-      <!-- Slides Container (Continuous Vertical Presentation Flow - PDF Style) -->
-      <div id="deck-slides-container">
+        <!-- 5 Storyline Topic Cards Grid -->
+        <h4 style="font-size:1.1rem; font-weight:800; margin-bottom:1rem; color:var(--text-main);">📋 战略咨询报告核心议题体系 (Top-Down Storyline Architecture)</h4>
+        
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
+          <!-- Topic 1 -->
+          <div class="deck-slide" id="slide-card-1" style="margin:0; padding:1.25rem; background:var(--bg-card); border:1px solid var(--border-color); border-radius:0.75rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+              <span class="slide-tag" data-i18n="slide1_tag" style="font-size:0.7rem;">1. 宏观范式剧变</span>
+              <span style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">SLIDE 01</span>
+            </div>
+            <h5 style="font-size:0.95rem; font-weight:800; color:var(--text-main); margin-bottom:0.5rem;" data-i18n="slide1_title">26年沧海桑田：从人口磁石到转折临界点</h5>
+            <p style="font-size:0.825rem; color:var(--text-muted); line-height:1.55; margin-bottom:0.85rem;">
+              经历常态微增、两次极端避难脉冲与断崖式收缩；2026年夏季首现单月净流出，标志着后冷战以来人口红利进入临界调整期。
+            </p>
+            <a href="findings.html" target="_blank" style="font-size:0.8rem; font-weight:700; color:var(--primary); text-decoration:none; display:inline-flex; align-items:center; gap:0.25rem;">
+              查看研报图表与因果剖析 ↗
+            </a>
+          </div>
 
-        <!-- SLIDE 1 -->
-        <article class="deck-slide" id="slide-card-1">
-          <div class="slide-header">
-            <div class="slide-meta-row">
-              <span class="slide-tag" data-i18n="slide1_tag">1. 宏观范式剧变 (Macro Paradigm)</span>
-              <span class="slide-page-num">SLIDE 01 / 05</span>
+          <!-- Topic 2 -->
+          <div class="deck-slide" id="slide-card-2" style="margin:0; padding:1.25rem; background:var(--bg-card); border:1px solid var(--border-color); border-radius:0.75rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+              <span class="slide-tag" data-i18n="slide2_tag" style="font-size:0.7rem;">2. 结构撕裂与人才失血</span>
+              <span style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">SLIDE 02</span>
             </div>
-            <h3 class="slide-title" data-i18n="slide1_title">26年沧海桑田：从人口磁石到转折临界点</h3>
-            <div class="slide-action-banner" data-i18n="slide1_action">
-              德国人口迁徙经历了"常态微增 → 两次极端人道避难峰值 → 结构性急剧收缩"三阶段演进；2026年夏季首现单月净流出，标志着后冷战以来人口红利进入临界调整期。
-            </div>
+            <h5 style="font-size:0.95rem; font-weight:800; color:var(--text-main); margin-bottom:0.5rem;" data-i18n="slide2_title">结构撕裂剪刀差：德国公民外流与高技能欧盟引力衰竭</h5>
+            <p style="font-size:0.825rem; color:var(--text-muted); line-height:1.55; margin-bottom:0.85rem;">
+              德国本土公民连续20年净外迁（年均失血近10万），欧盟劳动力净迁入降至-4.2万，人口净增长完全依赖非欧盟第三国单核支撑。
+            </p>
+            <a href="findings.html" target="_blank" style="font-size:0.8rem; font-weight:700; color:var(--primary); text-decoration:none; display:inline-flex; align-items:center; gap:0.25rem;">
+              查看研报图表与因果剖析 ↗
+            </a>
           </div>
-          <div class="slide-body">
-            <div class="slide-left-content">
-              <div class="slide-bullet" data-i18n="slide1_p1">
-                • <strong>历史演进三阶段</strong>：2000-2014年净移民维持在年均+15万至+40万的温和区间；2015年叙利亚危机（净移民+113.8万）与2022年乌克兰危机（二战后最高峰+151.6万）造成两次历史级脉冲；2023年后迅速断崖式回落（2025年回落至+23.5万）。
-              </div>
-              <div class="slide-bullet" data-i18n="slide1_p2">
-                • <strong>2026年拐点信号</strong>：2026年1—8月累计净移民仅录得+16,841人，6-8月连续三个月净流出（7月-1.54万、8月-6,965人）。
-              </div>
-              <div class="slide-root-cause-box">
-                <div class="slide-root-cause-title" data-i18n="slide1_root_cause_title">⚠️ 【底层驱动原因 (Root Causes)】</div>
-                <p data-i18n="slide1_root_cause">
-                  地缘危机脉冲式避难是推高历史峰值的唯一主因，而非德国经济内生引力爆发；随着周边避难压力消退与边境管控趋严，入境人次断崖回落97.6%，彻底暴露出德国在缺乏难民脉冲时常态引才吸纳力的乏力。
-                </p>
-              </div>
-            </div>
-            <div class="slide-right-visual">
-              <div class="slide-echarts-box" id="chart-slide1"></div>
-            </div>
-          </div>
-          <div class="slide-footer-bar">
-            <span>数据源：Statistisches Bundesamt 12711-0005 & 12711-0011</span>
-            <span>德国移民数据智能分析平台 · 战略咨询简报</span>
-          </div>
-        </article>
 
-        <!-- SLIDE 2 -->
-        <article class="deck-slide" id="slide-card-2">
-          <div class="slide-header">
-            <div class="slide-meta-row">
-              <span class="slide-tag" data-i18n="slide2_tag">2. 结构性撕裂 (Structural Divergence)</span>
-              <span class="slide-page-num">SLIDE 02 / 05</span>
+          <!-- Topic 3 -->
+          <div class="deck-slide" id="slide-card-3" style="margin:0; padding:1.25rem; background:var(--bg-card); border:1px solid var(--border-color); border-radius:0.75rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+              <span class="slide-tag" data-i18n="slide3_tag" style="font-size:0.7rem;">3. 国籍微观生态质变</span>
+              <span style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">SLIDE 03</span>
             </div>
-            <h3 class="slide-title" data-i18n="slide2_title">冰与火之歌：德国公民外流加速 vs 欧盟红利终结 vs 第三国单核支撑</h3>
-            <div class="slide-action-banner" data-i18n="slide2_action">
-              人口基本盘出现"三层断裂"：德国本土公民连续20年结构性失血（2025年净流出9.67万人创新高）；欧盟自由流动红利消耗殆尽；全德净人口增长已几乎100%依赖非欧盟第三国。
-            </div>
+            <h5 style="font-size:0.95rem; font-weight:800; color:var(--text-main); margin-bottom:0.5rem;" data-i18n="slide3_title">重点国籍微观图谱：从难民脉冲向技能型定向引才大洗牌</h5>
+            <p style="font-size:0.825rem; color:var(--text-muted); line-height:1.55; margin-bottom:0.85rem;">
+              印度锁定德国IT/STEM第一大引擎；越南依托双元制与护理异军突起；难民来源国断崖回落97.6%；中国留学研发温和平衡。
+            </p>
+            <a href="findings.html" target="_blank" style="font-size:0.8rem; font-weight:700; color:var(--primary); text-decoration:none; display:inline-flex; align-items:center; gap:0.25rem;">
+              查看研报图表与因果剖析 ↗
+            </a>
           </div>
-          <div class="slide-body">
-            <div class="slide-left-content">
-              <div class="slide-bullet" data-i18n="slide2_p1">
-                • <strong>德国公民净流出加速</strong>：2024年净流出8.14万，2025年升至9.67万（迁出28.86万人创历史最高），2026年1-8月累计净流出达-91,773人。其中25-39岁核心劳动力占46%，首选瑞士（2.27万）与奥地利（1.35万）。
-              </div>
-              <div class="slide-bullet" data-i18n="slide2_p2">
-                • <strong>欧盟成员国红利见顶</strong>：波兰、罗马尼亚等中东欧国家随着本土经济崛起，来德务工意愿下降并伴随大规模回流，欧盟公民净迁移在2024-2026年由正转负（2026前8月为-42,862人）。
-              </div>
-              <div class="slide-root-cause-box">
-                <div class="slide-root-cause-title" data-i18n="slide2_root_cause_title">⚠️ 【底层驱动原因 (Root Causes)】</div>
-                <p data-i18n="slide2_root_cause">
-                  1) 德奥瑞薪酬剪刀差与税负痛点：瑞士平均薪资高出德国30%-50%，且德国个税与社保边际费率高企；2) 欧盟新老成员国经济收敛效应：中东欧国家人均GDP与生活质量大幅改善，传统劳工输出红利彻底终结。
-                </p>
-              </div>
-            </div>
-            <div class="slide-right-visual">
-              <div class="slide-echarts-box" id="chart-slide2"></div>
-            </div>
-          </div>
-          <div class="slide-footer-bar">
-            <span>数据源：Statistisches Bundesamt 12711-0005, 12711-0011 & 12711-0008</span>
-            <span>德国移民数据智能分析平台 · 战略咨询简报</span>
-          </div>
-        </article>
 
-        <!-- SLIDE 3 -->
-        <article class="deck-slide" id="slide-card-3">
-          <div class="slide-header">
-            <div class="slide-meta-row">
-              <span class="slide-tag" data-i18n="slide3_tag">3. 微观国别生态 (Micro Divergence)</span>
-              <span class="slide-page-num">SLIDE 03 / 05</span>
+          <!-- Topic 4 -->
+          <div class="deck-slide" id="slide-card-4" style="margin:0; padding:1.25rem; background:var(--bg-card); border:1px solid var(--border-color); border-radius:0.75rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+              <span class="slide-tag" data-i18n="slide4_tag" style="font-size:0.7rem;">4. 制度改革双刃剑</span>
+              <span style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">SLIDE 04</span>
             </div>
-            <h3 class="slide-title" data-i18n="slide3_title">两极分化的微观生态：亚洲技术蓝卡引擎 vs 难民潮断崖退潮</h3>
-            <div class="slide-action-banner" data-i18n="slide3_action">
-              国别引流发生质变：印度已锁定德国IT与STEM第一大技术引擎；越南依托双边职业教育（Azubi/护士）异军突起；中国留学回流温和再平衡；而难民来源国出现断崖式收缩。
-            </div>
+            <h5 style="font-size:0.95rem; font-weight:800; color:var(--text-main); margin-bottom:0.5rem;" data-i18n="slide4_title">国籍法改革红利与错觉：入籍激增绝非新增迁入</h5>
+            <p style="font-size:0.825rem; color:var(--text-muted); line-height:1.55; margin-bottom:0.85rem;">
+              2024年双国籍改革催化2025年入籍飙升至33.3万人创历史极值。严格厘清入籍系存量合法居留身份升级，无法填补当年流动缺口。
+            </p>
+            <a href="findings.html" target="_blank" style="font-size:0.8rem; font-weight:700; color:var(--primary); text-decoration:none; display:inline-flex; align-items:center; gap:0.25rem;">
+              查看研报图表与因果剖析 ↗
+            </a>
           </div>
-          <div class="slide-body">
-            <div class="slide-left-content">
-              <div class="slide-bullet" data-i18n="slide3_p1">
-                • <strong>印度（高技能与STEM）</strong>：2024年移入近6万人，年均净移民稳定在+3.5万至+4万人，成为德国解决工程师短缺的支柱力量。
-              </div>
-              <div class="slide-bullet" data-i18n="slide3_p2">
-                • <strong>越南（双边职业培训）</strong>：年移入突破2.4万人（净移入+1.88万），在德老年护理、餐饮与技工领域快速替代传统东欧劳动力。
-              </div>
-              <div class="slide-bullet" data-i18n="slide3_p3">
-                • <strong>中国（留学生与科研流动）</strong>：移入约2.2万、迁出约1.9万，净值微幅平衡，留学与研发合作成为核心压舱石。
-              </div>
-              <div class="slide-bullet" data-i18n="slide3_p4">
-                • <strong>乌克兰与叙利亚（避难消退）</strong>：乌克兰年净移民从2022年+96万人暴跌至2025年+8.9万人，成为全德净移民下行的决定性因素。
-              </div>
-              <div class="slide-root-cause-box">
-                <div class="slide-root-cause-title" data-i18n="slide3_root_cause_title">⚠️ 【底层驱动原因 (Root Causes)】</div>
-                <p data-i18n="slide3_root_cause">
-                  《新技术移民法》（FEG）蓝卡降门槛与"机会卡"有效打通了印、越两国专业技术通道；而边境管控与人道主义通道收窄直接遏制了中东避难流向。
-                </p>
-              </div>
-            </div>
-            <div class="slide-right-visual">
-              <div class="slide-echarts-box" id="chart-slide3"></div>
-            </div>
-          </div>
-          <div class="slide-footer-bar">
-            <span>数据源：Statistisches Bundesamt 12711-0007</span>
-            <span>德国移民数据智能分析平台 · 战略咨询简报</span>
-          </div>
-        </article>
 
-        <!-- SLIDE 4 -->
-        <article class="deck-slide" id="slide-card-4">
-          <div class="slide-header">
-            <div class="slide-meta-row">
-              <span class="slide-tag" data-i18n="slide4_tag">4. 制度入籍悖论 (Institutional Dynamics)</span>
-              <span class="slide-page-num">SLIDE 04 / 05</span>
+          <!-- Topic 5 -->
+          <div class="deck-slide" id="slide-card-5" style="margin:0; padding:1.25rem; background:var(--bg-card); border:1px solid var(--border-color); border-radius:0.75rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+              <span class="slide-tag" data-i18n="slide5_tag" style="font-size:0.7rem;">5. 商业与宏观策略</span>
+              <span style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">SLIDE 05</span>
             </div>
-            <h3 class="slide-title" data-i18n="slide4_title">国籍法世纪改革：入籍暴增下的"存量制度化转化"</h3>
-            <div class="slide-action-banner" data-i18n="slide4_action">
-              2024年新《国籍法》（StAG）允许双重国籍并缩短居住年限，引爆2024-2025年入籍申请井喷（2025年达33.3万人历史天花板）。必须建立科学认知：入籍是存量外国人的身份归化，绝非新增入境移民。
-            </div>
+            <h5 style="font-size:0.95rem; font-weight:800; color:var(--text-main); margin-bottom:0.5rem;" data-i18n="slide5_title">宏观与商业启示录：每年40万劳动力硬缺口下的战略应对</h5>
+            <p style="font-size:0.825rem; color:var(--text-muted); line-height:1.55; margin-bottom:0.85rem;">
+              系统提出企业应对银发浪潮的三大支柱策略：双元制国别精准开拓、高技能留才体制破局、自动化与离岸交付对冲。
+            </p>
+            <a href="findings.html" target="_blank" style="font-size:0.8rem; font-weight:700; color:var(--primary); text-decoration:none; display:inline-flex; align-items:center; gap:0.25rem;">
+              查看研报图表与因果剖析 ↗
+            </a>
           </div>
-          <div class="slide-body">
-            <div class="slide-left-content">
-              <div class="slide-bullet" data-i18n="slide4_p1">
-                • <strong>入籍规模翻倍</strong>：2000-2021年德国年入籍维持在10万-13万人；2024年跃升至29.2万，2025年冲上33.3万人（同比+14.1%）。
-              </div>
-              <div class="slide-bullet" data-i18n="slide4_p2">
-                • <strong>原国籍构成</strong>：叙利亚（2025年6.58万人，主要是2015/16年难民满居留期归化）、土耳其（3.42万人，受允许保留双重国籍极大激发）、伊拉克与乌克兰。
-              </div>
-              <div class="slide-root-cause-box">
-                <div class="slide-root-cause-title" data-i18n="slide4_root_cause_title">⚠️ 【底层驱动原因 (Root Causes)】</div>
-                <p data-i18n="slide4_root_cause">
-                  制度堵点被彻底打破：历史上一代土耳其劳工因不愿放弃原籍而拒绝入籍，新法允许"双重国籍"释放了数十年的存量归化需求；同时2015年难民一代在德国完成语言与就业考核，达到入籍年限要求。
-                </p>
-              </div>
-            </div>
-            <div class="slide-right-visual">
-              <div class="slide-echarts-box" id="chart-slide4"></div>
-            </div>
-          </div>
-          <div class="slide-footer-bar">
-            <span>数据源：Statistisches Bundesamt 12511-0001 & 12511-0002</span>
-            <span>德国移民数据智能分析平台 · 战略咨询简报</span>
-          </div>
-        </article>
-
-        <!-- SLIDE 5 -->
-        <article class="deck-slide" id="slide-card-5">
-          <div class="slide-header">
-            <div class="slide-meta-row">
-              <span class="slide-tag" data-i18n="slide5_tag">5. 商业与战略启示 (Strategic Implications)</span>
-              <span class="slide-page-num">SLIDE 05 / 05</span>
-            </div>
-            <h3 class="slide-title" data-i18n="slide5_title">人口重压下的德国未来：劳动力短缺与企业战略应对之道</h3>
-            <div class="slide-action-banner" data-i18n="slide5_action">
-              在"婴儿潮一代（Babyboomer）退休"与"净移民急剧收窄"双重挤压下，德国每年面临超40万劳动力结构性缺口。企业与跨国机构必须彻底重塑人力供应链战略。
-            </div>
-          </div>
-          <div class="slide-body">
-            <div class="slide-left-content">
-              <div class="slide-bullet" data-i18n="slide5_p1">
-                • <strong>战略启示一【全球人才直聘渠道重构】</strong>：不能再依赖欧盟内部自然流动（已转为净流出），必须建立直连印度、越南、西巴尔干的定向人才直聘与双元制职业培训基地；
-              </div>
-              <div class="slide-bullet" data-i18n="slide5_p2">
-                • <strong>战略启示二【企业全英文工作环境转型】</strong>：破除严苛的德语准入门槛，设立英语友好的技术研发团队，否则在与瑞士、荷兰争夺高技能人才中将持续处于劣势；
-              </div>
-              <div class="slide-bullet" data-i18n="slide5_p3">
-                • <strong>战略启示三【本土高技术人才留存防线】</strong>：面对每年数万骨干工程师外流瑞士与奥地利，企业须通过灵活远程办公、股权激励与税务筹划重塑雇主品牌；
-              </div>
-              <div class="slide-bullet" data-i18n="slide5_p4">
-                • <strong>战略启示四【产业区位重布策略】</strong>：鉴于柏林、慕尼黑住房与生活成本极端拥挤，外向型企业应加速向北威州莱茵鲁尔区、萨克森（德累斯顿半导体走廊）等具备生活成本优势的次中心城市布局。
-              </div>
-              <div class="slide-root-cause-box">
-                <div class="slide-root-cause-title" data-i18n="slide5_root_cause_title">💡 【咨询总结 (Executive Summary)】</div>
-                <p data-i18n="slide5_root_cause">
-                  德国已从"自然享有欧洲劳动力红利"的舒适区，跌入"必须全球主动竞争高技能人才"的严酷战场。移民数据不再仅仅是人口报表，而是直接决定德国未来十年工业制造竞争力与主权财政养老金平衡的生死线。
-                </p>
-              </div>
-            </div>
-            <div class="slide-right-visual">
-              <div class="slide-echarts-box" id="chart-slide5"></div>
-            </div>
-          </div>
-          <div class="slide-footer-bar">
-            <span>战略模型出处：德国联邦劳工局 (BA) 缺口测算与麦肯锡宏观劳动力模型整合</span>
-            <span>德国移民数据智能分析平台 · 战略咨询简报</span>
-          </div>
-        </article>
-
+        </div>
       </div>
     </section>
 

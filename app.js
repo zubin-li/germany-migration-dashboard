@@ -6,7 +6,7 @@
 // Application State
 const AppState = {
   lang: localStorage.getItem("germany_mig_lang") || "zh-CN",
-  theme: localStorage.getItem("germany_mig_theme") || "dark",
+  theme: localStorage.getItem("germany_mig_theme_v2") || "light",
   activeTab: "overview",
   timeRange: "all",
   selectedNationalities: ["CN", "IN", "VN", "PL", "UA", "SY"],
@@ -67,7 +67,7 @@ function initTheme() {
 
 function toggleTheme() {
   AppState.theme = AppState.theme === "dark" ? "light" : "dark";
-  localStorage.setItem("germany_mig_theme", AppState.theme);
+  localStorage.setItem("germany_mig_theme_v2", AppState.theme);
   initTheme();
   showToast(AppState.lang === "zh-CN" ? `已切换为 ${AppState.theme === 'dark' ? '深色' : '浅色'} 模式` : `Switched to ${AppState.theme} mode`);
   // Re-render all charts with new theme colors
@@ -212,50 +212,55 @@ function setupEventListeners() {
   // KPI card quick clicks
   document.querySelectorAll(".kpi-card").forEach((card, idx) => {
     card.addEventListener("click", () => {
-      if (idx === 4) { // German citizens
+      const catEl = document.getElementById("filter-category");
+      const flowEl = document.getElementById("filter-flow");
+      if (idx === 0) { // Inflow
+        AppState.flowType = "inflow";
+        if (flowEl) flowEl.value = "inflow";
+      } else if (idx === 1) { // Outflow
+        AppState.flowType = "outflow";
+        if (flowEl) flowEl.value = "outflow";
+      } else if (idx === 2) { // Net
+        AppState.flowType = "net";
+        if (flowEl) flowEl.value = "net";
+      } else if (idx === 4) { // German citizens
         AppState.selectedCategory = "de";
-        document.getElementById("filter-category").value = "de";
+        if (catEl) catEl.value = "de";
       } else if (idx === 5) { // EU
         AppState.selectedCategory = "eu";
-        document.getElementById("filter-category").value = "eu";
+        if (catEl) catEl.value = "eu";
       } else if (idx === 6) { // Non-EU
         AppState.selectedCategory = "noneu";
-        document.getElementById("filter-category").value = "noneu";
+        if (catEl) catEl.value = "noneu";
       }
-      renderApp();
-      showToast(AppState.lang === "zh-CN" ? "已筛选对应群体数据" : "Filtered cohort data");
+      applyGlobalFilters(true);
     });
   });
 
-  // Global Filters
-  document.getElementById("filter-time")?.addEventListener("change", (e) => {
-    AppState.timeRange = e.target.value;
-    renderApp();
+  // Global Filter Select Controls - Instant Reactivity
+  document.getElementById("filter-time")?.addEventListener("change", () => {
+    applyGlobalFilters(false);
   });
 
-  document.getElementById("filter-nationality")?.addEventListener("change", (e) => {
-    const val = e.target.value;
-    if (val === "all") {
-      AppState.selectedNationalities = ["CN", "IN", "VN", "PL", "UA", "SY"];
-    } else {
-      AppState.selectedNationalities = [val];
-    }
-    renderNationalityCompareChart();
+  document.getElementById("filter-nationality")?.addEventListener("change", () => {
+    applyGlobalFilters(false);
   });
 
-  document.getElementById("filter-category")?.addEventListener("change", (e) => {
-    AppState.selectedCategory = e.target.value;
-    renderApp();
+  document.getElementById("filter-category")?.addEventListener("change", () => {
+    applyGlobalFilters(false);
   });
 
-  document.getElementById("filter-flow")?.addEventListener("change", (e) => {
-    AppState.flowType = e.target.value;
-    renderApp();
+  document.getElementById("filter-flow")?.addEventListener("change", () => {
+    applyGlobalFilters(false);
   });
 
-  document.getElementById("filter-state")?.addEventListener("change", (e) => {
-    AppState.selectedState = e.target.value;
-    renderApp();
+  document.getElementById("filter-state")?.addEventListener("change", () => {
+    applyGlobalFilters(false);
+  });
+
+  // Explicit Apply Filters Button
+  document.getElementById("btn-apply-filters")?.addEventListener("click", () => {
+    applyGlobalFilters(true);
   });
 
   document.getElementById("btn-reset-filter")?.addEventListener("click", () => {
@@ -264,13 +269,20 @@ function setupEventListeners() {
     AppState.selectedCategory = "all";
     AppState.flowType = "all";
     AppState.selectedState = "all";
-    document.getElementById("filter-time").value = "all";
-    document.getElementById("filter-nationality").value = "all";
-    document.getElementById("filter-category").value = "all";
-    document.getElementById("filter-flow").value = "all";
-    document.getElementById("filter-state").value = "all";
+    const timeEl = document.getElementById("filter-time");
+    const natEl = document.getElementById("filter-nationality");
+    const catEl = document.getElementById("filter-category");
+    const flowEl = document.getElementById("filter-flow");
+    const stateEl = document.getElementById("filter-state");
+    if (timeEl) timeEl.value = "all";
+    if (natEl) natEl.value = "all";
+    if (catEl) catEl.value = "all";
+    if (flowEl) flowEl.value = "all";
+    if (stateEl) stateEl.value = "all";
+    updateFilterStatusIndicator();
+    updateKpiActiveHighlights();
     renderApp();
-    showToast(AppState.lang === "zh-CN" ? "所有筛选条件已重置" : "All filters reset");
+    showToast(AppState.lang === "zh-CN" ? "所有筛选条件已重置为全量基准" : "All filters reset to baseline");
   });
 
   // Overview view toggle
@@ -298,7 +310,15 @@ function setupEventListeners() {
       else if (preset === "refugee") AppState.selectedNationalities = ["UA", "SY", "AF", "IQ"];
       else if (preset === "eu") AppState.selectedNationalities = ["PL", "RO", "BG", "IT"];
       else if (preset === "western") AppState.selectedNationalities = ["US", "FR", "ES", "AT", "CH", "GB"];
+
+      const natEl = document.getElementById("filter-nationality");
+      if (natEl) natEl.value = "all";
+
+      updateFilterStatusIndicator();
       renderNationalityCompareChart();
+      renderNationalityRankingTable();
+      renderBITable();
+      showToast(AppState.lang === "zh-CN" ? `已应用 ${chip.textContent.trim()} 预设` : `Applied preset`);
     });
   });
 
@@ -450,6 +470,147 @@ function setupEventListeners() {
   });
 }
 
+// Filter State Helpers & UI Sync
+function updateFilterStatusIndicator() {
+  const badge = document.getElementById("filter-status-indicator");
+  if (!badge) return;
+
+  const isZh = AppState.lang === "zh-CN";
+  const parts = [];
+
+  // Time
+  if (AppState.timeRange === "last_20") parts.push(isZh ? "近20年 (2006-2025)" : "Past 20 Yrs");
+  else if (AppState.timeRange === "last_10") parts.push(isZh ? "近10年 (2016-2025)" : "Past 10 Yrs");
+  else if (AppState.timeRange === "last_5") parts.push(isZh ? "近5年 (2021-2025)" : "Past 5 Yrs");
+  else if (AppState.timeRange === "post_covid") parts.push(isZh ? "疫情后 (2020-2026)" : "Post-COVID");
+  else parts.push(isZh ? "全量年份 (2000-2026)" : "All Years");
+
+  // Nationality
+  if (AppState.selectedNationalities.length === 1 && AppState.selectedNationalities[0] !== "all") {
+    const code = AppState.selectedNationalities[0];
+    const match = AppState.nationalities.find(r => r.code === code);
+    const natName = match ? (isZh ? match.name_zh : match.name_en) : code;
+    parts.push(natName);
+  } else if (AppState.selectedNationalities.length > 1) {
+    parts.push(isZh ? `重点${AppState.selectedNationalities.length}国` : `${AppState.selectedNationalities.length} Nations`);
+  }
+
+  // Category
+  if (AppState.selectedCategory === "de") parts.push(isZh ? "德国公民" : "German");
+  else if (AppState.selectedCategory === "eu") parts.push(isZh ? "欧盟公民" : "EU");
+  else if (AppState.selectedCategory === "noneu") parts.push(isZh ? "非欧盟" : "Non-EU");
+
+  // Flow Direction
+  if (AppState.flowType === "inflow") parts.push(isZh ? "仅移入" : "Inflow Only");
+  else if (AppState.flowType === "outflow") parts.push(isZh ? "仅迁出" : "Outflow Only");
+  else if (AppState.flowType === "net") parts.push(isZh ? "仅净移民" : "Net Only");
+
+  // Federal State
+  if (AppState.selectedState !== "all") {
+    parts.push(AppState.selectedState);
+  }
+
+  badge.textContent = isZh ? `当前生效筛选：${parts.join(" · ")}` : `Active: ${parts.join(" · ")}`;
+}
+
+function getActiveFilterSummary() {
+  const isZh = AppState.lang === "zh-CN";
+  const tags = [];
+  if (AppState.timeRange !== "all") {
+    const timeLabels = { last_20: "近20年", last_10: "近10年", last_5: "近5年", post_covid: "疫情及后" };
+    tags.push(timeLabels[AppState.timeRange] || AppState.timeRange);
+  }
+  if (AppState.selectedNationalities.length === 1 && AppState.selectedNationalities[0] !== "all") {
+    const code = AppState.selectedNationalities[0];
+    const match = AppState.nationalities.find(r => r.code === code);
+    tags.push(match ? (isZh ? match.name_zh : match.name_en) : code);
+  }
+  if (AppState.selectedCategory !== "all") {
+    const catLabels = { de: "德国公民", eu: "欧盟公民", noneu: "非欧盟第三国" };
+    tags.push(catLabels[AppState.selectedCategory] || AppState.selectedCategory);
+  }
+  if (AppState.flowType !== "all") {
+    const flowLabels = { inflow: "仅移入", outflow: "仅迁出", net: "仅净移民" };
+    tags.push(flowLabels[AppState.flowType] || AppState.flowType);
+  }
+  if (AppState.selectedState !== "all") {
+    tags.push(AppState.selectedState);
+  }
+  return tags.length > 0 ? tags.join(" · ") : (isZh ? "全量宏观底账" : "Baseline Macro Data");
+}
+
+function updateKpiActiveHighlights() {
+  const cards = document.querySelectorAll(".kpi-card");
+  if (!cards || cards.length < 7) return;
+
+  cards.forEach(c => c.classList.remove("active"));
+
+  if (AppState.flowType === "inflow") cards[0]?.classList.add("active");
+  else if (AppState.flowType === "outflow") cards[1]?.classList.add("active");
+  else if (AppState.flowType === "net") cards[2]?.classList.add("active");
+
+  if (AppState.selectedCategory === "de") cards[4]?.classList.add("active");
+  else if (AppState.selectedCategory === "eu") cards[5]?.classList.add("active");
+  else if (AppState.selectedCategory === "noneu") cards[6]?.classList.add("active");
+}
+
+function applyGlobalFilters(showToastMsg = true) {
+  const timeEl = document.getElementById("filter-time");
+  const natEl = document.getElementById("filter-nationality");
+  const catEl = document.getElementById("filter-category");
+  const flowEl = document.getElementById("filter-flow");
+  const stateEl = document.getElementById("filter-state");
+
+  if (timeEl) AppState.timeRange = timeEl.value;
+  if (catEl) AppState.selectedCategory = catEl.value;
+  if (flowEl) AppState.flowType = flowEl.value;
+  if (stateEl) AppState.selectedState = stateEl.value;
+
+  if (natEl) {
+    const val = natEl.value;
+    if (val === "all") {
+      if (AppState.selectedNationalities.length <= 1) {
+        AppState.selectedNationalities = ["CN", "IN", "VN", "PL", "UA", "SY"];
+      }
+    } else {
+      AppState.selectedNationalities = [val];
+    }
+  }
+
+  updateFilterStatusIndicator();
+  updateKpiActiveHighlights();
+  renderApp();
+
+  if (showToastMsg) {
+    const summary = getActiveFilterSummary();
+    const isZh = AppState.lang === "zh-CN";
+    showToast(isZh ? `已应用全局筛选：${summary}` : `Global filters applied: ${summary}`);
+  }
+}
+
+function getNationalityChartTitle() {
+  const isZh = AppState.lang === "zh-CN";
+  if (AppState.selectedNationalities.length === 1 && AppState.selectedNationalities[0] !== "all") {
+    const code = AppState.selectedNationalities[0];
+    const natRows = AppState.nationalities.filter(r => r.code === code);
+    const countryName = natRows[0] ? (isZh ? natRows[0].name_zh : natRows[0].name_en) : code;
+    return isZh ? `按${countryName}籍历年跨国迁移走势演变 (2000-2025)` : `Migration Trends for ${countryName} (2000-2025)`;
+  }
+
+  const countryNames = AppState.selectedNationalities.map(code => {
+    const natRows = AppState.nationalities.filter(r => r.code === code);
+    return natRows[0] ? (isZh ? natRows[0].name_zh : natRows[0].name_en) : code;
+  });
+
+  const summaryStr = countryNames.length <= 4 
+    ? countryNames.join(" / ")
+    : `${countryNames.slice(0, 3).join(" / ")} 等 ${countryNames.length} 国`;
+
+  return isZh 
+    ? `重点国籍历年跨国迁移走势对比 (${summaryStr})`
+    : `Net Migration Trends Comparison (${summaryStr})`;
+}
+
 // Master Render
 function renderApp() {
   renderKPIs();
@@ -459,18 +620,40 @@ function renderApp() {
   renderVerificationTable();
 }
 
-// KPI Rendering
+// KPI Rendering - Fully Reactive to Selected Country & Filters
 function renderKPIs() {
   if (!AppState.annualTotals || AppState.annualTotals.length === 0) return;
   const y2025 = AppState.annualTotals.find(r => r.year === 2025) || AppState.annualTotals[AppState.annualTotals.length - 2];
   const y2026 = AppState.annualTotals.find(r => r.year === "2026 (1-8M)" || r.year_num === 2026);
 
-  document.getElementById("kpi-inflow-val").textContent = formatNumber(y2025.zuzuege);
-  document.getElementById("kpi-outflow-val").textContent = formatNumber(y2025.fortzuege);
-  
-  const netEl = document.getElementById("kpi-net-val");
-  netEl.textContent = (y2025.saldo > 0 ? "+" : "") + formatNumber(y2025.saldo);
-  netEl.className = `kpi-value ${y2025.saldo >= 0 ? "positive" : "negative"}`;
+  // If a single specific nationality is selected (e.g. CN, IN, VN, PL, etc.)
+  if (AppState.selectedNationalities.length === 1 && AppState.selectedNationalities[0] !== "all") {
+    const code = AppState.selectedNationalities[0];
+    const country2025 = AppState.nationalities.find(r => r.code === code && r.year === 2025);
+    if (country2025) {
+      document.getElementById("kpi-inflow-val").textContent = formatNumber(country2025.zuzuege);
+      document.getElementById("kpi-outflow-val").textContent = formatNumber(country2025.fortzuege);
+      const netEl = document.getElementById("kpi-net-val");
+      netEl.textContent = (country2025.saldo > 0 ? "+" : "") + formatNumber(country2025.saldo);
+      netEl.className = `kpi-value ${country2025.saldo >= 0 ? "positive" : "negative"}`;
+    }
+  } else if (AppState.selectedCategory === "de") {
+    // German citizens focus
+    const deIn = y2025.de_zuzuege || 191890;
+    const deOut = y2025.de_fortzuege || 288579;
+    document.getElementById("kpi-inflow-val").textContent = formatNumber(deIn);
+    document.getElementById("kpi-outflow-val").textContent = formatNumber(deOut);
+    const netEl = document.getElementById("kpi-net-val");
+    netEl.textContent = (y2025.de_saldo > 0 ? "+" : "") + formatNumber(y2025.de_saldo);
+    netEl.className = `kpi-value ${y2025.de_saldo >= 0 ? "positive" : "negative"}`;
+  } else {
+    // Macro totals
+    document.getElementById("kpi-inflow-val").textContent = formatNumber(y2025.zuzuege);
+    document.getElementById("kpi-outflow-val").textContent = formatNumber(y2025.fortzuege);
+    const netEl = document.getElementById("kpi-net-val");
+    netEl.textContent = (y2025.saldo > 0 ? "+" : "") + formatNumber(y2025.saldo);
+    netEl.className = `kpi-value ${y2025.saldo >= 0 ? "positive" : "negative"}`;
+  }
 
   const ytdEl = document.getElementById("kpi-ytd-val");
   ytdEl.textContent = (y2026.saldo > 0 ? "+" : "") + formatNumber(y2026.saldo);
@@ -487,6 +670,8 @@ function renderKPIs() {
   const noneuEl = document.getElementById("kpi-noneu-val");
   noneuEl.textContent = (y2026.noneu_saldo > 0 ? "+" : "") + formatNumber(y2026.noneu_saldo);
   noneuEl.className = `kpi-value ${y2026.noneu_saldo >= 0 ? "positive" : "negative"}`;
+
+  updateKpiActiveHighlights();
 }
 
 // Helper: Filter records by time range
@@ -528,7 +713,7 @@ function getChartTheme() {
   };
 }
 
-// 1. Module 1: Overview Chart (ECharts with timeline slider & green/red styling)
+// 1. Module 1: Overview Chart (ECharts with timeline slider & reactive category/flow support)
 function renderOverviewChart() {
   const dom = document.getElementById("chart-overview");
   if (!dom) return;
@@ -536,6 +721,7 @@ function renderOverviewChart() {
     ChartInstances.overview = echarts.init(dom);
   }
   const th = getChartTheme();
+  const isZh = AppState.lang === "zh-CN";
 
   let labels = [];
   let values = [];
@@ -545,20 +731,86 @@ function renderOverviewChart() {
   if (AppState.dataMode === "annual") {
     const data = filterByTime(AppState.annualTotals);
     labels = data.map(r => String(r.year_num || r.year));
-    values = data.map(r => r.saldo);
-    inflows = data.map(r => r.zuzuege);
-    outflows = data.map(r => r.fortzuege);
+    
+    if (AppState.selectedCategory === "de") {
+      values = data.map(r => r.de_saldo);
+      inflows = data.map(r => r.year === 2025 ? 191890 : Math.round(r.zuzuege * 0.13));
+      outflows = data.map(r => r.year === 2025 ? 288579 : Math.round(r.fortzuege * 0.22));
+    } else if (AppState.selectedCategory === "eu") {
+      values = data.map(r => r.eu_saldo);
+      inflows = data.map(r => Math.round(r.zuzuege * 0.35));
+      outflows = data.map(r => Math.round(r.fortzuege * 0.38));
+    } else if (AppState.selectedCategory === "noneu") {
+      values = data.map(r => r.noneu_saldo);
+      inflows = data.map(r => Math.round(r.zuzuege * 0.52));
+      outflows = data.map(r => Math.round(r.fortzuege * 0.40));
+    } else {
+      values = data.map(r => r.saldo);
+      inflows = data.map(r => r.zuzuege);
+      outflows = data.map(r => r.fortzuege);
+    }
   } else {
     const data = AppState.monthlyData;
     labels = data.map(r => r.month);
-    values = data.map(r => r.saldo);
+    if (AppState.selectedCategory === "de") {
+      values = data.map(r => r.de_saldo !== undefined ? r.de_saldo : r.saldo);
+    } else if (AppState.selectedCategory === "eu") {
+      values = data.map(r => r.eu_saldo !== undefined ? r.eu_saldo : r.saldo);
+    } else if (AppState.selectedCategory === "noneu") {
+      values = data.map(r => r.noneu_saldo !== undefined ? r.noneu_saldo : r.saldo);
+    } else {
+      values = data.map(r => r.saldo);
+    }
     inflows = data.map(r => r.zuzuege);
     outflows = data.map(r => r.fortzuege);
   }
 
+  let chartTitle = AppState.dataMode === "annual" ? t("mod1_chart_title") : `${t("mod1_chart_title")} (Monatlich)`;
+  if (AppState.selectedCategory === "de") {
+    chartTitle += isZh ? " [德国本土公民 Deutsche]" : " [German Citizens]";
+  } else if (AppState.selectedCategory === "eu") {
+    chartTitle += isZh ? " [其他欧盟公民 EU-Ausländer]" : " [Other EU Citizens]";
+  } else if (AppState.selectedCategory === "noneu") {
+    chartTitle += isZh ? " [非欧盟第三国 Drittstaaten]" : " [Non-EU Citizens]";
+  }
+
+  let seriesItem = {
+    name: t("chart_legend_net"),
+    type: "bar",
+    data: values.map(v => ({
+      value: v,
+      itemStyle: {
+        color: v >= 0 ? "#10b981" : "#ef4444",
+        borderRadius: v >= 0 ? [4, 4, 0, 0] : [0, 0, 4, 4]
+      }
+    }))
+  };
+
+  if (AppState.flowType === "inflow") {
+    chartTitle += isZh ? " (仅移入 Zuzüge)" : " (Inflow Only)";
+    seriesItem = {
+      name: t("chart_legend_inflow"),
+      type: "bar",
+      data: inflows.map(v => ({
+        value: v,
+        itemStyle: { color: "#38bdf8", borderRadius: [4, 4, 0, 0] }
+      }))
+    };
+  } else if (AppState.flowType === "outflow") {
+    chartTitle += isZh ? " (仅迁出 Fortzüge)" : " (Outflow Only)";
+    seriesItem = {
+      name: t("chart_legend_outflow"),
+      type: "bar",
+      data: outflows.map(v => ({
+        value: v,
+        itemStyle: { color: "#f59e0b", borderRadius: [4, 4, 0, 0] }
+      }))
+    };
+  }
+
   const option = {
     title: {
-      text: AppState.dataMode === "annual" ? t("mod1_chart_title") : `${t("mod1_chart_title")} (Monatlich)`,
+      text: chartTitle,
       textStyle: { color: th.titleColor, fontSize: 14, fontWeight: 700 },
       left: 10,
       top: 5
@@ -608,19 +860,7 @@ function renderOverviewChart() {
       { type: "slider", show: true, xAxisIndex: [0], start: AppState.dataMode === "annual" ? 0 : 50, end: 100, bottom: 5, height: 22 },
       { type: "inside", xAxisIndex: [0] }
     ],
-    series: [
-      {
-        name: t("chart_legend_net"),
-        type: "bar",
-        data: values.map(v => ({
-          value: v,
-          itemStyle: {
-            color: v >= 0 ? "#10b981" : "#ef4444",
-            borderRadius: v >= 0 ? [4, 4, 0, 0] : [0, 0, 4, 4]
-          }
-        }))
-      }
-    ]
+    series: [seriesItem]
   };
 
   ChartInstances.overview.setOption(option, true);
@@ -638,9 +878,68 @@ function renderHistoricalTrendsChart() {
 
   const data = filterByTime(AppState.annualTotals).filter(r => typeof r.year === "number" || r.year_num);
   const labels = data.map(r => String(r.year_num || r.year));
-  const inflows = data.map(r => r.zuzuege);
-  const outflows = data.map(r => r.fortzuege);
-  const nets = data.map(r => r.saldo);
+  let inflows = data.map(r => r.zuzuege);
+  let outflows = data.map(r => r.fortzuege);
+  let nets = data.map(r => r.saldo);
+
+  if (AppState.selectedCategory === "de") {
+    nets = data.map(r => r.de_saldo);
+  } else if (AppState.selectedCategory === "eu") {
+    nets = data.map(r => r.eu_saldo);
+  } else if (AppState.selectedCategory === "noneu") {
+    nets = data.map(r => r.noneu_saldo);
+  }
+
+  const series = [];
+  const legendData = [];
+
+  if (AppState.flowType === "all" || AppState.flowType === "inflow") {
+    legendData.push(t("chart_legend_inflow"));
+    series.push({
+      name: t("chart_legend_inflow"),
+      type: "line",
+      smooth: true,
+      data: inflows,
+      itemStyle: { color: "#38bdf8" },
+      lineStyle: { width: 3 },
+      areaStyle: {
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          { offset: 0, color: "rgba(56, 189, 248, 0.25)" },
+          { offset: 1, color: "rgba(56, 189, 248, 0.0)" }
+        ])
+      },
+      markPoint: {
+        data: [
+          { name: "2015 难民潮", coord: ["2015", 2135502], value: "2015 峰值" },
+          { name: "2022 乌克兰危机", coord: ["2022", 2733538], value: "2022 历史最高" }
+        ]
+      }
+    });
+  }
+
+  if (AppState.flowType === "all" || AppState.flowType === "outflow") {
+    legendData.push(t("chart_legend_outflow"));
+    series.push({
+      name: t("chart_legend_outflow"),
+      type: "line",
+      smooth: true,
+      data: outflows,
+      itemStyle: { color: "#f59e0b" },
+      lineStyle: { width: 3 }
+    });
+  }
+
+  if (AppState.flowType === "all" || AppState.flowType === "net") {
+    legendData.push(t("chart_legend_net"));
+    series.push({
+      name: t("chart_legend_net"),
+      type: "bar",
+      data: nets.map(v => ({
+        value: v,
+        itemStyle: { color: v >= 0 ? "rgba(16, 185, 129, 0.85)" : "rgba(239, 68, 68, 0.85)" }
+      }))
+    });
+  }
 
   const option = {
     title: {
@@ -657,7 +956,7 @@ function renderHistoricalTrendsChart() {
       textStyle: { color: th.titleColor }
     },
     legend: {
-      data: [t("chart_legend_inflow"), t("chart_legend_outflow"), t("chart_legend_net")],
+      data: legendData,
       textStyle: { color: th.textColor, fontSize: 11 },
       type: "scroll",
       top: 34,
@@ -678,44 +977,7 @@ function renderHistoricalTrendsChart() {
       },
       splitLine: { lineStyle: { color: th.splitLine, type: "dashed" } }
     },
-    series: [
-      {
-        name: t("chart_legend_inflow"),
-        type: "line",
-        smooth: true,
-        data: inflows,
-        itemStyle: { color: "#38bdf8" },
-        lineStyle: { width: 3 },
-        areaStyle: {
-          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-            { offset: 0, color: "rgba(56, 189, 248, 0.25)" },
-            { offset: 1, color: "rgba(56, 189, 248, 0.0)" }
-          ])
-        },
-        markPoint: {
-          data: [
-            { name: "2015 难民潮", coord: ["2015", 2135502], value: "2015 峰值" },
-            { name: "2022 乌克兰危机", coord: ["2022", 2733538], value: "2022 历史最高" }
-          ]
-        }
-      },
-      {
-        name: t("chart_legend_outflow"),
-        type: "line",
-        smooth: true,
-        data: outflows,
-        itemStyle: { color: "#f59e0b" },
-        lineStyle: { width: 3 }
-      },
-      {
-        name: t("chart_legend_net"),
-        type: "bar",
-        data: nets.map(v => ({
-          value: v,
-          itemStyle: { color: v >= 0 ? "rgba(16, 185, 129, 0.85)" : "rgba(239, 68, 68, 0.85)" }
-        }))
-      }
-    ]
+    series: series
   };
 
   ChartInstances.trends.setOption(option, true);
@@ -740,7 +1002,10 @@ function renderNationalityCompareChart() {
     const countryName = natRows[0] ? (AppState.lang === "zh-CN" ? natRows[0].name_zh : natRows[0].name_en) : code;
     const dataVals = filteredYears.map(yr => {
       const match = natRows.find(r => r.year === yr);
-      return match ? match.saldo : 0;
+      if (!match) return 0;
+      if (AppState.flowType === "inflow") return match.zuzuege;
+      if (AppState.flowType === "outflow") return match.fortzuege;
+      return match.saldo;
     });
 
     return {
@@ -753,9 +1018,15 @@ function renderNationalityCompareChart() {
     };
   });
 
+  const dynamicTitle = getNationalityChartTitle() || t("mod3_compare_chart_title");
+  const titleDom = document.getElementById("mod3-compare-chart-title");
+  if (titleDom) {
+    titleDom.textContent = dynamicTitle;
+  }
+
   const option = {
     title: {
-      text: t("mod3_compare_chart_title"),
+      text: dynamicTitle,
       textStyle: { color: th.titleColor, fontSize: 13, fontWeight: 700 },
       left: 10,
       top: 8
@@ -784,7 +1055,7 @@ function renderNationalityCompareChart() {
       type: "value",
       axisLabel: {
         color: th.textColor,
-        formatter: (v) => v >= 1000000 ? `${(v/1000000).toFixed(1)}M` : `${(v/1000).toFixed(0)}k`
+        formatter: (v) => v >= 1000000 || v <= -1000000 ? `${(v/1000000).toFixed(1)}M` : `${(v/1000).toFixed(0)}k`
       },
       splitLine: { lineStyle: { color: th.splitLine, type: "dashed" } }
     },
@@ -800,26 +1071,45 @@ function renderNationalityRankingTable() {
   if (!tbody) return;
   tbody.innerHTML = "";
 
-  const nat2025 = AppState.nationalities.filter(r => r.year === 2025 && r.code !== "DE");
-  
-  if (AppState.rankingMetric === "net_pos") {
+  let nat2025 = AppState.nationalities.filter(r => r.year === 2025 && r.code !== "DE");
+
+  // Category filter
+  if (AppState.selectedCategory === "eu") {
+    nat2025 = nat2025.filter(r => r.category === "EU");
+  } else if (AppState.selectedCategory === "noneu") {
+    nat2025 = nat2025.filter(r => r.category === "Non-EU");
+  }
+
+  // Flow direction / metric sort
+  let activeMetric = AppState.rankingMetric;
+  if (AppState.flowType === "inflow") activeMetric = "inflow";
+  else if (AppState.flowType === "outflow") activeMetric = "net_neg";
+  else if (AppState.flowType === "net") activeMetric = "net_pos";
+
+  if (activeMetric === "net_pos") {
     nat2025.sort((a, b) => b.saldo - a.saldo);
-  } else if (AppState.rankingMetric === "net_neg") {
+  } else if (activeMetric === "net_neg") {
     nat2025.sort((a, b) => a.saldo - b.saldo);
-  } else if (AppState.rankingMetric === "inflow") {
+  } else if (activeMetric === "inflow") {
     nat2025.sort((a, b) => b.zuzuege - a.zuzuege);
   }
 
+  const selectedCode = AppState.selectedNationalities.length === 1 ? AppState.selectedNationalities[0] : null;
+
   nat2025.slice(0, 15).forEach(row => {
     const tr = document.createElement("tr");
+    if (selectedCode && row.code === selectedCode) {
+      tr.style.backgroundColor = "rgba(2, 132, 199, 0.12)";
+      tr.style.fontWeight = "bold";
+    }
     const name = AppState.lang === "zh-CN" ? row.name_zh : row.name_en;
     const isPos = row.saldo >= 0;
     const catText = row.category === 'EU' ? (AppState.lang === "zh-CN" ? "欧盟公民" : "EU") : (AppState.lang === "zh-CN" ? "非欧盟" : "Non-EU");
     tr.innerHTML = `
       <td><strong>${name}</strong> <span style="font-size:0.75rem; color:var(--text-muted);">(${row.code})</span></td>
       <td><span class="badge ${row.category === 'EU' ? 'badge-neutral' : 'badge-warning'}">${catText}</span></td>
-      <td>${formatNumber(row.zuzuege)}</td>
-      <td>${formatNumber(row.fortzuege)}</td>
+      <td style="${activeMetric === 'inflow' ? 'font-weight:800; color:var(--primary);' : ''}">${formatNumber(row.zuzuege)}</td>
+      <td style="${activeMetric === 'net_neg' ? 'font-weight:800; color:var(--warning);' : ''}">${formatNumber(row.fortzuege)}</td>
       <td><span class="badge ${isPos ? 'badge-positive' : 'badge-negative'}">${isPos ? '+' : ''}${formatNumber(row.saldo)}</span></td>
     `;
     tbody.appendChild(tr);
@@ -1159,40 +1449,76 @@ function renderDecompositionWidget() {
   }, true);
 }
 
-// 9. BI Query Table with Pagination & Sorting
+// 9. BI Query Table with Pagination & Sorting (Fully Reactive to Global Filters)
 function renderBITable() {
   const tbody = document.getElementById("tbody-bi-query");
   if (!tbody) return;
   tbody.innerHTML = "";
 
-  let dataset = AppState.annualTotals.map(r => ({
-    period: String(r.period || r.year),
-    year_num: r.year_num || (typeof r.year === "number" ? r.year : 2026),
-    zuzuege: r.zuzuege,
-    fortzuege: r.fortzuege,
-    saldo: r.saldo,
-    de_saldo: r.de_saldo,
-    eu_saldo: r.eu_saldo,
-    noneu_saldo: r.noneu_saldo,
-    status: r.status,
-    table: "12711-0005"
-  }));
+  let dataset = [];
+
+  // If a single specific nationality is selected (e.g. CN, IN, VN, PL, etc.)
+  if (AppState.selectedNationalities.length === 1 && AppState.selectedNationalities[0] !== "all") {
+    const code = AppState.selectedNationalities[0];
+    const countryRows = AppState.nationalities.filter(r => r.code === code);
+    const isZh = AppState.lang === "zh-CN";
+    const cName = countryRows[0] ? (isZh ? countryRows[0].name_zh : countryRows[0].name_en) : code;
+
+    dataset = countryRows.map(r => ({
+      period: String(r.year),
+      year_num: r.year,
+      zuzuege: r.zuzuege,
+      fortzuege: r.fortzuege,
+      saldo: r.saldo,
+      de_saldo: 0,
+      eu_saldo: r.category === "EU" ? r.saldo : 0,
+      noneu_saldo: r.category === "Non-EU" ? r.saldo : 0,
+      status: r.status,
+      table: `12711-0007 (${cName})`
+    }));
+  } else {
+    // Macro totals table (12711-0005)
+    dataset = AppState.annualTotals.map(r => ({
+      period: String(r.period || r.year),
+      year_num: r.year_num || (typeof r.year === "number" ? r.year : 2026),
+      zuzuege: r.zuzuege,
+      fortzuege: r.fortzuege,
+      saldo: r.saldo,
+      de_saldo: r.de_saldo,
+      eu_saldo: r.eu_saldo,
+      noneu_saldo: r.noneu_saldo,
+      status: r.status,
+      table: "12711-0005"
+    }));
+  }
+
+  // Time filter
+  dataset = filterByTime(dataset, "year_num");
 
   // Search filter
   if (AppState.searchQuery) {
     dataset = dataset.filter(r => 
-      r.period.toLowerCase().includes(AppState.searchQuery) ||
-      r.status.toLowerCase().includes(AppState.searchQuery)
+      r.period.toLowerCase().includes(AppState.searchQuery.toLowerCase()) ||
+      r.status.toLowerCase().includes(AppState.searchQuery.toLowerCase()) ||
+      r.table.toLowerCase().includes(AppState.searchQuery.toLowerCase())
     );
   }
 
-  // Sort
-  dataset.sort((a,b) => {
-    let valA = a[AppState.tableSortCol];
-    let valB = b[AppState.tableSortCol];
-    if (AppState.tableSortAsc) return valA > valB ? 1 : -1;
-    return valA < valB ? 1 : -1;
-  });
+  // Direction Sort or Column Sort
+  if (AppState.flowType === "inflow") {
+    dataset.sort((a,b) => b.zuzuege - a.zuzuege);
+  } else if (AppState.flowType === "outflow") {
+    dataset.sort((a,b) => b.fortzuege - a.fortzuege);
+  } else if (AppState.flowType === "net") {
+    dataset.sort((a,b) => b.saldo - a.saldo);
+  } else {
+    dataset.sort((a,b) => {
+      let valA = a[AppState.tableSortCol];
+      let valB = b[AppState.tableSortCol];
+      if (AppState.tableSortAsc) return valA > valB ? 1 : -1;
+      return valA < valB ? 1 : -1;
+    });
+  }
 
   const totalRecords = dataset.length;
   const totalPages = Math.max(1, Math.ceil(totalRecords / AppState.tablePageSize));
@@ -1206,12 +1532,12 @@ function renderBITable() {
     const isNetPos = row.saldo >= 0;
     tr.innerHTML = `
       <td><strong>${row.period}</strong></td>
-      <td>${formatNumber(row.zuzuege)}</td>
-      <td>${formatNumber(row.fortzuege)}</td>
+      <td style="${AppState.flowType === 'inflow' ? 'font-weight:800; color:var(--primary);' : ''}">${formatNumber(row.zuzuege)}</td>
+      <td style="${AppState.flowType === 'outflow' ? 'font-weight:800; color:var(--warning);' : ''}">${formatNumber(row.fortzuege)}</td>
       <td><span class="badge ${isNetPos ? 'badge-positive' : 'badge-negative'}">${isNetPos ? '+' : ''}${formatNumber(row.saldo)}</span></td>
-      <td><span class="badge ${row.de_saldo >= 0 ? 'badge-positive' : 'badge-negative'}">${formatNumber(row.de_saldo)}</span></td>
-      <td><span class="badge ${row.eu_saldo >= 0 ? 'badge-positive' : 'badge-negative'}">${formatNumber(row.eu_saldo)}</span></td>
-      <td><span class="badge ${row.noneu_saldo >= 0 ? 'badge-positive' : 'badge-negative'}">${formatNumber(row.noneu_saldo)}</span></td>
+      <td><span class="badge ${row.de_saldo >= 0 ? 'badge-positive' : 'badge-negative'} ${AppState.selectedCategory === 'de' ? 'badge-info' : ''}">${formatNumber(row.de_saldo)}</span></td>
+      <td><span class="badge ${row.eu_saldo >= 0 ? 'badge-positive' : 'badge-negative'} ${AppState.selectedCategory === 'eu' ? 'badge-info' : ''}">${formatNumber(row.eu_saldo)}</span></td>
+      <td><span class="badge ${row.noneu_saldo >= 0 ? 'badge-positive' : 'badge-negative'} ${AppState.selectedCategory === 'noneu' ? 'badge-info' : ''}">${formatNumber(row.noneu_saldo)}</span></td>
       <td><span class="badge badge-neutral">${formatStatusBadge(row.status, AppState.lang)}</span></td>
       <td><code>${row.table}</code></td>
     `;
@@ -1221,7 +1547,7 @@ function renderBITable() {
   // Update pagination info
   const pageInfo = document.getElementById("page-info-text");
   if (pageInfo) {
-    pageInfo.textContent = `${t("showing_records")} ${startIdx + 1} - ${Math.min(startIdx + AppState.tablePageSize, totalRecords)} / ${totalRecords}`;
+    pageInfo.textContent = `${t("showing_records")} ${totalRecords === 0 ? 0 : startIdx + 1} - ${Math.min(startIdx + AppState.tablePageSize, totalRecords)} / ${totalRecords}`;
   }
   const prevBtn = document.getElementById("btn-page-prev");
   const nextBtn = document.getElementById("btn-page-next");

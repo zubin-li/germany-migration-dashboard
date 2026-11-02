@@ -6,7 +6,7 @@
 
 const DeckState = {
   lang: localStorage.getItem("germany_dashboard_lang") || "zh-CN",
-  theme: localStorage.getItem("germany_dashboard_theme") || "dark"
+  theme: localStorage.getItem("germany_dashboard_theme_v2") || "light"
 };
 
 const DeckCharts = {};
@@ -32,7 +32,7 @@ function getThemeColors() {
 function applyTheme(theme) {
   DeckState.theme = theme;
   document.documentElement.setAttribute("data-theme", theme);
-  localStorage.setItem("germany_dashboard_theme", theme);
+  localStorage.setItem("germany_dashboard_theme_v2", theme);
 
   const btn = document.getElementById("deck-theme-toggle");
   if (btn) btn.textContent = theme === "dark" ? "☀️ Light" : "🌙 Dark";
