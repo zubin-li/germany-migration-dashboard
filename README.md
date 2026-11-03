@@ -129,12 +129,12 @@ germany-migration-dashboard/
 * **Destatis Table 12511-0001 & 12511-0002**: Einbürgerungen von Ausländern in Deutschland
 
 ### APA 7th Edition
-> Statistisches Bundesamt (Destatis), Li, Z., & Antigravity. (2026). *Wanderungen zwischen Deutschland und dem Ausland (Tabellen 12711-0005, 12711-0011, 12511-0001)*. GENESIS-Online. Synthesized by Germany Migration Intelligence Dashboard (v2.6.0). Retrieved from https://zubin-li.github.io/germany-migration-dashboard/
+> Li, Z. (2026). *Germany Migration Intelligence Dashboard: Longitudinal Destatis Official Synthesis & Strategic Labor Analytics (2000–2026)*. Data source: Statistisches Bundesamt (Destatis), GENESIS-Online. https://zubin-li.github.io/germany-migration-dashboard/
 
 ### BibTeX
 ```bibtex
 @misc{germany_migration_dashboard_2026,
-  author       = {Statistisches Bundesamt (Destatis) and Li, Zubin and Antigravity},
+  author       = {Li, Zubin},
   title        = {{Germany Migration Intelligence Dashboard: Longitudinal Destatis Official Synthesis & Strategic Labor Analytics (2000-2026)}},
   year         = {2026},
   howpublished = {\url{https://zubin-li.github.io/germany-migration-dashboard/}},
@@ -151,5 +151,5 @@ germany-migration-dashboard/
 ## 👥 项目贡献者 (Contributors)
 
 * **Zubin Li** ([@zubin-li](https://github.com/zubin-li)) — 项目发起人、总体数据架构设计与分析模型
-* **Antigravity** ([@antigravity](https://github.com/antigravity)) — 自主 AI Agent 全栈协同架构、前端工程实现与自动化质量审计流水线
 
+开发工具：本项目借助 [Google Antigravity](https://antigravity.google/) 完成 AI 辅助数据工程、前端实现与自动化质量审计；最终分析判断与项目责任归属于 Zubin Li。
