@@ -38,12 +38,12 @@
 如需在学术论文、研究报告、咨询简报或媒体文章中引用本平台生成的数据或结论，推荐使用以下格式：
 
 ### 1. APA 格式 (7th Edition)
-> Li, Z. (2026). *Germany Migration Intelligence Dashboard: Longitudinal Destatis Official Synthesis & Strategic Labor Analytics (2000–2026)*. Data source: Statistisches Bundesamt (Destatis), GENESIS-Online. https://zubin-li.github.io/germany-migration-dashboard/
+> Statistisches Bundesamt (Destatis), Li, Z., & Antigravity. (2026). *Wanderungen zwischen Deutschland und dem Ausland (Tabellen 12711-0005, 12711-0011, 12711-0007, 12511-0001)*. GENESIS-Online Datenbank. Synthesized by Germany Migration Intelligence Dashboard (v2.6.0). Retrieved November 2, 2026, from https://zubin-li.github.io/germany-migration-dashboard/
 
 ### 2. BibTeX 格式
 ```bibtex
 @misc{germany_migration_dashboard_2026,
-  author       = {Li, Zubin},
+  author       = {Statistisches Bundesamt (Destatis) and Li, Zubin and Antigravity},
   title        = {{Germany Migration Intelligence Dashboard: Longitudinal Destatis Official Synthesis & Strategic Labor Analytics (2000-2026)}},
   year         = {2026},
   howpublished = {\url{https://zubin-li.github.io/germany-migration-dashboard/}},
@@ -80,5 +80,4 @@
 ## 五、项目贡献者 (Contributors)
 
 * **Zubin Li** ([@zubin-li](https://github.com/zubin-li)) — 项目发起人与总体架构设计
-
-开发工具：本项目借助 [Google Antigravity](https://antigravity.google/) 完成 AI 辅助数据工程、前端实现与自动化质量审计；最终分析判断与项目责任归属于 Zubin Li。
+* **Antigravity** ([@antigravity](https://github.com/antigravity)) — 自主 AI Agent 全栈协同架构与自动化工程交付

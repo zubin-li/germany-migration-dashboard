@@ -154,7 +154,7 @@ Then visit `http://localhost:8080/`.
 ### BibTeX
 ```bibtex
 @misc{germany_migration_dashboard_2026,
-  author       = {Li, Zubin},
+  author       = {Statistisches Bundesamt (Destatis) and Li, Zubin and Antigravity},
   title        = {{Germany Migration Intelligence Dashboard: Longitudinal Destatis Official Synthesis & Strategic Labor Analytics (2000-2026)}},
   year         = {2026},
   howpublished = {\url{https://zubin-li.github.io/germany-migration-dashboard/}},
@@ -163,7 +163,7 @@ Then visit `http://localhost:8080/`.
 ```
 
 ### APA 7th Edition
-> Li, Z. (2026). *Germany Migration Intelligence Dashboard: Longitudinal Destatis Official Synthesis & Strategic Labor Analytics (2000–2026)*. Data source: Statistisches Bundesamt (Destatis), GENESIS-Online. https://zubin-li.github.io/germany-migration-dashboard/
+> Statistisches Bundesamt (Destatis), Li, Z., & Antigravity. (2026). *Germany Migration Intelligence Dashboard: Longitudinal Destatis Official Synthesis & Strategic Labor Analytics (2000-2026)*. Retrieved from https://zubin-li.github.io/germany-migration-dashboard/
 
 ### Open Data Licensing
 Raw data is subject to **Datenlizenz Deutschland – Namensnennung – Version 2.0 (dl-de/by-2-0)**.  
@@ -174,5 +174,4 @@ Official attribution: `© Statistisches Bundesamt (Destatis), Wiesbaden, 2026`.
 ## 👥 Project Contributors
 
 * **Zubin Li** ([@zubin-li](https://github.com/zubin-li)) — Project Lead, Data Architecture & Analytical Modeling
-
-Development tool: Built with assistance from [Google Antigravity](https://antigravity.google/) for AI-assisted data engineering, front-end implementation, and automated quality auditing. Final analytical judgment and project responsibility remain with Zubin Li.
+* **Antigravity** ([@antigravity](https://github.com/antigravity)) — Autonomous AI Agent Full-Stack Engineering, UI/UX Architecture & QA Automation Pipeline
