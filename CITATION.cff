@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this intelligence dashboard, data synthesis, or consulting models, please cite it as below."
+message: "If you use this dashboard or its data synthesis, please cite the software and the underlying Destatis tables."
 title: "Germany Migration Intelligence Dashboard"
 version: 2.6.0
 date-released: 2026-11-01
@@ -11,7 +11,6 @@ authors:
     given-names: "Zubin"
     website: "https://github.com/zubin-li"
   - name: "Antigravity"
-    website: "https://github.com/antigravity"
 keywords:
   - "Germany Migration"
   - "Destatis"
