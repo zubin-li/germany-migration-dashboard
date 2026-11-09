@@ -95,6 +95,7 @@ function setLanguage(lang) {
 }
 
 function initI18n() {
+  document.documentElement.lang = AppState.lang;
   const optZh = document.getElementById("lang-opt-zh");
   const optEn = document.getElementById("lang-opt-en");
   if (optZh && optEn) {
@@ -131,8 +132,9 @@ async function loadAllData() {
     AppState.verificationClaims = window.DESTATIS_DATABASE.verificationClaims;
   }
 
-  // Live HTTP check if served from web server
-  if (window.location.protocol.startsWith("http")) {
+  // The public site is static. Only request REST endpoints when server.py has
+  // explicitly advertised that they exist through runtime-config.js.
+  if (window.DASHBOARD_RUNTIME?.apiAvailable === true) {
     try {
       const [metaRes, annualRes, monthlyRes, natRes, emigRes, statesRes, natzRes, verifRes] = await Promise.all([
         fetch("/api/metadata").catch(() => null),
@@ -412,6 +414,12 @@ function setupEventListeners() {
   // Live Refresh trigger
   document.getElementById("btn-trigger-refresh")?.addEventListener("click", async () => {
     const btn = document.getElementById("btn-trigger-refresh");
+    if (window.DASHBOARD_RUNTIME?.apiAvailable !== true) {
+      showToast(AppState.lang === "zh-CN"
+        ? "当前为已注明日期的官方数据快照；请运行 server.py 后再触发数据管道"
+        : "Using the dated official snapshot. Run server.py to trigger the data pipeline.");
+      return;
+    }
     btn.disabled = true;
     btn.textContent = AppState.lang === "zh-CN" ? "⏳ 同步官方数据中..." : "⏳ Syncing Destatis API...";
     try {

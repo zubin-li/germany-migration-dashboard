@@ -31,7 +31,15 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         path = parsed.path
 
         # API Endpoints
-        if path == "/api/metadata":
+        if path == "/runtime-config.js":
+            body = b"window.DASHBOARD_RUNTIME = Object.freeze({ apiAvailable: true });\n"
+            self.send_response(200)
+            self.send_header("Content-Type", "application/javascript; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            self.wfile.write(body)
+        elif path == "/api/metadata":
             self.send_json_file(DATA_DIR / "metadata.json")
         elif path == "/api/annual":
             self.send_json_file(DATA_DIR / "destatis_migration_annual_totals.json")

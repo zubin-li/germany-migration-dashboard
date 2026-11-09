@@ -1,8 +1,12 @@
 /**
- * Automated Visual, Typography & Bounding-Box Layout Audit Suite
+ * Static Layout Contract Audit Suite
  * Modeled after GitHub Open-Source Best Practices (pbakaus/impeccable & design-system test standards)
  * 
- * Specifically audits:
+ * Inspects source-level CSS and chart configuration contracts. It does not
+ * render a browser or prove visual quality. Browser behavior is covered by
+ * browser_regression.js.
+ *
+ * Specifically checks:
  * 1. KPI Card Container Bounding Box & No-Overflow Contracts
  * 2. 2-Tier Grid Balance (4 Macro + 3 Cohorts = Zero Orphan Cards)
  * 3. Badge Text Length & CSS flex-wrap Ellipsis Guardrails
@@ -39,7 +43,7 @@ function assert(condition, message) {
 }
 
 console.log("============================================================");
-console.log("AUTOMATED VISUAL & BOUNDING-BOX LAYOUT AUDIT SUITE");
+console.log("STATIC LAYOUT CONTRACT AUDIT SUITE");
 console.log("============================================================\n");
 
 // Read source files
@@ -170,10 +174,10 @@ console.log(`FAILED: ${failures.length}`);
 console.log("============================================================");
 
 if (failures.length > 0) {
-  console.error("\n❌ FAILED VISUAL AUDIT CHECKS:");
+  console.error("\n❌ FAILED STATIC LAYOUT CONTRACT CHECKS:");
   failures.forEach((f, i) => console.error(`  ${i+1}. ${f}`));
   process.exit(1);
 } else {
-  console.log("\n🌟 ALL VISUAL & BOUNDING-BOX LAYOUT AUDIT CHECKS PASSED WITH 100% SUCCESS!");
+  console.log("\n✅ ALL STATIC LAYOUT CONTRACT CHECKS PASSED");
   process.exit(0);
 }

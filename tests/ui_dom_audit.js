@@ -6,7 +6,7 @@
  * 1. Routing & Link Integrity (Internal anchors & Multi-page document links)
  * 2. Data Hydration & Namespace Contracts (window.DESTATIS_DATABASE & window.DESTATIS_DATA)
  * 3. ECharts Visualization Option Contracts (Ensures series data non-empty)
- * 4. i18n Dictionary Symmetry & 100% Coverage (No missing keys, no untranslated leaks)
+ * 4. i18n dictionary symmetry and referenced-key coverage
  * 5. CSS Typography & DOM Overflow Safety (word-break, container bounding minimums)
  */
 
@@ -39,7 +39,7 @@ function assert(condition, message) {
 }
 
 console.log("============================================================");
-console.log("GERMANY MIGRATION DASHBOARD - AUTOMATED WEB & UI AUDIT SUITE");
+console.log("GERMANY MIGRATION DASHBOARD - STATIC SOURCE CONTRACT SUITE");
 console.log("============================================================\n");
 
 // ---------------------------------------------------------------------------
@@ -197,6 +197,6 @@ if (failures.length > 0) {
   failures.forEach((f, i) => console.error(`  ${i+1}. ${f}`));
   process.exit(1);
 } else {
-  console.log("\n🌟 ALL WEB, ROUTING, DATA & UI AUDIT CHECKS PASSED WITH 100% SUCCESS!");
+  console.log("\n✅ ALL STATIC SOURCE CONTRACT CHECKS PASSED");
   process.exit(0);
 }

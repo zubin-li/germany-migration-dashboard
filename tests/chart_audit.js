@@ -121,7 +121,7 @@ checkChart('pdf-chart-5', 'Slide 5: Labor Gap Mitigation Model', (opt) => {
 
 console.log("\n============================================================");
 if (failures === 0) {
-  console.log("🌟 ALL 5 EXECUTIVE SLIDE CHARTS FULLY HYDRATED & VALIDATED!");
+  console.log("✅ ALL 5 EXECUTIVE SLIDE CHART DATA/OPTION CONTRACTS PASSED");
   process.exit(0);
 } else {
   console.error(`❌ ${failures} CHARTS FAILED VALIDATION!`);

@@ -5,8 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "node tests/ui_dom_audit.js && node tests/chart_audit.js && node tests/visual_layout_audit.js && (/opt/homebrew/bin/python3 etl/validate_data.py || python3 etl/validate_data.py)",
+    "test:browser": "node tests/browser_regression.js",
     "audit:ui": "node tests/ui_dom_audit.js",
-    "audit:visual": "node tests/visual_layout_audit.js",
+    "audit:layout-contracts": "node tests/visual_layout_audit.js",
     "audit:charts": "node tests/chart_audit.js",
     "audit:data": "/opt/homebrew/bin/python3 etl/validate_data.py || python3 etl/validate_data.py",
     "package": "bash package_offline.sh"
@@ -31,5 +32,8 @@
     }
   ],
   "license": "MIT",
-  "type": "commonjs"
+  "type": "commonjs",
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
 }
